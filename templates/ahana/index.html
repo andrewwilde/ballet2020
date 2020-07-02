@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="eng">
+{% load static %}
+<head>
+	<title>Petit Ballet Academy: Ballet Studio in Springville, Utah</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Ballet studio located in Springville, Utah. Dance studio will also include classes for Jazz, Tap, Modern, and Hip Hop. Come learn to dance today!">
+	<meta name="keywords" content="Springville Ballet,Springville Ballet Studio,Springville Ballet Class,Springville Dance Class,Springville Dance Studio,Utah Ballet,Dance Studio,Dance Company">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/owl.carousel.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/nice-select.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/magnific-popup.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/slicknav.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/animate.css" %}"/>
+
+	<!-- Main Stylesheets -->
+    <link rel="stylesheet" href="{% static "css/style.css" %}"/>
+
+
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Header Section -->
+	<header class="header-section">
+		<div class="header-top">
+			<div class="row m-0">
+				<div class="col-md-12 d-none d-md-block p-0">
+					<div class="header-info">
+						<i class="material-icons">map</i>
+						<p>478 South 2000 West, Springville, UT 84663</p>
+					</div>
+					<div class="header-info">
+						<i class="material-icons">phone</i>
+						<p>(385) 404-8687</p>
+					</div>
+				</div>
+				<!--<div class="col-md-6 text-left text-md-right p-0">
+					<div class="header-info d-none d-md-inline-flex">
+						<i class="material-icons">alarm_on</i>
+						<p>Mon - Fri:  6:30am - 07:45pm</p>
+					</div>
+					<div class="header-info">
+						<i class="material-icons">language</i>
+						<select id="language" class="language-select">
+							<option data-display="Language">EN</option>
+							<option data-display="Language" value="1">ES</option>
+							<option data-display="Language" value="2">JA</option>
+							<option data-display="Language" value="2">AR</option>
+						</select>
+                    </div>
+                </div>-->
+			</div>
+		</div>
+		<div class="header-bottom">
+			<!--<a href="index.html" class="site-logo">
+				<img src="{% static "img/Petit_black.png" alt="" %}" style="height: 90px; width: 198px">
+            </a>-->
+			<div class="hb-right">
+				<div class="hb-switch" id="search-switch">
+					<img src="{% static "img/icons/search.png" alt="" %}">
+				</div>
+				<div class="hb-switch" id="infor-switch">
+					<img src="{% static "img/icons/bars.png" alt="" %}">
+				</div>
+			</div>
+			<div class="container">
+				<ul class="main-menu">
+					<li><a href="index.html" class="active">Home</a></li>
+					<li><a href="{% static "about.html" %}">About</a></li>
+					<li><a href="{% static "classes.html" %}">Classes</a>
+						<ul class="sub-menu">
+							<li><a href="{% static "classes.html" %}">Our Classes</a></li>
+							<li><a href="{% static "classes-details.html" %}">Classes Details</a></li>
+						</ul>
+					</li>
+					<li><a href="{% static "trainer.html" %}">Instructors</a>
+						<ul class="sub-menu">
+							<li><a href="{% static "trainer.html" %}">Our Trainers</a></li>
+							<li><a href="{% static "trainer-details.html" %}">Trainers Details</a></li>
+						</ul>
+					</li>
+					<li><a href="{% static "events.html" %}">Events</a>
+						<ul class="sub-menu">
+							<li><a href="{% static "events.html" %}">Our Events</a></li>
+							<li><a href="{% static "event-details.html" %}">Events Details</a></li>
+						</ul>
+					</li>
+					<li><a href="{% static "blog.html" %}">Blog</a>
+						<ul class="sub-menu">
+							<li><a href="{% static "blog.html" %}">Our Blog</a></li>
+							<li><a href="{% static "single-blog.html" %}">Blog Details</a></li>
+						</ul>
+					</li>
+					<li><a href="{% static "contact.html" %}">Contact</a></li>
+					{% if not user.is_authenticated %}
+					<li><a href="login/">Login</a></li>
+					{% else %}
+					<li><a href="profile/">Profile</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</header>
+	<!-- Header Section end -->
+
+	<!-- Infor Model -->
+	<div class="infor-model-warp">
+		<div class="infor-model d-flex align-items-center">
+			<div class="infor-close">
+				<i class="material-icons">close</i>
+			</div>
+			<div class="infor-middle">
+				<a href="#" class="infor-logo">
+					<img src="{% static "img/logo-2.png" alt="" %}">
+				</a>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+				<div class="insta-imgs">
+					<div class="insta-item">
+						<div class="insta-img">
+							<img src="{% static "img/infor/1.jpg" alt="" %}">
+							<div class="insta-hover">
+								<i class="fa fa-instagram"></i>
+								<p>Petit Ballet Academy</p>
+							</div>
+						</div>
+					</div>
+					<div class="insta-item">
+						<div class="insta-img">
+							<img src="{% static "img/infor/2.jpg" alt="" %}">
+							<div class="insta-hover">
+								<i class="fa fa-instagram"></i>
+								<p>Petit Ballet Academy</p>
+							</div>
+						</div>
+					</div>
+					<div class="insta-item">
+						<div class="insta-img">
+							<img src="{% static "img/infor/3.jpg" alt="" %}">
+							<div class="insta-hover">
+								<i class="fa fa-instagram"></i>
+								<p>Petit Ballet Academy</p>
+							</div>
+						</div>
+					</div>
+					<div class="insta-item">
+						<div class="insta-img">
+							<img src="{% static "img/infor/4.jpg" alt="" %}">
+							<div class="insta-hover">
+								<i class="fa fa-instagram"></i>
+								<p>Petit Ballet Academy</p>
+							</div>
+						</div>
+					</div>
+					<div class="insta-item">
+						<div class="insta-img">
+							<img src="{% static "img/infor/5.jpg" alt="" %}">
+							<div class="insta-hover">
+								<i class="fa fa-instagram"></i>
+								<p>Petit Ballet Academy</p>
+							</div>
+						</div>
+					</div>
+					<div class="insta-item">
+						<div class="insta-img">
+							<img src="{% static "img/infor/6.jpg" alt="" %}">
+							<div class="insta-hover">
+								<i class="fa fa-instagram"></i>
+								<p>Petit Ballet Academy</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<form class="infor-form">
+					<input type="text" placeholder="Your Email">
+					<button><img src="{% static "img/icons/send.png" alt="" %}"></button>
+				</form>
+				<div class="insta-social">
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-instagram"></i></a>
+					<a href="#"><i class="fa fa-facebook"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Infor Model end -->
+	                                                                              
+	<!-- Hero Section -->
+	<section class="hero-section">
+		<div class="hero-social-warp">
+			<div class="hero-social">
+				<a href="https://www.facebook.com/petitballetacademy/"><i class="fa fa-facebook"></i></a>
+				<a href="https://www.instagram.com/petitballetacademy2/"><i class="fa fa-instagram"></i></a>
+				<a href="https://twitter.com/petitballetaca1"><i class="fa fa-twitter"></i></a>
+			</div>
+		</div>
+		<div class="arrow-buttom">
+			<img src="{% static "img/icons/arrows-buttom.png" alt="" %}">
+		</div>
+		<div class="hero-slider owl-carousel">
+			<div class="hs-item">
+				<div class="hs-style-3 text-center" style="padding-top: 0px;">
+					<div class="container">
+						<div class="hs-img" style="position:relative; padding: 0px;">
+							<img src="{% static "img/ballet_imgs/intro-bg.jpg" alt="" %}">
+						</div>		
+						<div class="hs-text">
+							<div class="site-btn sb-white">2020-2021 Registration</div>
+							<div class="site-btn sb-white">Free Class Registration</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+        </div>
+	</section>
+	<!-- Hero Section end -->
+
+	<!-- About Section -->
+	<section class="about-section spad">
+		<div class="container">
+			<div class="section-title text-center">
+				<h2>What kind of a Dance Studio are we?</h2>
+				<p>Dance studio offering a variety of dancing courses include ballet, tap, jazz, and modern.</p>
+			</div>
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="about-img">
+						<img src="{% static "img/welcome.jpg" alt="" %}">
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="about-item">
+						<div class="ai-icon">
+							<img src="{% static "img/icons/ballet-icon-1.png" alt="" %}">
+						</div>
+						<div class="ai-text">
+							<h4>Caring Teachers</h4>
+							<p>Our teachers are experienced and strive to help each student feel welcome to each class. </p>
+						</div>
+					</div>
+					<div class="about-item">
+						<div class="ai-icon">
+							<img src="{% static "img/icons/ballet-icon-2.png" alt="" %}">
+						</div>
+						<div class="ai-text">
+							<h4>Comfortable Environment</h4>
+							<p>We've upgraded our studio to allow our students more room to dance! Parents can watch their children through a one-way window that allows students to dance with fewer distractions.</p>
+						</div>
+					</div>
+					<div class="about-item">
+						<div class="ai-icon">
+							<img src="{% static "img/icons/ballet-icon-3.png" alt="" %}">
+						</div>
+						<div class="ai-text">
+							<h4>Outstanding Value</h4>
+							<p>By keeping our prices low, we offer an afforable option for families with tight budgets.</p>
+						</div>
+					</div>
+					<!--<a href="" class="site-btn sb-gradient mt-5">explore more</a>-->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- About Section end -->
+
+	<!-- Classes Section -->
+	<section class="classes-section spad">
+		<div class="container">
+			<div class="section-title text-center">
+				<h2>Available Dance Classes</h2>
+				<p>Select from any of the dance classes found below!</p>
+			</div>
+			<div class="classes-slider owl-carousel">
+				<div class="classes-item">
+					<div class="ci-img">
+						<img src="{% static "img/classes/ballet2.png" alt="" %}">
+					</div>
+					<div class="ci-text">
+						<h4><a href="classes-details.html">Ballet</a></h4>
+						<div class="ci-metas">
+							<div class="ci-meta"><i class="material-icons">event_available</i>Mon, Wed, Fri</div>
+							<div class="ci-meta"><i class="material-icons">alarm_on</i>06:30pm - 07:45pm</div>
+						</div>
+						<p>Classes range from ages 3-12.</p>
+					</div>
+					<div class="ci-bottom">
+						<div class="ci-author">
+							<img src="{% static "img/classes/author/1.jpg" alt="" %}">
+							<div class="author-text">
+								<h6>Victoria Webb</h6>
+								<p>Ballet Teacher</p>
+							</div>
+
+							<img src="{% static "img/classes/author/1.jpg" alt="" %}">
+							<div class="author-text">
+								<h6>Victoria Webb</h6>
+								<p>Ballet Teacher</p>
+							</div>
+						</div>
+						<a href="" class="site-btn sb-gradient">register now</a>
+					</div>
+				</div>
+				<div class="classes-item">
+					<div class="ci-img">
+						<img src="{% static "img/classes/tap.png" alt="" %}">
+					</div>
+					<div class="ci-text">
+						<h4>Tap</h4>
+						<div class="ci-metas">
+							<div class="ci-meta"><i class="material-icons">event_available</i>Mon, Wed, Fri</div>
+							<div class="ci-meta"><i class="material-icons">alarm_on</i>06:30pm - 07:45pm</div>
+						</div>
+						<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis</p>
+					</div>
+					<div class="ci-bottom">
+						<div class="ci-author">
+							<img src="{% static "img/classes/author/2.jpg" alt="" %}">
+							<div class="author-text">
+								<h6>Victoria Webb</h6>
+								<p>Yoga Trainer</p>
+							</div>
+						</div>
+						<a href="" class="site-btn sb-gradient">register now</a>
+					</div>
+				</div>
+				<div class="classes-item">
+					<div class="ci-img">
+						<img src="{% static "img/classes/jazz2.png" alt="" %}">
+					</div>
+					<div class="ci-text">
+						<h4>Jazz</h4>
+						<div class="ci-metas">
+							<div class="ci-meta"><i class="material-icons">event_available</i>Mon, Wed, Fri</div>
+							<div class="ci-meta"><i class="material-icons">alarm_on</i>06:30pm - 07:45pm</div>
+						</div>
+						<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis</p>
+					</div>
+					<div class="ci-bottom">
+						<div class="ci-author">
+							<img src="{% static "img/classes/author/3.jpg" alt="" %}">
+							<div class="author-text">
+								<h6>Victoria Webb</h6>
+								<p>Yoga Trainer</p>
+							</div>
+						</div>
+						<a href="" class="site-btn sb-gradient">register now</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Classes Section end -->
+
+	<!-- Trainer Section -->
+	<section class="trainer-section overflow-hidden spad">
+		<div class="container">
+			<div class="section-title text-center">
+				<h2>Dance Teachers</h2>
+				<p>Our dance teachers work hard to provide each student with a great dancing experience!</p>
+			</div>
+			<div class="trainer-slider owl-carousel">
+				<div class="ts-item">
+					<a href="#" data-toggle="tooltip" title="Marybeth has danced for 20 years. She began her career at The Academy of Ballet where she was trained under the direction of Mark Lanham, Stephanie Parker, Carrie Write, Ann Royal and Phyllis Whitaker. In high school, she performed the lead role of the Dove from Hansel and Gretel, Princess Florine in the Bluebird Pas de Deux from Sleeping Beauty, The Autumn Fairy from Cinderella, the Scarecrow in The Wizard of Oz, and Clara from the Nutcracker. She then went on to BYU-Idaho to receive her degree as a Registered Nurse. During nursing school she was a member of the Upper Valley Civic Ballet Company in Rexburg, Idaho where she performed in the ballet, Carmen. She has taught and assisted ballet for all ages for 9 years. Along with ballet, Marybeth has been trained in jazz, modern, tap, irish, folk, and contemporary dance. Marybeth is married to Andy Wilde and they have two adorable daughters. She currently works at Utah Valley Hospital and she and her family live in Payson, Utah.">
+						<div class="trainer-item">
+							<div class="ti-img">
+								<img src="{% static "img/trainer/marybeth2.jpg" alt="" %}">
+							</div>
+							<div class="ti-text">
+								<h4>Marybeth Wilde</h4>
+								<h6>Dance Director, Owner</h6>
+								<p>Eleven years ballet teaching experience.</p>
+								<div class="ti-social">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-linkedin"></i></a>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="ts-item">
+					<a href="#" data-toggle="tooltip" title="Ann started her career at the age of eight at The Academy of Ballet and has been dancing for a total of 16 years. She was taught under the direction of Carrie Write, Ann Royal and Phyllis Whitaker. She performed as the White Dove from Swan Lake and Princess Florine in the Bluebird Pas de Deux from Sleeping Beauty. Ann has taken many forms of dance including jazz, modern, irish, contemporary, and ballroom. She has assisted teaching for 4 years and is looking forward to soon taking on her own students. Ann graduated from Utah Valley University in Deaf Studies as an American Sign Language Interpreter, where she was also a member of the UVU’s Bronze Ballroom Team. Ann is married to Zack Kotyk and has an adorable little girl who occasionally makes her way to ballet class with her mom.">
+						<div class="trainer-item">
+							<div class="ti-img">
+								<img src="{% static "img/trainer/annie.png" alt="" %}">
+							</div>
+							<div class="ti-text">
+								<h4>Ann Kotyk</h4>
+								<h6>Ballet Instructor</h6>
+								<p>Yoga & Therapy Certificate of Uttarakhand University Sanskrit</p>
+								<div class="ti-social">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-linkedin"></i></a>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="ts-item">
+					<a href="#" data-toggle="tooltip" title="Jessica grew up in the Seattle area and has been dancing for a total of 15 years. She started at the age of seven competing in jazz, lyrical, hip hop and tap. At the age of eleven, she centered her training on ballet under the instruction of Michiko Black at MK ballet and then a few years later under Kevin Kaiser at Evergreen City Ballet. Some of her favorite roles include Cupid from Don Quixote, Dew Drop from the Nutcracker and the Crystal Fountain Fairy and Sliver Jewel from Sleeping Beauty. She has performed with BYU’s Theatre Ballet Company for two seasons now and toured California and the Pacific Northwest with them. In addition, she enjoys choreographing her own work, creating her first piece as a senior in high school and continuing throughout college. Jessica is currently pursuing an accounting degree at BYU with a Ballet minor. She served a mission for the Church of Jesus Christ of Latter-day Saints to Kyiv, Ukraine and was just recently married to McKay Sanders. She has assisted and substituted ballet classes for two years now and is excited for the opportunity to have her own students.">
+						<div class="trainer-item">
+							<div class="ti-img">
+								<img src="{% static "img/trainer/jessica2.jpg" alt="" %}">
+							</div>
+							<div class="ti-text">
+								<h4>Jessica Sanders</h4>
+								<h6>Ballet Instructor</h6>
+								<p>Yoga & Therapy Certificate of Uttarakhand University Sanskrit</p>
+								<div class="ti-social">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-linkedin"></i></a>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Trainer Section end -->
+
+	<!-- Review Section -->
+	<section class="review-section spad set-bg" data-setbg="img/review-bg.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 m-auto">
+					<div class="review-slider owl-carousel">
+						<div class="review-item">
+							<div class="ri-img">
+								<img src="{% static "img/icons/profile.jpg" alt="" %}">
+							</div>
+							<div class="ri-text text-white">
+								<p>Wonderful teachers and great personalized learning! I am so grateful I found this studio.</p>
+								<h4>Amazing Student</h4>
+							</div>
+						</div>
+						<div class="review-item">
+							<div class="ri-img">
+								<img src="{% static "img/icons/profile.jpg" alt="" %}">
+							</div>
+							<div class="ri-text text-white">
+								<p>Loving and knowledgeable teachers, cozy studio, everyone is so helpful and they make dance fun. Great communication and always willing to help.</p>
+								<h4>Mother of Student</h4>
+							</div>
+						</div>
+						<div class="review-item">
+							<div class="ri-img">
+								<img src="{% static "img/icons/profile.jpg" alt="" %}">
+							</div>
+							<div class="ri-text text-white">
+								<p>Great teachers. My daughter learned a lot her first year. They make it easy to have my daughter in dance. The costume wasn’t super expensive and it was actually modest.</p>
+								<h4>Ballet Mom</h4>
+							</div>
+						</div>
+						<div class="review-item">
+							<div class="ri-img">
+								<img src="{% static "img/icons/profile.jpg" alt="" %}">
+							</div>
+							<div class="ri-text text-white">
+								<p>My 4-yr-old daughter just had her first class and we both loved it!</p>
+								<h4>Ballet Mom</h4>
+							</div>
+						</div>
+						<div class="review-item">
+							<div class="ri-img">
+								<img src="{% static "img/icons/profile.jpg" alt="" %}">
+							</div>
+							<div class="ri-text text-white">
+								<p>Marybeth and her team of teachers have created a fun learning environment for kids of all ages. They teach their students ballet with patience and love. This is a great studio! Would highly recommend!!!</p>
+								<h4>Ballet Mom</h4>
+							</div>
+						</div>
+						<div class="review-item">
+							<div class="ri-img">
+								<img src="{% static "img/icons/profile.jpg" alt="" %}">
+							</div>
+							<div class="ri-text text-white">
+								<p>The teachers were kind. My daughter learned a lot and had fun while doing it. It was a very good dance studio and didn’t break the bank to have my daughter learn.</p>
+								<h4>Ballet Mom</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Review Section end -->
+
+	<!-- Event Section -->
+	<section class="event-section spad">
+		<div class="container">
+			<div class="section-title text-center">
+				<h2>Upcoming Events</h2>
+				<p>Check out the Petit Ballet Academy's upcoming dance classes and other valuable information!</p>
+			</div>
+			<div class="row">
+				<div class="col-xl-6">
+					<div class="event-video">
+						<img src="{% static "img/ballet_imgs/events.png" alt="" %}">
+					</div>
+				</div>
+				<div class="col-xl-6">
+					<div class="event-item">
+						<div class="ei-img">
+							<img src="{% static "img/ballet_imgs/event1.jpg" alt="" %}">
+						</div>
+						<div class="ei-text">
+							<h4><a href="#">Registration Opens</a></h4>
+							<ul>
+								<li><i class="material-icons">event_available</i>15 July, 2020</li>
+								<li><i class="material-icons">map</i>478 South 2000 West, Springville UT 84663</li>
+							</ul>
+						</div>
+					</div>
+					<div class="event-item">
+						<div class="ei-img">
+							<img src="{% static "img/ballet_imgs/event3.jpg" alt="" %}">
+						</div>
+						<div class="ei-text">
+							<h4>Free Ballet Classes</h4>
+							<ul>
+								<li><i class="material-icons">watch</i>10:30 AM, 12 PM, 1:30 PM</li>
+								<li><i class="material-icons">event_available</i>22 August, 2020</li>
+								<li><i class="material-icons">map</i>478 South 2000 West, Springville UT 84663</li>
+							</ul>
+						</div>
+					</div>
+					<div class="event-item">
+						<div class="ei-img">
+							<img src="{% static "img/ballet_imgs/event2.jpg" alt="" %}">
+						</div>
+						<div class="ei-text">
+							<h4>Free Ballet Classes</h4>
+							<ul>
+								<li><i class="material-icons">watch</i>10:30 AM, 12 PM, 1:30 PM</li>
+								<li><i class="material-icons">event_available</i>29 August, 2020</li>
+								<li><i class="material-icons">map</i>478 South 2000 West, Springville UT 84663</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Event Section end -->
+
+
+	<!-- Pricing Section -->
+	<section class="pricing-section spad">
+		<div class="container">
+			<div class="section-title text-center">
+				<h2>Dance Class Registration</h2>
+				<p>Each class is dependent upon minimum enrollment.</p>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-sm-6">
+					<div class="pricing-item begginer">
+						<div class="pi-top">
+							<h4>Pre-Ballet</h4>
+						</div>
+						<div class="pi-price">
+							<h3>$35</h3>
+							<p>Per month</p>
+						</div>
+						<ul>
+							<li>Ages 3-4</li>
+							<li>One 45 Min. Class Each Week</li>
+							<li>Multi-Class Sign-Up Available</li>
+						</ul>
+						<a href="#" class="site-btn sb-line-gradient">Register Now</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="pricing-item entermediate">
+						<div class="pi-top">
+							<h4>Kinder Ballet</h4>
+						</div>
+						<div class="pi-price">
+							<h3>$35</h3>
+							<p>Per month</p>
+						</div>
+						<ul>
+							<li>Ages 5-6</li>
+							<li>One 45 Min. Class Each Week</li>
+							<li>Multi-Class Sign-Up Available</li>
+						</ul>
+						<a href="#" class="site-btn sb-line-gradient">Register Now</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="pricing-item advanced">
+						<div class="pi-top">
+							<h4>Beginning Ballet I</h4>
+						</div>
+						<div class="pi-price">
+							<h3>$40</h3>
+							<p>Per month</p>
+						</div>
+						<ul>
+							<li>Ages 7-8</li>
+							<li>One 1 Hour Class Each Week</li>
+						</ul>
+						<a href="#" class="site-btn sb-line-gradient">Register Now</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="pricing-item professional">
+						<div class="pi-top">
+							<h4>Beginning Ballet II</h4>
+						</div>
+						<div class="pi-price">
+							<h3>$40</h3>
+							<p>Per month</p>
+						</div>
+						<ul>
+							<li>Ages 9-10</li>
+							<li>One 1 Hour Class Each Week</li>
+						</ul>
+						<a href="#" class="site-btn sb-line-gradient">Register Now</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Pricing Section end -->
+
+	<!-- Sign up Section -->
+	<section class="signup-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="signup-map"><iframe width="600" height="450" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?q=place_id:Eig0NzggUyAyMDAwIFcsIFNwcmluZ3ZpbGxlLCBVVCA4NDY2MywgVVNBIjESLwoUChIJN8tIC-KXTYcRa3EaejW21PUQ3gMqFAoSCe2u_kZZvU2HEV0HPdyT5xhq&key=AIzaSyD-fOR-0d6612HGYoL1HAQq_j1N_x_9Ryc" allowfullscreen></iframe></div>
+				</div>
+				<div class="col-lg-6">
+					<div class="singup-text">
+						<h3>Do you have any questions?</h3>
+						<p>Please fill out the form below if you have any questions.</p>
+					</div>
+					<form class="singup-form">
+						<div class="row">
+							<div class="col-md-6">
+								<input type="text" placeholder="First Name">
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Last Name">
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Your Email">
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Phone Number">
+							</div>
+							<div class="col-md-12">
+								<textarea placeholder="Message"></textarea>
+								<a href="#" class="site-btn sb-gradient">Send Email</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Sign up Section end -->
+
+	<!-- Gallery Section -->
+	<div class="gallery-section">
+		<div class="gallery-slider owl-carousel">
+			<div class="gs-item">
+				<img src="{% static "img/gallery/gallery1.jpg" alt="" %}">
+				<div class="gs-hover">
+					<i class="fa fa-instagram"></i>
+					<p>Caring Teachers</p>
+				</div>
+			</div>
+			<div class="gs-item">
+				<img src="{% static "img/gallery/gallery2.png" alt="" %}">
+				<div class="gs-hover">
+					<i class="fa fa-instagram"></i>
+					<p>Fun Environment</p>
+				</div>
+			</div>
+			<div class="gs-item">
+				<img src="{% static "img/gallery/gallery3_2.jpg" alt="" %}">
+				<div class="gs-hover">
+					<i class="fa fa-instagram"></i>
+					<p>Sweet Comraderie</p>
+				</div>
+			</div>
+			<div class="gs-item">
+				<img src="{% static "img/gallery/gallery4.jpg" alt="" %}">
+				<div class="gs-hover">
+					<i class="fa fa-instagram"></i>
+					<p>Experienced</p>
+				</div>
+			</div>
+			<div class="gs-item">
+				<img src="{% static "img/gallery/gallery5.jpg" alt="" %}">
+				<div class="gs-hover">
+					<i class="fa fa-instagram"></i>
+					<p>New Friends</p>
+				</div>
+			</div>
+			<div class="gs-item">
+				<img src="{% static "img/gallery/gallery6.jpg" alt="" %}">
+				<div class="gs-hover">
+					<i class="fa fa-instagram"></i>
+					<p>Happy Students</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Gallery Section end -->
+
+	<!-- Footer Section -->
+	<footer class="footer-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget">
+						<div class="about-widget">
+							<img src="{% static "img/icons/petit-icon.jpg" alt="" %}">
+							<p>If we can help in any way, please let us know!</p>
+							<ul>
+								<li><i class="material-icons">phone</i>(385) 404 3846</li>
+								<li><i class="material-icons">email</i>petitballetacademy@gmail.com</li>
+								<li><i class="material-icons">map</i>478 South, 2000 West Springville, UT 84663 Unit #112</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget pl-0 pl-lg-5">
+						<h2 class="fw-title">Company</h2>
+						<ul>
+							<li><a href="#">Gallery</a></li>
+							<li><a href="#">Special Issues</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Contact Us</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-2 col-sm-6">
+					<div class="footer-widget">
+						<h2 class="fw-title">About Us</h2>
+						<ul>
+							<li><a href="#">Our Vision</a></li>
+							<li><a href="#">Our Mission</a></li>
+							<li><a href="#">Meet The Team</a></li>
+							<li><a href="#">Introduce</a></li>
+							<li><a href="#">Customer Service</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--<div class="col-lg-4 col-sm-6">
+					<div class="footer-widget pl-0 pl-lg-5">
+						<h2 class="fw-title">Open time</h2>
+						<ul>
+							<li><i class="material-icons">alarm_on</i>Mon - Fri:  6:30am - 07:45pm</li>
+							<li><i class="material-icons">alarm_on</i>Sat - Sun:  8:30am - 05:45pm</li>
+						</ul>
+						<form class="infor-form">
+							<input type="text" placeholder="Your Email">
+							<button><img src="{% static "img/icons/send.png" alt="" %}"></button>
+						</form>
+					</div>
+				</div>-->
+			</div>
+			<div class="footer-bottom">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="footer-social">
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-instagram"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-linkedin"></i></a>
+						</div>
+					</div>
+					<div class="col-md-8 text-md-right">
+						<div class="copyright">
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script>Petit Ballet Academy, LLC </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer Section end -->
+
+	<div class="back-to-top"><img src="{% static "img/icons/up-arrow.png" alt="" %}"></div>
+
+	<!-- Search model -->
+	<div class="search-model set-bg" data-setbg="img/search-bg.jpg">
+		<div class="h-100 d-flex align-items-center justify-content-center">
+			<div class="search-close-switch"><i class="material-icons">close</i></div>
+			<form class="search-moderl-form">
+				<input type="text" id="search-input" placeholder="Search">
+				<button><img src="{% static "img/icons/search-2.png" alt="" %}"></button>
+			</form>
+		</div>
+	</div>
+	<!-- Search model end -->
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src= "{% static "js/vendor/jquery-3.2.1.min.js" %}"></script>
+	<script src= "{% static "js/bootstrap.min.js" %}"></script>
+	<script src= "{% static "js/jquery.slicknav.min.js" %}"></script>
+	<script src= "{% static "js/owl.carousel.min.js" %}"></script>
+	<script src= "{% static "js/jquery.nice-select.min.js" %}"></script>
+	<script src= "{% static "js/jquery-ui.min.js" %}"></script>
+	<script src= "{% static "js/jquery.magnific-popup.min.js" %}"></script>
+	<script src= "{% static "js/main.js" %}"></script>
+
+	</body>
+</html>
