@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import secret
+from ballet.secret import * 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'account',
     'front',
     'rest_framework',
+    'utils',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'ballet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/andrew/projects/ballet2020/ballet/templates/ahana'],
+        'DIRS': ['/home/andrew/projects/ballet2020/ballet2020/templates/ahana'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,3 +129,63 @@ STATIC_ROOT = '/home/andrew/projects/ballet2020/static'
 
 # Authentication Settings
 LOGIN_URL= '/login/'
+
+####################
+# Email SMTP Setup #
+####################
+ADMINS = [ ('Petit Ballet', EMAIL_HOST_USER) ]
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(name)s.%(funcName)s:%(lineno)d %(message)s',
+       'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+    },
+    'handlers': {
+        'logfile': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes': 1024*1024*10,
+            'backupCount': 5,
+            'filename': os.path.abspath("/home/andrew/projects/ballet2020/ballet2020/logs/ballet.log"),
+            'formatter': 'verbose'
+        },
+        'console_logger': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'mail_admins': {
+            'level': 'DEBUG',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'verbose'
+        }
+    },
+    'loggers': {
+        'ballet': {
+            'handlers': ['logfile', 'console_logger'],
+            'level': 'DEBUG'
+        },
+        'admins': {
+            'handlers': ['mail_admins', 'logfile'],
+            'level': 'DEBUG'
+        }
+
+    }
+}
+

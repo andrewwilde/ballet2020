@@ -8,6 +8,20 @@
 
 'use strict';
 
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
 $(window).on('load', function() {
 	/*------------------
 		Preloder
@@ -95,6 +109,7 @@ $(window).on('load', function() {
 		items: 1,
 		autoplay: true,
 		smartSpeed: 1000,
+		autoplayHoverPause: true,
 	});
 
 	/*------------------
@@ -105,6 +120,7 @@ $(window).on('load', function() {
 		nav: false,
 		dots: true,
 		items: 1,
+		autoplayHoverPause: true,
 		autoplay: true
 	});
 
@@ -117,6 +133,7 @@ $(window).on('load', function() {
 		dots: true,
 		margin: 30,
 		autoplay: true,
+		autoplayHoverPause: true,
 		responsive : {
 			0 : {
 				items: 1
@@ -140,6 +157,7 @@ $(window).on('load', function() {
 		margin: 0,
 		navText:['<i class="material-icons">keyboard_arrow_left</i>','<i class="material-icons">keyboard_arrow_right</i>'],
 		autoplay: true,
+		autoplayHoverPause: true,
 		responsive : {
 			0 : {
 				items: 1
@@ -160,6 +178,7 @@ $(window).on('load', function() {
 		margin: 0,
 		navText:['<i class="material-icons">keyboard_arrow_left</i>','<i class="material-icons">keyboard_arrow_right</i>'],
 		autoplay: true,
+		autoplayHoverPause: true,
 		responsive : {
 			0 : {
 				items: 1
@@ -179,6 +198,7 @@ $(window).on('load', function() {
 		dots: false,
 		navText:[' ',' '],
 		autoplay: true,
+		autoplayHoverPause: true,
 		responsive : {
 			0 : {
 				items: 1
@@ -200,6 +220,7 @@ $(window).on('load', function() {
 		nav: false,
 		dots: false,
 		items: 6,
+		autoplayHoverPause: true,
 		responsive : {
 			0 : {
 				items: 2
@@ -224,6 +245,7 @@ $(window).on('load', function() {
 		nav: false,
 		dots: true,
 		items: 1,
+		autoplayHoverPause: true,
 	});
 
 	/*------------------

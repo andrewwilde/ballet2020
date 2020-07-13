@@ -19,15 +19,22 @@ from django.contrib.auth import views as auth_views
 
 from account import views as account
 from front import views as front
+from utils import views as utils
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('', front.index),
+    path('classes/', front.classes),
     path('create/parent/', account.create_parent),
     path('edit/parent/', account.edit_parent),
     path('create_update/student/', account.create_or_update_student),
     path('delete/student/', account.delete_student),
     path('profile/', front.profile),
+    path('filter_classes/', front.filter_classes),
+    path('class_levels/', front.get_classes_by_category),
+    path('available_classes/', utils.available_classes),
+    path('register/', front.registration),
+    path('email/', utils.send_email),
 ]

@@ -6,20 +6,47 @@ from django.contrib.auth.models import User
 class Account(User):
     phone_number = models.CharField(max_length=20)
     account_id = models.UUIDField(default=uuid.uuid4, editable=False)
+    image = models.CharField(max_length=50, blank=True, null=True)
 
 class AdminAccount(Account):
+    class Meta:
+        verbose_name = 'Admin'
+        verbose_name_plural = 'Admins'
+
     account_type = models.CharField(max_length=20, default="Admin")
 
 class TeacherAccount(Account):
+    class Meta:
+        verbose_name = 'Teacher'
+        verbose_name_plural = 'Teachers'
+
     account_type = models.CharField(max_length=20, default="Teacher")
 
 class ParentAccount(Account):
+    class Meta:
+        verbose_name = 'Parent'
+        verbose_name_plural = 'Parents'
+
     account_type = models.CharField(max_length=20, default="Parent")
 
 class DanceClass(models.Model):
+    class Meta:
+        verbose_name = 'Class'
+        verbose_name_plural = 'Classes'
+
     STATUS = [
         ('Active', 'Active'),
         ('Inactive', 'Inactive'),
+    ]
+
+    DAYS_OF_WEEK = [
+        (0, 'Monday'),
+        (1, 'Tuesday'),
+        (2, 'Wednesday'),
+        (3, 'Thursday'),
+        (4, 'Friday'),
+        (5, 'Saturday'),
+        (6, 'Sunday'),
     ]
 
     DANCE_TYPES = [
@@ -51,13 +78,21 @@ class DanceClass(models.Model):
         ('Studio 2', 'Studio 2'),
     ]
 
+    image = models.CharField(max_length=50)
     max_students = models.IntegerField()
-    date_time = models.DateTimeField()
-    studio = models.CharField(max_length=20)
+    start_time = models.TimeField()
+    stop_time = models.TimeField()
+    day = models.IntegerField(choices=DAYS_OF_WEEK)
+    studio = models.CharField(max_length=20, choices=STUDIO_TYPES)
     level = models.CharField(max_length=20, choices=LEVELS)
     dance_type = models.CharField(max_length=20, choices=DANCE_TYPES)
     status = models.CharField(max_length=20, choices=STATUS, default="Inactive")
+    teacher = models.ForeignKey(TeacherAccount, on_delete=models.DO_NOTHING) 
+    min_age = models.IntegerField()
+    max_age = models.IntegerField()
 
+    def __str__(self):
+        return "%s %s @ %s with %s" % (self.level, self.dance_type, str(self.start_time), self.teacher.first_name)
 class Student(models.Model):
     STUDENT_TYPES = [
         ('Standard', 'Standard'),

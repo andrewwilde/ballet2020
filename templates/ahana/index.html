@@ -34,7 +34,7 @@
 
 	<!-- Header Section -->
 	<header class="header-section">
-		<div class="header-top">
+		<!--<div class="header-top">
 			<div class="row m-0">
 				<div class="col-md-12 d-none d-md-block p-0">
 					<div class="header-info">
@@ -46,7 +46,7 @@
 						<p>(385) 404-8687</p>
 					</div>
 				</div>
-				<!--<div class="col-md-6 text-left text-md-right p-0">
+				<div class="col-md-6 text-left text-md-right p-0">
 					<div class="header-info d-none d-md-inline-flex">
 						<i class="material-icons">alarm_on</i>
 						<p>Mon - Fri:  6:30am - 07:45pm</p>
@@ -59,55 +59,35 @@
 							<option data-display="Language" value="2">JA</option>
 							<option data-display="Language" value="2">AR</option>
 						</select>
-                    </div>
-                </div>-->
+                    			</div>
+                		</div>
 			</div>
-		</div>
+		</div>-->
 		<div class="header-bottom">
 			<!--<a href="index.html" class="site-logo">
 				<img src="{% static "img/Petit_black.png" alt="" %}" style="height: 90px; width: 198px">
             </a>-->
-			<div class="hb-right">
+			<!--<div class="hb-right">
 				<div class="hb-switch" id="search-switch">
 					<img src="{% static "img/icons/search.png" alt="" %}">
 				</div>
 				<div class="hb-switch" id="infor-switch">
 					<img src="{% static "img/icons/bars.png" alt="" %}">
 				</div>
-			</div>
+			</div>-->
 			<div class="container">
 				<ul class="main-menu">
-					<li><a href="index.html" class="active">Home</a></li>
-					<li><a href="{% static "about.html" %}">About</a></li>
-					<li><a href="{% static "classes.html" %}">Classes</a>
-						<ul class="sub-menu">
-							<li><a href="{% static "classes.html" %}">Our Classes</a></li>
-							<li><a href="{% static "classes-details.html" %}">Classes Details</a></li>
-						</ul>
-					</li>
-					<li><a href="{% static "trainer.html" %}">Instructors</a>
-						<ul class="sub-menu">
-							<li><a href="{% static "trainer.html" %}">Our Trainers</a></li>
-							<li><a href="{% static "trainer-details.html" %}">Trainers Details</a></li>
-						</ul>
-					</li>
-					<li><a href="{% static "events.html" %}">Events</a>
-						<ul class="sub-menu">
-							<li><a href="{% static "events.html" %}">Our Events</a></li>
-							<li><a href="{% static "event-details.html" %}">Events Details</a></li>
-						</ul>
-					</li>
-					<li><a href="{% static "blog.html" %}">Blog</a>
-						<ul class="sub-menu">
-							<li><a href="{% static "blog.html" %}">Our Blog</a></li>
-							<li><a href="{% static "single-blog.html" %}">Blog Details</a></li>
-						</ul>
-					</li>
-					<li><a href="{% static "contact.html" %}">Contact</a></li>
+					<li><a href="/" class="active">Home</a></li>
+					<li><a href="register/" style="color:#3c3737">Register</a></li>
+					<li><a href="#about-menu" class="page-scroll">About</a></li>
+					<li><a href="#classes-section" class="page-scroll">Classes</a></li>
+					<li><a href="#trainer-section" class="page-scroll">Instructors</a></li>
+					<li><a href="#event-section">Events</a></li>
+					<li><a href="#signup-section">Contact</a></li>
 					{% if not user.is_authenticated %}
 					<li><a href="login/">Login</a></li>
 					{% else %}
-					<li><a href="profile/">Profile</a></li>
+					<li><a href="account/">My Account</a></li>
 					{% endif %}
 				</ul>
 			</div>
@@ -198,42 +178,30 @@
 	<!-- Infor Model end -->
 	                                                                              
 	<!-- Hero Section -->
-	<section class="hero-section">
-		<div class="hero-social-warp">
-			<div class="hero-social">
-				<a href="https://www.facebook.com/petitballetacademy/"><i class="fa fa-facebook"></i></a>
-				<a href="https://www.instagram.com/petitballetacademy2/"><i class="fa fa-instagram"></i></a>
-				<a href="https://twitter.com/petitballetaca1"><i class="fa fa-twitter"></i></a>
+	<!-- Welcome Section -->
+	<section class="about-section spad" style="background-color: #f0deec; padding-top:46px;"">
+		<div class="container">
+			<div class="section-title text-center" style="padding-top: 50px;">
+				<h2>Welcome to Petit Ballet Academy!</h2>
+				<p>Thank you for your interest in our dance studio! We offer ballet, jazz, tap, and creative dance for people on a budget. <a href="#classes-section">Check out our classes.</a> If you have any questions, please <a href="#signup-section">send us an email!</a></p>
 			</div>
-		</div>
-		<div class="arrow-buttom">
-			<img src="{% static "img/icons/arrows-buttom.png" alt="" %}">
-		</div>
-		<div class="hero-slider owl-carousel">
-			<div class="hs-item">
-				<div class="hs-style-3 text-center" style="padding-top: 0px;">
-					<div class="container">
-						<div class="hs-img" style="position:relative; padding: 0px;">
-							<img src="{% static "img/ballet_imgs/intro-bg.jpg" alt="" %}">
-						</div>		
-						<div class="hs-text">
-							<div class="site-btn sb-white">2020-2021 Registration</div>
-							<div class="site-btn sb-white">Free Class Registration</div>
-						</div>
-
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="about-img">
+						<img src="{% static "img/ballet_imgs/Petit_email Header_1.jpg" alt="" %}">
 					</div>
 				</div>
 			</div>
-        </div>
+		</div>
 	</section>
 	<!-- Hero Section end -->
 
 	<!-- About Section -->
-	<section class="about-section spad">
+	<section class="about-section spad" id="about-menu">
 		<div class="container">
 			<div class="section-title text-center">
 				<h2>What kind of a Dance Studio are we?</h2>
-				<p>Dance studio offering a variety of dancing courses include ballet, tap, jazz, and modern.</p>
+				<p>We are a non-competitive dance studio that offers dance classes in ballet, tap, and jazz. We adhere to our <a href="#" data-toggle="modal" data-target="#mission">mission statement</a> in all we do!</p>
 			</div>
 			<div class="row">
 				<div class="col-lg-6">
@@ -248,7 +216,7 @@
 						</div>
 						<div class="ai-text">
 							<h4>Caring Teachers</h4>
-							<p>Our teachers are experienced and strive to help each student feel welcome to each class. </p>
+							<p>Our teachers are experienced and strive to help each student feel welcome to each dance class. Using patience, kindness, creativity and perserverance, children learn the proper techniques in a way that will foster a love for dance.</p>
 						</div>
 					</div>
 					<div class="about-item">
@@ -257,7 +225,7 @@
 						</div>
 						<div class="ai-text">
 							<h4>Comfortable Environment</h4>
-							<p>We've upgraded our studio to allow our students more room to dance! Parents can watch their children through a one-way window that allows students to dance with fewer distractions.</p>
+							<p>We've upgraded our studio to allow our students more room to dance! Parents can watch their children through a one-way window that allows students to dance with fewer distractions. We're non-competitive, so children can come and dance in a low-stress environment.</p>
 						</div>
 					</div>
 					<div class="about-item">
@@ -266,7 +234,7 @@
 						</div>
 						<div class="ai-text">
 							<h4>Outstanding Value</h4>
-							<p>By keeping our prices low, we offer an afforable option for families with tight budgets.</p>
+							<p>By keeping our prices low, we offer an afforable option for families with tight budgets. Each class is held once a week, and 45 minute classes are $35/month and 60 minute classes are $40/month.</p>
 						</div>
 					</div>
 					<!--<a href="" class="site-btn sb-gradient mt-5">explore more</a>-->
@@ -277,99 +245,25 @@
 	<!-- About Section end -->
 
 	<!-- Classes Section -->
-	<section class="classes-section spad">
+	<section class="classes-section spad" id="classes-section">
 		<div class="container">
 			<div class="section-title text-center">
 				<h2>Available Dance Classes</h2>
-				<p>Select from any of the dance classes found below!</p>
+				<p>Select from any of the dance classes found below! Swipe left or right to see the kinds of classes that are available, and hit the Register button to reserve your spot in one of our classes. If you have a question, please <a href="#signup-section">send us an email.</a></p>
 			</div>
-			<div class="classes-slider owl-carousel">
-				<div class="classes-item">
-					<div class="ci-img">
-						<img src="{% static "img/classes/ballet2.png" alt="" %}">
-					</div>
-					<div class="ci-text">
-						<h4><a href="classes-details.html">Ballet</a></h4>
-						<div class="ci-metas">
-							<div class="ci-meta"><i class="material-icons">event_available</i>Mon, Wed, Fri</div>
-							<div class="ci-meta"><i class="material-icons">alarm_on</i>06:30pm - 07:45pm</div>
-						</div>
-						<p>Classes range from ages 3-12.</p>
-					</div>
-					<div class="ci-bottom">
-						<div class="ci-author">
-							<img src="{% static "img/classes/author/1.jpg" alt="" %}">
-							<div class="author-text">
-								<h6>Victoria Webb</h6>
-								<p>Ballet Teacher</p>
-							</div>
-
-							<img src="{% static "img/classes/author/1.jpg" alt="" %}">
-							<div class="author-text">
-								<h6>Victoria Webb</h6>
-								<p>Ballet Teacher</p>
-							</div>
-						</div>
-						<a href="" class="site-btn sb-gradient">register now</a>
-					</div>
-				</div>
-				<div class="classes-item">
-					<div class="ci-img">
-						<img src="{% static "img/classes/tap.png" alt="" %}">
-					</div>
-					<div class="ci-text">
-						<h4>Tap</h4>
-						<div class="ci-metas">
-							<div class="ci-meta"><i class="material-icons">event_available</i>Mon, Wed, Fri</div>
-							<div class="ci-meta"><i class="material-icons">alarm_on</i>06:30pm - 07:45pm</div>
-						</div>
-						<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis</p>
-					</div>
-					<div class="ci-bottom">
-						<div class="ci-author">
-							<img src="{% static "img/classes/author/2.jpg" alt="" %}">
-							<div class="author-text">
-								<h6>Victoria Webb</h6>
-								<p>Yoga Trainer</p>
-							</div>
-						</div>
-						<a href="" class="site-btn sb-gradient">register now</a>
-					</div>
-				</div>
-				<div class="classes-item">
-					<div class="ci-img">
-						<img src="{% static "img/classes/jazz2.png" alt="" %}">
-					</div>
-					<div class="ci-text">
-						<h4>Jazz</h4>
-						<div class="ci-metas">
-							<div class="ci-meta"><i class="material-icons">event_available</i>Mon, Wed, Fri</div>
-							<div class="ci-meta"><i class="material-icons">alarm_on</i>06:30pm - 07:45pm</div>
-						</div>
-						<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis</p>
-					</div>
-					<div class="ci-bottom">
-						<div class="ci-author">
-							<img src="{% static "img/classes/author/3.jpg" alt="" %}">
-							<div class="author-text">
-								<h6>Victoria Webb</h6>
-								<p>Yoga Trainer</p>
-							</div>
-						</div>
-						<a href="" class="site-btn sb-gradient">register now</a>
-					</div>
-				</div>
+			<div class="classes-slider owl-carousel" id="available_classes">
 			</div>
 		</div>
 	</section>
 	<!-- Classes Section end -->
 
+
 	<!-- Trainer Section -->
-	<section class="trainer-section overflow-hidden spad">
+	<section class="trainer-section overflow-hidden spad" id="trainer-section">
 		<div class="container">
 			<div class="section-title text-center">
 				<h2>Dance Teachers</h2>
-				<p>Our dance teachers work hard to provide each student with a great dancing experience!</p>
+				<p>We pride ourselves on having wonderful teachers that instruct with patience, kindness, and creativity. Below are quotes from each of our teachers about why they love dance. Hover over the instructor's picture for a brief summary of their dancing experience.</p>
 			</div>
 			<div class="trainer-slider owl-carousel">
 				<div class="ts-item">
@@ -381,13 +275,13 @@
 							<div class="ti-text">
 								<h4>Marybeth Wilde</h4>
 								<h6>Dance Director, Owner</h6>
-								<p>Eleven years ballet teaching experience.</p>
-								<div class="ti-social">
+								<p>Eleven years ballet teaching experience. Testing testing testing.</p>
+								<!--<div class="ti-social">
 									<a href="#"><i class="fa fa-facebook"></i></a>
 									<a href="#"><i class="fa fa-instagram"></i></a>
 									<a href="#"><i class="fa fa-twitter"></i></a>
 									<a href="#"><i class="fa fa-linkedin"></i></a>
-								</div>
+								</div>-->
 							</div>
 						</div>
 					</a>
@@ -402,12 +296,12 @@
 								<h4>Ann Kotyk</h4>
 								<h6>Ballet Instructor</h6>
 								<p>Yoga & Therapy Certificate of Uttarakhand University Sanskrit</p>
-								<div class="ti-social">
+								<!--<div class="ti-social">
 									<a href="#"><i class="fa fa-facebook"></i></a>
 									<a href="#"><i class="fa fa-instagram"></i></a>
 									<a href="#"><i class="fa fa-twitter"></i></a>
 									<a href="#"><i class="fa fa-linkedin"></i></a>
-								</div>
+								</div>-->
 							</div>
 						</div>
 					</a>
@@ -422,23 +316,44 @@
 								<h4>Jessica Sanders</h4>
 								<h6>Ballet Instructor</h6>
 								<p>Yoga & Therapy Certificate of Uttarakhand University Sanskrit</p>
-								<div class="ti-social">
+								<!--<div class="ti-social">
 									<a href="#"><i class="fa fa-facebook"></i></a>
 									<a href="#"><i class="fa fa-instagram"></i></a>
 									<a href="#"><i class="fa fa-twitter"></i></a>
 									<a href="#"><i class="fa fa-linkedin"></i></a>
-								</div>
+								</div>-->
 							</div>
 						</div>
 					</a>
 				</div>
+				<div class="ts-item">
+					<a href="#" data-toggle="tooltip" title="Kaitlyn Hellyer began dancing at a Utah-based studio when she was just three years old.  In 2005, her family moved to St. Louis where she joined two dance studios, one of which was her mother's studio (Yes, dancing is in her blood). During this time, Kaitlyn was introduced to multiple dance disciplines including tap, jazz, hip hop, and the basics of ballet. After eight years of continuous dance, Kaitlyn moved to Texas where she continued to perfect her own dance style and began choreographing and teaching her own classes.  Kaitlyn's love for dance blossomed!  She auditioned for and was accepted to the elite Fusion Dance Team where she excelled in lyrical and was a member of the Forte Dance Team, which was a competitive ballroom team.  When Kaitlyn wasn’t competing or choreographing for Fusion and Forte she was dancing in one of the three dance studios of which she was a part. In these studios, Kaitlyn excelled at ballroom, tap, clogging, modern, contemporary, jazz, ballet, and hip hop.  Because of her immense involvement in dance, Kaitlyn travelled to various competitions and was chosen as the representative to attend the Texas Dance Educators’ Association. Just before moving back to Utah, Kaitlyn  was awarded with both “Choreographer of the Year” and “Dancer of the Year” for two consecutive years. Today, Kaitlyn continues her dance education at Utah Valley University.">
+						<div class="trainer-item">
+							<div class="ti-img">
+								<img src="{% static "img/trainer/kaitlyn.png" alt="" %}">
+							</div>
+							<div class="ti-text">
+								<h4>Kaitlyn Hellyer</h4>
+								<h6>Tap, Jazz, & Ballet Instructor</h6>
+								<p>"Dance is a fun way to express yourself, your feelings, and a great way to build character."</p>
+								<!--<div class="ti-social">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-linkedin"></i></a>
+								</div>-->
+							</div>
+						</div>
+					</a>
+				</div>
+
 			</div>
 		</div>
 	</section>
 	<!-- Trainer Section end -->
 
 	<!-- Review Section -->
-	<section class="review-section spad set-bg" data-setbg="img/review-bg.jpg">
+	<section class="review-section spad set-bg">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 m-auto">
@@ -505,11 +420,11 @@
 	<!-- Review Section end -->
 
 	<!-- Event Section -->
-	<section class="event-section spad">
+	<section class="event-section spad" id="event-section">
 		<div class="container">
 			<div class="section-title text-center">
 				<h2>Upcoming Events</h2>
-				<p>Check out the Petit Ballet Academy's upcoming dance classes and other valuable information!</p>
+				<p>Check out the Petit Ballet Academy's upcoming dance classes and other valuable information! Before the semester starts, we hold free classes for new students who want to see if our studio is a good fit for them. We'll also have weeks throughout the year where students can dress up as a particular theme. While you can find that information here, we will of course email these special events to all the parents.</p>
 			</div>
 			<div class="row">
 				<div class="col-xl-6">
@@ -526,7 +441,7 @@
 							<h4><a href="#">Registration Opens</a></h4>
 							<ul>
 								<li><i class="material-icons">event_available</i>15 July, 2020</li>
-								<li><i class="material-icons">map</i>478 South 2000 West, Springville UT 84663</li>
+								<li><i class="material-icons">book</i><a href="#">Click here to register!</a></li>
 							</ul>
 						</div>
 					</div>
@@ -562,89 +477,13 @@
 	</section>
 	<!-- Event Section end -->
 
-
-	<!-- Pricing Section -->
-	<section class="pricing-section spad">
+	<!-- Sign up Section -->
+	<section class="signup-section spad" style="background-color: #f9f2f0" id="signup-section">
 		<div class="container">
 			<div class="section-title text-center">
-				<h2>Dance Class Registration</h2>
-				<p>Each class is dependent upon minimum enrollment.</p>
+				<h2>Additional Information</h2>
 			</div>
-			<div class="row">
-				<div class="col-lg-3 col-sm-6">
-					<div class="pricing-item begginer">
-						<div class="pi-top">
-							<h4>Pre-Ballet</h4>
-						</div>
-						<div class="pi-price">
-							<h3>$35</h3>
-							<p>Per month</p>
-						</div>
-						<ul>
-							<li>Ages 3-4</li>
-							<li>One 45 Min. Class Each Week</li>
-							<li>Multi-Class Sign-Up Available</li>
-						</ul>
-						<a href="#" class="site-btn sb-line-gradient">Register Now</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="pricing-item entermediate">
-						<div class="pi-top">
-							<h4>Kinder Ballet</h4>
-						</div>
-						<div class="pi-price">
-							<h3>$35</h3>
-							<p>Per month</p>
-						</div>
-						<ul>
-							<li>Ages 5-6</li>
-							<li>One 45 Min. Class Each Week</li>
-							<li>Multi-Class Sign-Up Available</li>
-						</ul>
-						<a href="#" class="site-btn sb-line-gradient">Register Now</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="pricing-item advanced">
-						<div class="pi-top">
-							<h4>Beginning Ballet I</h4>
-						</div>
-						<div class="pi-price">
-							<h3>$40</h3>
-							<p>Per month</p>
-						</div>
-						<ul>
-							<li>Ages 7-8</li>
-							<li>One 1 Hour Class Each Week</li>
-						</ul>
-						<a href="#" class="site-btn sb-line-gradient">Register Now</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="pricing-item professional">
-						<div class="pi-top">
-							<h4>Beginning Ballet II</h4>
-						</div>
-						<div class="pi-price">
-							<h3>$40</h3>
-							<p>Per month</p>
-						</div>
-						<ul>
-							<li>Ages 9-10</li>
-							<li>One 1 Hour Class Each Week</li>
-						</ul>
-						<a href="#" class="site-btn sb-line-gradient">Register Now</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Pricing Section end -->
 
-	<!-- Sign up Section -->
-	<section class="signup-section spad">
-		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="signup-map"><iframe width="600" height="450" frameborder="0" style="border:0"
@@ -653,25 +492,26 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:Eig0NzggUyAyMDAwIFcsI
 				<div class="col-lg-6">
 					<div class="singup-text">
 						<h3>Do you have any questions?</h3>
-						<p>Please fill out the form below if you have any questions.</p>
+						<p>Please fill out the form below.</p>
 					</div>
-					<form class="singup-form">
+					<form class="singup-form" action="email/" method="POST">
+						{% csrf_token %}
 						<div class="row">
 							<div class="col-md-6">
-								<input type="text" placeholder="First Name">
+								<input type="text" name="first_name" placeholder="First Name" required>
 							</div>
 							<div class="col-md-6">
-								<input type="text" placeholder="Last Name">
+								<input type="text" name="last_name" placeholder="Last Name (optional)">
 							</div>
 							<div class="col-md-6">
-								<input type="text" placeholder="Your Email">
+								<input type="text" name="email_from" placeholder="Your Email" required>
 							</div>
 							<div class="col-md-6">
-								<input type="text" placeholder="Phone Number">
+								<input type="text" name="phone" placeholder="Phone Number (optional)">
 							</div>
 							<div class="col-md-12">
-								<textarea placeholder="Message"></textarea>
-								<a href="#" class="site-btn sb-gradient">Send Email</a>
+								<textarea name="message" placeholder="Message" required></textarea>
+								<input type="submit" value="Send Email" class="site-btn sb-gradient"></input>
 							</div>
 						</div>
 					</form>
@@ -733,12 +573,11 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:Eig0NzggUyAyMDAwIFcsI
 	<!-- Footer Section -->
 	<footer class="footer-section">
 		<div class="container">
-			<div class="row">
+			<!--<div class="row">
 				<div class="col-lg-3 col-sm-6">
 					<div class="footer-widget">
+						<h2 class="fw-title">Contact Information</h2>
 						<div class="about-widget">
-							<img src="{% static "img/icons/petit-icon.jpg" alt="" %}">
-							<p>If we can help in any way, please let us know!</p>
 							<ul>
 								<li><i class="material-icons">phone</i>(385) 404 3846</li>
 								<li><i class="material-icons">email</i>petitballetacademy@gmail.com</li>
@@ -770,7 +609,7 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:Eig0NzggUyAyMDAwIFcsI
 						</ul>
 					</div>
 				</div>
-				<!--<div class="col-lg-4 col-sm-6">
+				<div class="col-lg-4 col-sm-6">
 					<div class="footer-widget pl-0 pl-lg-5">
 						<h2 class="fw-title">Open time</h2>
 						<ul>
@@ -782,21 +621,21 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:Eig0NzggUyAyMDAwIFcsI
 							<button><img src="{% static "img/icons/send.png" alt="" %}"></button>
 						</form>
 					</div>
-				</div>-->
-			</div>
+				</div>
+			</div>-->
 			<div class="footer-bottom">
 				<div class="row">
 					<div class="col-md-4">
 						<div class="footer-social">
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-instagram"></i></a>
+							<a href="https://www.facebook.com/petitballetacademy"><i class="fa fa-facebook"></i></a>
+							<!--<a href="#"><i class="fa fa-instagram"></i></a>
 							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-linkedin"></i></a>
+							<a href="#"><i class="fa fa-linkedin"></i></a>-->
 						</div>
 					</div>
 					<div class="col-md-8 text-md-right">
 						<div class="copyright">
-							Copyright &copy;<script>document.write(new Date().getFullYear());</script>Petit Ballet Academy, LLC </div>
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script> Petit Ballet Academy, LLC </div>
 					</div>
 				</div>
 			</div>
@@ -806,17 +645,32 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:Eig0NzggUyAyMDAwIFcsI
 
 	<div class="back-to-top"><img src="{% static "img/icons/up-arrow.png" alt="" %}"></div>
 
-	<!-- Search model -->
-	<div class="search-model set-bg" data-setbg="img/search-bg.jpg">
-		<div class="h-100 d-flex align-items-center justify-content-center">
-			<div class="search-close-switch"><i class="material-icons">close</i></div>
-			<form class="search-moderl-form">
-				<input type="text" id="search-input" placeholder="Search">
-				<button><img src="{% static "img/icons/search-2.png" alt="" %}"></button>
-			</form>
-		</div>
-	</div>
 	<!-- Search model end -->
+	<div class="modal fade right" id="mission" tabindex="-1" role="dialog" aria-labelledby="missionmodal" aria-hidden="true">
+	      <div class="modal-dialog modal-side modal-top-right" role="document">
+	        <!--Content-->
+	        <div class="modal-content">
+	          <!--Header-->
+	          <div class="modal-header">
+	            <h4 class="modal-title w-100" id="myModalLabel">Mission Statement</h4>
+	            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	              <span aria-hidden="true">×</span>
+	            </button>
+	          </div>
+	          <!--Body-->
+	          <div class="modal-body">
+			<p>We are so excited to share our love and passion for dance with everyone. We will strive to create a comfortable environment where students can learn new dance skills, or grow skills they've already developed. Our wonderful teachers will foster an increased love for ballet, tap, and jazz using a fun and engaging curriculum. Everyone will feel welcome in a relaxed, structured environment. We value the input of students and parents, and we will do everything possible to promote an amazing experience for our students.</p>
+	            	<p>Petit Ballet Academy would be honored to have you join us in our program!</p>
+	          </div>
+	          <!--Footer-->
+	          <div class="modal-footer">
+	            <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">Close</button>
+	          </div>
+	        </div>
+	        <!--/.Content-->
+	      </div>
+	    </div>
+
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src= "{% static "js/vendor/jquery-3.2.1.min.js" %}"></script>
@@ -827,6 +681,25 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:Eig0NzggUyAyMDAwIFcsI
 	<script src= "{% static "js/jquery-ui.min.js" %}"></script>
 	<script src= "{% static "js/jquery.magnific-popup.min.js" %}"></script>
 	<script src= "{% static "js/main.js" %}"></script>
+	<script src= "{% static "js/filter.js" %}"></script>
 
+	<script>
+		let anchorlinks = document.querySelectorAll('a[href^="#"]')
+
+		for (let item of anchorlinks) { // relitere
+		    item.addEventListener('click', (e)=> {
+		        let hashval = item.getAttribute('href')
+		        let target = document.querySelector(hashval)
+		        target.scrollIntoView({
+		            behavior: 'smooth',
+		            block: 'start'
+		        })
+		        history.pushState(null, null, hashval)
+		        e.preventDefault()
+		    })
+		}
+
+		get_classes_by_category();	
+	</script>
 	</body>
 </html>
