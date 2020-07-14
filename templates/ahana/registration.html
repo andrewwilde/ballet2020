@@ -18,7 +18,7 @@
 		<div class="wrapper">
 
 			<!-- STUDENT COUNT -->
-	                <form action="" id="wizard">
+	                <form action="#" id="wizard">
 				<h2></h2>
                 		<section> 
 				    <div class="inner">
@@ -103,42 +103,118 @@
 	                	    <h2></h2>
 	                	    <section>
 	                	        <div class="inner">
-	    							<div class="image-holder">
-				    					<img src="{% static "img/ballet_imgs/Twitter_profilepic(400x400).jpg" %}" alt="">
-	    							</div>
-	    							<div class="form-content">
-	    								<div class="form-header">
-	    									<h3>Parent/Guardian Information</h3>
-	    								</div>
-									<div class="form-row">
-				    	    					<div class="form-holder">
-				    	    						<input id="parent_first" type="text" placeholder="First Name" class="form-control" required>
-				    	    					</div>
-										<div class="form-holder">
-				    	    						<input id="parent_last" type="text" placeholder="Last Name" class="form-control" required>
-				    	    					</div>
-
-				    	    				</div>
-									<div class="form-row">
-				    	    					<div class="form-holder">
-				    	    						<input id="parent_email" type="text" placeholder="Email" class="form-control" required>
-				    	    					</div>
-										<div class="form-holder">
-				    	    						<input id="parent_phone" type="text" placeholder="Phone" class="form-control" required>
-				    	    					</div>
-
-				    	    				</div>
-
-									<div class="form-row" style="display: flex;">
-										<div class="form-holder">
-											<button type="button" class="backward reg-button"><i class="arrow left"></i>&larr;&nbsp;Backward</button>
-										</div>
-										<div class="form-holder">
-											<button type="button" class="forward reg-button" style="float:right;">Forward&nbsp;&rarr;</button>
-										</div>
-									</div>
-	    							</div>
+	    					<div class="image-holder">
+				    			<img src="{% static "img/ballet_imgs/Twitter_profilepic(400x400).jpg" %}" alt="">
+	    					</div>
+	    					<div class="form-content">
+	    						<div class="form-header">
+	    							<h3>Parent/Guardian Information</h3>
 	    						</div>
+							<div class="form-row">
+				    				<div class="form-holder">
+				    					<input name="p_first" id="parent_first" type="text" placeholder="First Name" class="form-control" required/>
+				    				</div>
+								<div class="form-holder">
+				    					<input name="p_last" id="parent_last" type="text" placeholder="Last Name" class="form-control" required/>
+				    				</div>
+
+				    			</div>
+							<div class="form-row">
+				    				<div class="form-holder">
+				    					<input name="p_emai" id="parent_email" type="email" placeholder="Email" class="form-control" required/>
+				    				</div>
+								<div class="form-holder">
+				    					<input name="p_phone" id="parent_phone" type="text" placeholder="Phone" class="form-control" required/>
+				    				</div>
+
+				    			</div>
+
+							<div class="form-row" style="display: flex;">
+								<div class="form-holder">
+									<button type="button" class="backward reg-button"><i class="arrow left"></i>&larr;&nbsp;Backward</button>
+								</div>
+								<div class="form-holder">
+									<button type="button" class="forward reg-button" style="float:right;">Forward&nbsp;&rarr;</button>
+								</div>
+							</div>
+	    					</div>
+	    				</div>
+	                	    </section>
+
+	                	    <!-- CONFIRMATION PAGE -->
+	                	    <h2></h2>
+	                	    <section>
+	                	        <div class="inner">
+						<div class="form-content" style="width: 100%">
+	    						<div class="form-header">
+								<h3>Payment & Confirmation</h3>
+	    						</div>
+							<div class="container">
+								<!-- Payment Example -->
+							    <div class="row">
+							        <div class="well">
+							            <div class="row">
+							              <div class="row">
+							                <table class="table table-hover">
+							                    <thead>
+							                        <tr>
+							                            <th>Title</th>
+							                            <th>Description</th>
+							                            <th class="text-center">Price</th>
+							                        </tr>
+							                    </thead>
+							                    <tbody id="purchase_items">
+							                    </tbody>
+							                </table>
+							            </div>
+							        </div>
+							    </div>
+						        </div>
+						</div>
+						<div class="form-content" style="width:100%; padding-left:0px; padding-top: 0px;">		
+							<div class="form-row">
+								<label for="card-element">
+									Credit or Debit Card
+								</label>
+								<div id="card-element">
+								</div>
+								<div id="card-errors" role="alert">
+								</div>
+							</div>
+							<div class="form-row">
+							    <h4>Policies for 2020-2021</h4>
+							</div>
+							<div class="form-row">
+								<div class="form-holder">
+							    		<a href="#">Attendance & Payment Policies</a><br/>
+								</div>
+								<div class="form-holder">
+							    		<a href="#">Dress & Conduct Code</a><br/>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-holder">
+							    		<a href="#">Media Release & Waiver and Liability</a></br>
+								</div>
+								<div class="form-holder">
+							    		<a href="#">COVID Policies</a>
+								</div>
+							</div>
+							<div class="form-row" style="width: 100%">
+								<div class="form-holder">
+									<input id="acceptTerms-2" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms-2">I agree to follow all policies.</label>
+								</div>
+							</div>
+							<div class="form-row" style="display: flex; width: 100%">
+								<div class="form-holder">
+									<button type="button" class="backward reg-button"><i class="arrow left"></i>&larr;&nbsp;Backward</button>
+								</div>
+								<div class="form-holder">
+									<button type="button" class="forward reg-button" style="float:right;">Submit</button>
+								</div>
+							</div>
+	    					</div>
+					</div>
 	                	    </section>
 	                </form>
 	</div>
@@ -154,6 +230,10 @@
 		<!-- JQUERY STEP -->
 		<script src="{% static "js/jquery.steps.js" %}"></script>
 		<script src="{% static "js/registration_main.js" %}"></script>
+
+		<!-- STRIPE -->
+		<script src="https://js.stripe.com/v3/"></script>
+		<script src="{% static "js/payment.js" %}"></script>
 
 </body>
 </html>

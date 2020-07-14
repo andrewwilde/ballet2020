@@ -1,3 +1,13 @@
+
+var total_entry = `
+<tr>
+    <td>   </td>
+    <td>   </td>
+    <td class="text-right"><h4><strong>Total: </strong></h4></td>
+    <td class="text-center text-danger"><h4><strong>{0}</strong></h4></td>
+</tr>
+
+`
 $(function(){
 	form = $("#wizard").show();
 	form.steps({
@@ -21,7 +31,6 @@ $(function(){
 	        // Forbid next action on "Warning" step if the user is to young
 	        if (currentIndex === 0){
 			$('#register_students').empty();
-			console.log("I have just emptied all student class selections.");
 		    	if (Number($("#student_count").val()) < 1){
 	            		return false;
 		    	}
@@ -60,10 +69,8 @@ $(function(){
 
 		if (currentIndex === 1){
 			$('#register_students').empty();
-			console.log("I have emptied all student selects.");
 			let num_students = $('#student_count').val();
 			let student_options = [];
-			console.log("I have this many students: " + num_students);
 			for(i=0; i < num_students; i++){
 				let student_num = i + 1;
 
@@ -77,6 +84,11 @@ $(function(){
 				let dob = $(dob_id).val()
 				
 				let url = "/available_classes?dob=" + dob;
+
+				let hrwidth = "40";
+				if ( student_num == 1 ){
+					hrwidth = "0";
+				}
 				if (dob != "") {
 					$.get(url, function(response){
 						var class_option_list = [];
@@ -92,19 +104,71 @@ $(function(){
 						});
 						let class_selections = class_option_list.join('\n')
 						let student_template = `<div class="form-row">
+										<h6>${first_name}'s Classes:</h6>
+									</div>
+									<div class="form-row">
 										<select style="100%" name="student_class_${student_num}" class="selectpicker" id="student_classes_${student_num}" multiple required>
 											${class_selections}
 										</select>
 	    								</div>
+									<hr style="width:${hrwidth}%">
 						`
 						$('#register_students').append(`${student_template}`);
-						console.log("I have just added a new student: " + student_template);
 
 						$('#student_classes_' + student_num).selectpicker('render');
-						console.log("Rendering #student_classes_" + student_num);
 					});
 				}
 			}
+		}
+
+		if (currentIndex === 3) {
+			$('#purchase_items').empty();
+			let num_students = Number($("#student_count").val());
+			let payload = {};
+			for (i=0; i < num_students; i++){
+				let student_num = i + 1;
+				let selected_vals = $('#student_classes_' + student_num).val();
+				let first_name_id = "#student_first_" + student_num;
+				let first_name = $(first_name_id).val();
+				payload[first_name] = selected_vals;
+			}
+			let url = "/register_payments?payload=" + JSON.stringify(payload)
+			$.get(url, function(response) {
+				let fees = response["fees"];
+				for (i=0; i < fees.length; i++){
+					let fee = fees[i];
+					let payment_entry = `
+					 <tr>
+					    <td>${fee['title']}</td>
+					    <td> ${fee['description']} </td>
+					    <td class="text-center">${fee['price']}</td>
+					</tr>`
+					$('#purchase_items').append(payment_entry);
+				}
+
+				let classes = response["classes"];
+				for (i=0; i < classes.length; i++){
+					let myclass = classes[i];
+					let payment_entry = `
+					 <tr>
+					    <td>${myclass['name']}'s ${myclass['level']} ${myclass['type']} on ${myclass['day']} @ ${myclass['start_time']} - ${myclass['stop_time']}</td>
+					    <td> First month's tuition. </td>
+					    <td class="text-center">${myclass['price']}</td>
+					</tr>`
+					$('#purchase_items').append(payment_entry);
+				}
+
+				let total_entry = `
+					<tr>
+					    <td>   </td>
+					    <td class="text-right"><h4><strong>Total: </strong></h4></td>
+					    <td class="text-center text-success"><h4><strong>$${response['total']['price']}</strong></h4></td>
+					</tr>`
+
+				$('#purchase_items').append(total_entry);
+
+			})
+
 		}
 	        // Needed in some cases if the user went back (clean up)
 	        if (currentIndex < newIndex)

@@ -19,6 +19,7 @@ from django.contrib.auth import views as auth_views
 
 from account import views as account
 from front import views as front
+from payment import views as payment
 from utils import views as utils
 
 urlpatterns = [
@@ -35,6 +36,7 @@ urlpatterns = [
     path('filter_classes/', front.filter_classes),
     path('class_levels/', front.get_classes_by_category),
     path('available_classes/', utils.available_classes),
+    path('register_payments/', payment.register_payments),
     path('register/', front.registration),
     path('email/', utils.send_email),
 ]

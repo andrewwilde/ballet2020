@@ -90,6 +90,7 @@ class DanceClass(models.Model):
     teacher = models.ForeignKey(TeacherAccount, on_delete=models.DO_NOTHING) 
     min_age = models.IntegerField()
     max_age = models.IntegerField()
+    price = models.IntegerField()
 
     def __str__(self):
         return "%s %s @ %s with %s" % (self.level, self.dance_type, str(self.start_time), self.teacher.first_name)
