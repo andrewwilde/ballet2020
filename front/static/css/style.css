@@ -4427,3 +4427,11 @@ only screen and (min-width: 576px) and (max-width: 767px),
 .multiselect-container div.checkbox {
     padding: 5px 15px 5px 35px;
 }
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

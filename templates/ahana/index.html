@@ -84,11 +84,11 @@
 					<li><a href="#trainer-section" class="page-scroll">Instructors</a></li>
 					<li><a href="#event-section">Events</a></li>
 					<li><a href="#signup-section">Contact</a></li>
-					{% if not user.is_authenticated %}
+					<!--{% if not user.is_authenticated %}
 					<li><a href="login/">Login</a></li>
 					{% else %}
 					<li><a href="account/">My Account</a></li>
-					{% endif %}
+					{% endif %}-->
 				</ul>
 			</div>
 		</div>
@@ -169,6 +169,11 @@
 			<div class="section-title text-center">
 				<h2>Available Dance Classes</h2>
 				<p>Select from any of the dance classes found below! Swipe left or right to see the kinds of classes that are available, and hit the Register button to reserve your spot in one of our classes. If you have a question, please <a href="#signup-section">send us an email.</a></p>
+				<p>Curious about our policies? Click on any of these links to learn more: 
+<a href="{% static "docs/payment.pdf" %}" target="_blank">Attendance & Payment Policies</a>, 
+<a href="{% static "docs/dress.pdf" %}" target="_blank">Dress & Conduct Code</a>, 
+<a href="{% static "docs/liability.pdf" %}" target="_blank">Media Release & Waiver and Liability</a>, 
+<a href="{% static "docs/covid.pdf" %}" target="_blank">COVID Policies</a>.</p>
 			</div>
 			<div class="classes-slider owl-carousel" id="available_classes">
 			</div>
@@ -194,7 +199,7 @@
 							<div class="ti-text">
 								<h4>Marybeth Wilde</h4>
 								<h6>Dance Director, Owner</h6>
-								<p>Eleven years ballet teaching experience. Testing testing testing.</p>
+								<p>"Dance is a way I can express my emotions without needing to use words."</p>
 								<!--<div class="ti-social">
 									<a href="#"><i class="fa fa-facebook"></i></a>
 									<a href="#"><i class="fa fa-instagram"></i></a>
@@ -214,7 +219,7 @@
 							<div class="ti-text">
 								<h4>Ann Kotyk</h4>
 								<h6>Ballet Instructor</h6>
-								<p>Yoga & Therapy Certificate of Uttarakhand University Sanskrit</p>
+								<p>"Dance is wonderful because it allows me to tune out the world."</p>
 								<!--<div class="ti-social">
 									<a href="#"><i class="fa fa-facebook"></i></a>
 									<a href="#"><i class="fa fa-instagram"></i></a>
@@ -226,7 +231,7 @@
 					</a>
 				</div>
 				<div class="ts-item">
-					<a href="#" data-toggle="tooltip" title="Jessica grew up in the Seattle area and has been dancing for a total of 15 years. She started at the age of seven competing in jazz, lyrical, hip hop and tap. At the age of eleven, she centered her training on ballet under the instruction of Michiko Black at MK ballet and then a few years later under Kevin Kaiser at Evergreen City Ballet. Some of her favorite roles include Cupid from Don Quixote, Dew Drop from the Nutcracker and the Crystal Fountain Fairy and Sliver Jewel from Sleeping Beauty. She has performed with BYU’s Theatre Ballet Company for two seasons now and toured California and the Pacific Northwest with them. In addition, she enjoys choreographing her own work, creating her first piece as a senior in high school and continuing throughout college. Jessica is currently pursuing an accounting degree at BYU with a Ballet minor. She served a mission for the Church of Jesus Christ of Latter-day Saints to Kyiv, Ukraine and was just recently married to McKay Sanders. She has assisted and substituted ballet classes for two years now and is excited for the opportunity to have her own students.">
+					<a href="#" data-toggle="tooltip" title="Jessica grew up in the Seattle area and has been dancing for a total of 15 years. She started at the age of seven competing in jazz, lyrical, hip hop and tap. At the age of eleven, she centered her training on ballet under the instruction of Michiko Black at MK ballet and then a few years later under Kevin Kaiser at Evergreen City Ballet. Some of her favorite roles include Cupid from Don Quixote, Dew Drop from the Nutcracker and the Crystal Fountain Fairy and Silver Jewel from Sleeping Beauty. She has performed with BYU’s Theatre Ballet Company for two seasons now and toured California and the Pacific Northwest with them. In addition, she enjoys choreographing her own work, creating her first piece as a senior in high school and continuing throughout college. Jessica is currently pursuing an accounting degree at BYU with a Ballet minor. She served a mission for the Church of Jesus Christ of Latter-day Saints to Kyiv, Ukraine and was just recently married to McKay Sanders. She has assisted and substituted ballet classes for two years now and is excited for the opportunity to have her own students.">
 						<div class="trainer-item">
 							<div class="ti-img">
 								<img src="{% static "img/trainer/jessica2.jpg" alt="" %}">
@@ -234,7 +239,7 @@
 							<div class="ti-text">
 								<h4>Jessica Sanders</h4>
 								<h6>Ballet Instructor</h6>
-								<p>Yoga & Therapy Certificate of Uttarakhand University Sanskrit</p>
+								<p>"Dance is a beautiful art form that allows me to express myself."</p>
 								<!--<div class="ti-social">
 									<a href="#"><i class="fa fa-facebook"></i></a>
 									<a href="#"><i class="fa fa-instagram"></i></a>
@@ -255,6 +260,26 @@
 								<h4>Kaitlyn Hellyer</h4>
 								<h6>Tap, Jazz, & Ballet Instructor</h6>
 								<p>"Dance is a fun way to express yourself, your feelings, and a great way to build character."</p>
+								<!--<div class="ti-social">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-linkedin"></i></a>
+								</div>-->
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="ts-item">
+					<a href="#" data-toggle="tooltip" title="Audrey started her ballet study under Ceyhun Ozsoy in Duncanville, Texas. He led her to attend summer intensives in Louisiana and in New York City at Joffrey Ballet School. While at intensives she was introduced to other dance forms. At the age of 16 her family moved to Austin, where she studied at the Ballet Austin Academy where many of her teachers were members of the professional company. While there, she was able to perform twice in Ballet Austin's production of The Nutcracker. She majored in and received a B.A. in Dance from Brigham Young University. Her emphasis was in ballet, with a secondary emphasis in contemporary.  At BYU she performed on Ballet Showcase for two seasons, and was invited to perform as a guest on Theatre Ballet twice. While at school she studied anatomy, kinesiology, music, and methods of teaching, which she feels enhance her teaching skills. Since graduating in 2016 she has been teaching creative dance.">
+						<div class="trainer-item">
+							<div class="ti-img" style="bottom:42px">
+								<img src="{% static "img/trainer/audrey.jpg" alt="" %}">
+							</div>
+							<div class="ti-text">
+								<h4>Audrey Higley</h4>
+								<h6>Ballet & Creative Dance Instructor</h6>
+								<p>"Dance allows every type of person at every skill level a space in which to express joy, sadness, and all the emotions in-between."</p>
 								<!--<div class="ti-social">
 									<a href="#"><i class="fa fa-facebook"></i></a>
 									<a href="#"><i class="fa fa-instagram"></i></a>
@@ -360,7 +385,7 @@
 							<h4><a href="#">Registration Opens</a></h4>
 							<ul>
 								<li><i class="material-icons">event_available</i>15 July, 2020</li>
-								<li><i class="material-icons">book</i><a href="#">Click here to register!</a></li>
+								<li><i class="material-icons">book</i><a href="/register">Click here to register!</a></li>
 							</ul>
 						</div>
 					</div>
@@ -371,9 +396,9 @@
 						<div class="ei-text">
 							<h4>Free Ballet Classes</h4>
 							<ul>
-								<li><i class="material-icons">watch</i>10:30 AM, 12 PM, 1:30 PM</li>
-								<li><i class="material-icons">event_available</i>22 August, 2020</li>
-								<li><i class="material-icons">map</i>478 South 2000 West, Springville UT 84663</li>
+								<li><i class="material-icons">watch</i>Soon to be Announced!</li>
+								<!--<li><i class="material-icons">event_available</i>22 August, 2020</li>
+								<li><i class="material-icons">map</i>478 South 2000 West, Springville UT 84663</li>-->
 							</ul>
 						</div>
 					</div>
@@ -382,11 +407,10 @@
 							<img src="{% static "img/ballet_imgs/event2.jpg" alt="" %}">
 						</div>
 						<div class="ei-text">
-							<h4>Free Ballet Classes</h4>
+							<h4>First Day of 2020-2021 Season</h4>
 							<ul>
-								<li><i class="material-icons">watch</i>10:30 AM, 12 PM, 1:30 PM</li>
-								<li><i class="material-icons">event_available</i>29 August, 2020</li>
-								<li><i class="material-icons">map</i>478 South 2000 West, Springville UT 84663</li>
+								<li><i class="material-icons">event_available</i>8 September, 2020</li>
+								<li><i class="material-icons">map</i>478 South Frontage Road, Springville UT 84663</li>
 							</ul>
 						</div>
 					</div>
@@ -492,56 +516,39 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:Eig0NzggUyAyMDAwIFcsI
 	<!-- Footer Section -->
 	<footer class="footer-section">
 		<div class="container">
-			<!--<div class="row">
-				<div class="col-lg-3 col-sm-6">
+			<div class="row">
+				<div class="col-lg-4 col-sm-6">
 					<div class="footer-widget">
-						<h2 class="fw-title">Contact Information</h2>
+						<h2 class="fw-title">Phone</h2>
 						<div class="about-widget">
 							<ul>
 								<li><i class="material-icons">phone</i>(385) 404 3846</li>
-								<li><i class="material-icons">email</i>petitballetacademy@gmail.com</li>
-								<li><i class="material-icons">map</i>478 South, 2000 West Springville, UT 84663 Unit #112</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="footer-widget pl-0 pl-lg-5">
-						<h2 class="fw-title">Company</h2>
-						<ul>
-							<li><a href="#">Gallery</a></li>
-							<li><a href="#">Special Issues</a></li>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Contact Us</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-sm-6">
+				<div class="col-lg-4 col-sm-6">
 					<div class="footer-widget">
-						<h2 class="fw-title">About Us</h2>
-						<ul>
-							<li><a href="#">Our Vision</a></li>
-							<li><a href="#">Our Mission</a></li>
-							<li><a href="#">Meet The Team</a></li>
-							<li><a href="#">Introduce</a></li>
-							<li><a href="#">Customer Service</a></li>
-						</ul>
+						<h2 class="fw-title">Email</h2>
+						<div class="about-widget">
+							<ul>
+								<li><i class="material-icons">email</i>petitballetacademy@gmail.com</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-sm-6">
-					<div class="footer-widget pl-0 pl-lg-5">
-						<h2 class="fw-title">Open time</h2>
-						<ul>
-							<li><i class="material-icons">alarm_on</i>Mon - Fri:  6:30am - 07:45pm</li>
-							<li><i class="material-icons">alarm_on</i>Sat - Sun:  8:30am - 05:45pm</li>
-						</ul>
-						<form class="infor-form">
-							<input type="text" placeholder="Your Email">
-							<button><img src="{% static "img/icons/send.png" alt="" %}"></button>
-						</form>
+					<div class="footer-widget">
+						<h2 class="fw-title">Address</h2>
+						<div class="about-widget">
+							<ul>
+								<li><i class="material-icons">map</i>478 South, 2000 West Springville, UT 84663 Unit #111</li>
+							</ul>
+						</div>
 					</div>
 				</div>
-			</div>-->
+
+			</div>
 			<div class="footer-bottom">
 				<div class="row">
 					<div class="col-md-4">

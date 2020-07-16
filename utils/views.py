@@ -35,13 +35,17 @@ def send_email(request):
 
     logger.info("Website Contact Form submitted: %s." % body)
 
-    send_mail("Website Contact Form",
-              body,
-              email_from,
-              [settings.EMAIL_HOST_USER],
-              fail_silently=False)
+    try:
+        send_mail("Website Contact Form",
+                  body,
+                  email_from,
+                  [settings.EMAIL_HOST_USER],
+                  fail_silently=False)
+    except Exception as e:
+        logger.error("Problem sending an email. e=%s" % str(e))
+        return render(request, 'failed_email.html')
 
-    return Response(status=200)
+    return render(request, 'email.html') 
 
 @api_view(['GET'])
 def available_classes(request):

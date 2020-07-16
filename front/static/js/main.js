@@ -108,7 +108,8 @@ $(window).on('load', function() {
 		animateIn: 'fadeIn',
 		items: 1,
 		autoplay: true,
-		smartSpeed: 1000,
+		autoplayTimeout: 2000,
+		smartSpeed: 500,
 		autoplayHoverPause: true,
 	});
 
@@ -133,6 +134,7 @@ $(window).on('load', function() {
 		dots: true,
 		margin: 30,
 		autoplay: true,
+		autoplayTimeout: 4000,
 		autoplayHoverPause: true,
 		responsive : {
 			0 : {
@@ -198,6 +200,7 @@ $(window).on('load', function() {
 		dots: false,
 		navText:[' ',' '],
 		autoplay: true,
+		autoplayTimeout: 4000,
 		autoplayHoverPause: true,
 		responsive : {
 			0 : {

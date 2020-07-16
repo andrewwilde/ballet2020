@@ -26,7 +26,7 @@ function filter_classes(){
 		'type': $("#type :selected").val()
 	}
 
-	post_data("http://localhost:8100/filter_classes/", data, update_classes);
+	post_data("/filter_classes/", data, update_classes);
 }
 
 function update_classes(response) {
@@ -137,7 +137,6 @@ function populate_classes(response){
 		classes_templates.push(class_template);
 	});
 
-	console.log(classes_templates.join('\n'));
 	$('.classes-slider').trigger('destroy.owl.carousel');
 	$('.classes-slider').html(classes_templates.join('\n'));
 	$('.classes-slider').owlCarousel({
@@ -147,6 +146,7 @@ function populate_classes(response){
 		margin: 30,
 		navText: [' ', ' '],
 		autoplay: true,
+		autoplayTimeout: 4000,
 		autoplayHoverPause: true,
 		responsive : {
 			0 : {
@@ -163,7 +163,7 @@ function populate_classes(response){
 }
 
 function get_classes_by_category(){
-	url = "http://localhost:8100/class_levels/"
+	url = "/class_levels/"
 	$.get( url, function(response){ 
 		populate_classes(response);
 	});

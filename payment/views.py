@@ -20,26 +20,26 @@ logger = logging.getLogger('ballet')
 stripe.api_key = settings.STRIPE_KEY
 
 def stripe_charge(parent, stripe_token, total, description):
-    name = "%s %s" % (parent.first_name, parent.last_name)
-    if parent.stripe_id == "":
-        customer = stripe.Customer.create(
-            email=parent.email,
-            name=name,
-            phone=parent.phone_number)
+    #name = "%s %s" % (parent.first_name, parent.last_name)
+    #if parent.stripe_id == "":
+    #    customer = stripe.Customer.create(
+    #        email=parent.email,
+    #        name=name,
+    #        phone=parent.phone_number)
 
-        parent.stripe_id = customer.id
-        parent.save()
-        logger.info("New stripe customer created. %s=%s" % (parent.email, parent.stripe_id))
+    #    parent.stripe_id = customer.id
+    #    parent.save()
+    #    logger.info("New stripe customer created. %s=%s" % (parent.email, parent.stripe_id))
 
-    else:
-        customer = stripe.Customer.retrieve(parent.stripe_id)
+    #else:
+    #    customer = stripe.Customer.retrieve(parent.stripe_id)
 
 
     logger.info("Attempting to charge credit card. Email=%s, Total=%i" % (parent.email, total))
     stripe.Charge.create(
         amount=total*100,
         currency="USD",
-        description=description,
+        description=parent.email,
         card=stripe_token,
         receipt_email=parent.email 
     )
@@ -82,8 +82,8 @@ def register_payments(request):
 
 @api_view(['POST'])
 def confirm_registration(request):
+    context = {'message': ''}
     data = request.POST
-    logger.info("data=%s" % data)
     required_fields = ['acceptTerms',
                        'p_last',
                        'p_phone',
@@ -97,11 +97,13 @@ def confirm_registration(request):
     for field in required_fields:
         if field not in data:
             logger.error("There is a missing required field: %s" % field)
-            return render(request, 'failed_registration')
+            context['message'] = 'Form is missing field.'
+            return render(request, 'failed_registration.html', context)
 
         if not data.get(field):
             logger.error("A required field has an empty value: %s" % field)
-            return render(request, 'failed_registration')
+            context['message'] = 'Required field was missing a value.'
+            return render(request, 'failed_registration.html')
 
     stripe_token = data.get('stripeToken')
 
@@ -123,10 +125,13 @@ def confirm_registration(request):
                                          username=parent_email)
             logger.info("Parent created: %s %s" % (parent.first_name, parent.last_name))
         except Exception as e:
+            context['message'] = 'We were unable to create a parent account. Please contact us, since this should never happen!'
             logger.error("Error creating the parent account: %s" % str(e))
-            return render(request, 'failed_registration')
+            return render(request, 'failed_registration.html', context)
     except Exception as e:
+        context['message'] - 'We had an unexpected error, which should never happen. Please contact us!'
         logger.error("Unknown error. e=%s" % str(e))
+        return render(request, 'failed_registration.html', context)
 
     #Create Students
     total = settings.REGISTRATION_FEE
@@ -166,21 +171,25 @@ def confirm_registration(request):
                 total = total + dance_class.price
 
     except Exception as e:
+        context['message'] = "We were unable to enroll your student to the class. This should never happen, please contact us!"
         logger.error("There was an unknown exception during the student/enrollment creation process. e=%s" % str(e))
-        return render(request, 'failed_registration')
+        return render(request, 'failed_registration.html', context)
 
     if total != int(data.get('total')):
+        context['message'] = "Their were some inconsistencies with the form. This should never happen, please contact us!"
         logger.error("The POSTed price does not match what we'd expect. POST price=%s, Calculated=%i" % (data.get('total'), total))
-        return render(request, 'failed_registration')
+        return render(request, 'failed_registration.html', context)
 
     try:
         name = "%s %s" % (parent.first_name, parent.last_name)
         stripe_charge(parent, stripe_token, total, "registration costs") 
     except stripe.error.StripeError as e:
+        context['message'] = "Credit card transaction failed: %s" % e.error.message 
         logger.error("Credit card transaction failed(100): e=%s" % str(e))
-        return Response({'message': "Credit card transaction failed."}, status=400)
+        return render(request, 'failed_registration.html', context)
     except Exception as e:
+        context['message'] = "We have a problem handling your credit card transaction. Please call us!"
         logger.error("Credit card transaction failed(101): e=%s" % str(e))
-        return Response({'message': "Credit card transaction failed."}, status=400)
+        return render(request, 'failed_registration.html', context)
     else:
-        return render(request, 'index.html')
+        return render(request, 'confirmed.html')

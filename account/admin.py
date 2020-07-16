@@ -40,3 +40,9 @@ class ClassAdmin(admin.ModelAdmin):
                     'teacher',
                     'status',) 
 
+@admin.register(StudentEnrollment)
+class StudentEnrollmentAdmin(admin.ModelAdmin):
+    list_display = ('dance_class',
+                    'student',
+                    'status',
+                    'id')

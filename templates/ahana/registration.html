@@ -29,11 +29,11 @@
 							<li><a href="/#trainer-section" class="page-scroll">Instructors</a></li>
 							<li><a href="/#event-section">Events</a></li>
 							<li><a href="/#signup-section">Contact</a></li>
-							{% if not user.is_authenticated %}
+							<!--{% if not user.is_authenticated %}
 							<li><a href="login/">Login</a></li>
 							{% else %}
 							<li><a href="account/">My Account</a></li>
-							{% endif %}
+							{% endif %}-->
 						</ul>
 					</div>
 				</div>
@@ -207,18 +207,18 @@
 							</div>
 							<div class="form-row">
 								<div class="form-holder">
-							    		<a href="#">Attendance & Payment Policies</a><br/>
+									<a href="{% static "docs/payment.pdf" %}" target="_blank">Attendance & Payment Policies</a><br/>
 								</div>
 								<div class="form-holder">
-							    		<a href="#">Dress & Conduct Code</a><br/>
+									<a href="{% static "docs/dress.pdf" %}" target="_blank">Dress & Conduct Code</a><br/>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-holder">
-							    		<a href="#">Media Release & Waiver and Liability</a></br>
+									<a href="{% static "docs/liability.pdf" %}" target="_blank">Media Release & Waiver and Liability</a></br>
 								</div>
 								<div class="form-holder">
-							    		<a href="#">COVID Policies</a>
+									<a href="{% static "docs/covid.pdf" %}" target="_blank">COVID Policies</a>
 								</div>
 							</div>
 							<div class="form-row" style="width: 100%;">

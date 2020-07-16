@@ -58,6 +58,7 @@ class DanceClass(models.Model):
         ('Irish', 'Irish'),
         ('Ballroom', 'Ballroom'),
         ('Hip Hop', 'Hip Hop'),
+        ('Creative Dance', 'Creative Dance'),
     ]
 
     LEVELS = [
@@ -94,7 +95,7 @@ class DanceClass(models.Model):
     price = models.IntegerField()
 
     def __str__(self):
-        return "%s %s @ %s with %s" % (self.level, self.dance_type, str(self.start_time), self.teacher.first_name)
+        return "%s %s on %s @ %s with %s" % (self.level, self.dance_type, self.get_day_display(), str(self.start_time), self.teacher.first_name)
 class Student(models.Model):
     STUDENT_TYPES = [
         ('Standard', 'Standard'),
@@ -109,6 +110,9 @@ class Student(models.Model):
     notes = models.TextField()
     student_type = models.CharField(max_length=20, choices=STUDENT_TYPES)
     parent = models.ForeignKey(ParentAccount, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%s %s" % (self.first_name, self.last_name)
 
 class ClassAssignment(models.Model):
     dance_class = models.ForeignKey(DanceClass, on_delete=models.CASCADE)

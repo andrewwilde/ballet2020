@@ -12,17 +12,19 @@ from account.models import Account
 logger = logging.getLogger('ballet')
 
 def index(request):
+    logger.info("We have a visitor!")
     return render(request, 'index.html')
 
 def classes(request):
     context = { 'classes': [] }
-    dance_classes = DanceClass.objects.all()
+    dance_classes = DanceClass.objects.all().order_by("dance_type", "level")
     for dance_class in dance_classes:
         context['classes'].append(dance_class)
 
     return render(request, 'classes.html', context=context)
 
 def registration(request):
+    logger.info("Someone is using the registration page!")
     return render(request, 'registration.html')
 
 @api_view(["POST"])
@@ -40,7 +42,6 @@ def filter_classes(request):
         q_list.append(Q(level=age))
 
     if days:
-        logger.info("days=%s", days)
         q_list.append(Q(day__in=days))
 
     dance_classes = DanceClass.objects.filter(*q_list)
