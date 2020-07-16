@@ -10,20 +10,43 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 		<!--<link rel="stylesheet" href="{% static "fonts/material-design-iconic-font/css/material-design-iconic-font.css" %}">-->
 		<link rel="stylesheet" href="{% static "css/registration_style.css" %}">
+    		<link rel="stylesheet" href="{% static "css/slicknav.min.css" %}"/>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
 
 	</head>
 	<body>
+		<!-- This is my menu -->
 		<div class="wrapper">
+			<header class="header-section">
+				<div class="header-bottom">
+					<div class="container2">
+						<ul class="main-menu">
+							<li><a href="/">Home</a></li>
+							<li><a href="#" class="active">Register</a></li>
+							<li><a href="/#about-menu" class="page-scroll">About</a></li>
+							<li><a href="/#classes-section" class="page-scroll">Classes</a></li>
+							<li><a href="/#trainer-section" class="page-scroll">Instructors</a></li>
+							<li><a href="/#event-section">Events</a></li>
+							<li><a href="/#signup-section">Contact</a></li>
+							{% if not user.is_authenticated %}
+							<li><a href="login/">Login</a></li>
+							{% else %}
+							<li><a href="account/">My Account</a></li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</header>
 
 			<!-- STUDENT COUNT -->
-	                <form action="#" id="wizard">
+	                <form action="/confirm_registration" method="POST" id="wizard">
+				{% csrf_token %}
 				<h2></h2>
                 		<section> 
 				    <div class="inner">
 				    	<div class="image-holder">
-				    	    	<img src="{% static "img/ballet_imgs/Twitter_profilepic(400x400).jpg" %}" alt="">
+				    	    	<img src="{% static "img/ballet_imgs/Petit_color.jpg" %}" alt="">
 				    	    </div>
 				    	    <div class="form-content">
 				    	    	<div class="form-header" style="margin-bottom:-50px">
@@ -32,13 +55,13 @@
 				    	    	<p>How many students would you like to register?</p>
 				    	    	<div class="form-row">
 				    	    		<div class="form-holder">
-				    	    			<input value=1 id="student_count" type="number" min="1" max="5" step="1" placeholder="Number of Students" class="form-control" required>
+				    	    			<input value=1 name="student_count" id="student_count" type="number" min="1" max="5" step="1" placeholder="Number of Students" class="form-control" required>
 				    	    		</div>
 				    	    	</div>
 						<div class="form-row">
 							<div class="form-holder">
 							</div>
-							<div class="form-holder" style="display: flex;">
+							<div class="form-holder">
 								<button type="button" class="forward reg-button" style="float:right">Forward&nbsp;&rarr;</button>
 							</div>
 						</div>
@@ -52,14 +75,14 @@
 	            		<section>
 	            		    <div class="inner">
 	    							<div class="image-holder">
-	    								<img src="{% static "img/ballet_imgs/Twitter_profilepic(400x400).jpg" %}" alt="">
+	    								<img src="{% static "img/ballet_imgs/Petit_color.jpg" %}" alt="">
 	    							</div>
 	    							<div class="form-content" >
 	    								<div class="form-header">
 	    									<h3>Student Information</h3>
 	    								</div>
 									<div id="students"></div>
-									<div class="form-row" style="display: flex;">
+									<div class="form-row">
 										<div class="form-holder">
 											<button type="button" class="backward reg-button"><i class="arrow left"></i>&larr;&nbsp;Backward</button>
 										</div>
@@ -77,16 +100,16 @@
 	                	    <section>
 	                	        <div class="inner">
 	    					<div class="image-holder">
-				    			<img src="{% static "img/ballet_imgs/Twitter_profilepic(400x400).jpg" %}" alt="">
+				    			<img src="{% static "img/ballet_imgs/Petit_color.jpg" %}" alt="">
 	    					</div>
 	    					<div class="form-content">
 	    						<div class="form-header">
 	    							<h3 style="margin-bottom: 12px;">Select Your Classes</h3>
 	    						</div>
-	    						<p>Students may register for multiple classes!</p>
-							<p style="font-size:10px;">* If you would like to discuss an age exception for a class, please call 385-404-8687.</p>
+	    						<p style="color: #c687b0">Students may register for multiple classes!</p>
+							<p style="font-size:10px; color: black;">* If you would like to discuss an age exception for a class, please call 385-404-8687.</p>
 							<div id="register_students"></div>
-							<div class="form-row" style="display: flex;" >
+							<div class="form-row">
 								<div class="form-holder">
 									<button type="button" class="backward reg-button">&larr;&nbsp;Backward</button>
 								</div>
@@ -104,7 +127,7 @@
 	                	    <section>
 	                	        <div class="inner">
 	    					<div class="image-holder">
-				    			<img src="{% static "img/ballet_imgs/Twitter_profilepic(400x400).jpg" %}" alt="">
+				    			<img src="{% static "img/ballet_imgs/Petit_color.jpg" %}" alt="">
 	    					</div>
 	    					<div class="form-content">
 	    						<div class="form-header">
@@ -121,7 +144,7 @@
 				    			</div>
 							<div class="form-row">
 				    				<div class="form-holder">
-				    					<input name="p_emai" id="parent_email" type="email" placeholder="Email" class="form-control" required/>
+				    					<input name="p_email" id="parent_email" type="email" placeholder="Email" class="form-control" required/>
 				    				</div>
 								<div class="form-holder">
 				    					<input name="p_phone" id="parent_phone" type="text" placeholder="Phone" class="form-control" required/>
@@ -129,7 +152,7 @@
 
 				    			</div>
 
-							<div class="form-row" style="display: flex;">
+							<div class="form-row">
 								<div class="form-holder">
 									<button type="button" class="backward reg-button"><i class="arrow left"></i>&larr;&nbsp;Backward</button>
 								</div>
@@ -145,7 +168,7 @@
 	                	    <h2></h2>
 	                	    <section>
 	                	        <div class="inner">
-						<div class="form-content" style="width: 100%">
+						<div class="form-content" style="width: 95%">
 	    						<div class="form-header">
 								<h3>Payment & Confirmation</h3>
 	    						</div>
@@ -155,7 +178,7 @@
 							        <div class="well">
 							            <div class="row">
 							              <div class="row">
-							                <table class="table table-hover">
+							                <table class="table table-hover" style="margin-left: 5px;">
 							                    <thead>
 							                        <tr>
 							                            <th>Title</th>
@@ -171,15 +194,13 @@
 							    </div>
 						        </div>
 						</div>
-						<div class="form-content" style="width:100%; padding-left:0px; padding-top: 0px;">		
-							<div class="form-row">
+						<div class="form-content" style="width:100%; padding-left:0px; padding-top: 0px; ">		
+							<div style="padding-bottom:30px; border: 1px solid; border-color:#f0deec; border-radius:10px; padding:15px; margin-bottom:15px;">
 								<label for="card-element">
-									Credit or Debit Card
+									<b>Credit or Debit Card</b>
 								</label>
-								<div id="card-element">
-								</div>
-								<div id="card-errors" role="alert">
-								</div>
+								<div id="card-element"></div>
+								<div id="card-errors" role="alert"></div>
 							</div>
 							<div class="form-row">
 							    <h4>Policies for 2020-2021</h4>
@@ -200,17 +221,17 @@
 							    		<a href="#">COVID Policies</a>
 								</div>
 							</div>
-							<div class="form-row" style="width: 100%">
-								<div class="form-holder">
-									<input id="acceptTerms-2" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms-2">I agree to follow all policies.</label>
+							<div class="form-row" style="width: 100%;">
+								<div class="form-holder" style="display: inherit; margin-left: 10px;">
+									<input id="acceptTerms-2" name="acceptTerms" type="checkbox" class="required"><label for="acceptTerms" style="padding-left: 10px;"> I agree to follow these policies.</label>
 								</div>
 							</div>
-							<div class="form-row" style="display: flex; width: 100%">
+							<div class="form-row" style="width: 100%">
 								<div class="form-holder">
 									<button type="button" class="backward reg-button"><i class="arrow left"></i>&larr;&nbsp;Backward</button>
 								</div>
 								<div class="form-holder">
-									<button type="button" class="forward reg-button" style="float:right;">Submit</button>
+									<button type="button" class="finish reg-button" style="float:right;">Submit</button>
 								</div>
 							</div>
 	    					</div>
@@ -219,21 +240,21 @@
 	                </form>
 	</div>
 
-		<!-- JQUERY -->
-		<script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
-		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+	<!-- JQUERY -->
+	<script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-		<script src= "https://unpkg.com/@popperjs/core@2"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+	<script src= "https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
-		<!-- JQUERY STEP -->
-		<script src="{% static "js/jquery.steps.js" %}"></script>
-		<script src="{% static "js/registration_main.js" %}"></script>
+	<!-- STRIPE -->
+	<script src="https://js.stripe.com/v3/"></script>
 
-		<!-- STRIPE -->
-		<script src="https://js.stripe.com/v3/"></script>
-		<script src="{% static "js/payment.js" %}"></script>
+	<!-- JQUERY STEP -->
+	<script src="{% static "js/jquery.steps.js" %}"></script>
+	<script src="{% static "js/registration_main.js" %}"></script>
+	<script src= "{% static "js/jquery.slicknav.min.js" %}"></script>
 
 </body>
 </html>

@@ -6,6 +6,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.forms.models import model_to_dict
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from account.models import DanceClass
@@ -48,7 +49,16 @@ def available_classes(request):
     age = get_age_by_first_day(dob)
     available_classes = get_classes_by_age(age)
 
-    return JsonResponse(list(available_classes.values()), safe=False)
+    filtered_classes = []
+    for cls in available_classes:
+        dict_cls = model_to_dict(cls)
+        dict_cls['start_time'] = cls.start_time.strftime('%I:%M %p')
+        dict_cls['stop_time'] = cls.stop_time.strftime('%I:%M %p')
+        dict_cls['day'] = cls.get_day_display()
+        filtered_classes.append(dict_cls)
+
+    return JsonResponse(filtered_classes, safe=False)
+
 def get_classes_by_age(age):
     return DanceClass.objects.filter(max_age__gte=age, min_age__lte=age, status="Active")
 

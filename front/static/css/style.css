@@ -1529,7 +1529,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 .classes-slider .owl-nav .owl-prev:after,
 .classes-slider .owl-nav .owl-next:after {
 	position: absolute;
-	content: url("../img/icons/arrow-circle.png");
+	content: url("../img/icons/new-arrow.png");
 	left: 0;
 	top: 0;
 	-webkit-transition: all 0.4s;
@@ -1539,7 +1539,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 
 .classes-slider .owl-nav .owl-prev:hover:after,
 .classes-slider .owl-nav .owl-next:hover:after {
-	content: url("../img/icons/arrow-circle-c.png");
+	content: url("../img/icons/new-arrow-c.png");
 }
 
 .classes-slider .owl-nav .owl-next {
@@ -1977,7 +1977,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 .trainer-slider .owl-nav .owl-prev:after,
 .trainer-slider .owl-nav .owl-next:after {
 	position: absolute;
-	content: url("../img/icons/arrow-circle.png");
+	content: url("../img/icons/new-arrow.png");
 	left: 0;
 	top: 0;
 	-webkit-transition: all 0.4s;
@@ -1987,7 +1987,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 
 .trainer-slider .owl-nav .owl-prev:hover:after,
 .trainer-slider .owl-nav .owl-next:hover:after {
-	content: url("../img/icons/arrow-circle-c.png");
+	content: url("../img/icons/new-arrow-c.png");
 }
 
 .trainer-slider .owl-nav .owl-next {

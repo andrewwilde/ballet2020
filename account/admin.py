@@ -27,7 +27,7 @@ class TeacherAdmin(admin.ModelAdmin):
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'birth_date', 'student_type', 'parent', 'medical',)
+    list_display = ('first_name', 'last_name', 'birth_date', 'student_type', 'parent', 'notes',)
     list_display_links = ('parent',)
 
 @admin.register(DanceClass)

@@ -54,6 +54,8 @@ def get_classes_by_category(request):
     for cls in dance_classes:
         dict_cls = model_to_dict(cls)
         dict_cls['day'] = cls.get_day_display()
+        dict_cls['start_time'] = cls.start_time.strftime('%I:%M %p')
+        dict_cls['stop_time'] = cls.stop_time.strftime('%I:%M %p')
         dance_category = "%s %s" % (cls.level, cls.dance_type)
         if dance_category not in classes_by_category:
             classes_by_category[dance_category] = [dict_cls]

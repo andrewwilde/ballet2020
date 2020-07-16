@@ -28,6 +28,7 @@ class ParentAccount(Account):
         verbose_name_plural = 'Parents'
 
     account_type = models.CharField(max_length=20, default="Parent")
+    stripe_id = models.CharField(max_length=50, default="")
 
 class DanceClass(models.Model):
     class Meta:
@@ -102,9 +103,10 @@ class Student(models.Model):
     ]
 
     student_id = models.UUIDField(default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
     birth_date = models.DateField()
-    medical = models.TextField()
+    notes = models.TextField()
     student_type = models.CharField(max_length=20, choices=STUDENT_TYPES)
     parent = models.ForeignKey(ParentAccount, on_delete=models.CASCADE)
 

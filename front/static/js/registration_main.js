@@ -8,8 +8,49 @@ var total_entry = `
 </tr>
 
 `
-$(function(){
+$(document).ready(function(){
+	var stripe = Stripe('pk_test_OEiMPBtf9FhQ7ZM6rsjjFwKa');
+	var elements = stripe.elements();
+	
+	var style = {
+	  base: {
+	    color: '#32325d',
+	    lineHeight: '18px',
+	    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+	    fontSmoothing: 'antialiased',
+	    fontSize: '16px',
+	    '::placeholder': {
+	      color: '#aab7c4'
+	    }
+	  },
+	  invalid: {
+	    color: '#fa755a',
+	    iconColor: '#fa755a'
+	  }
+	};
+	
+	var card = elements.create('card', {style: style});
+	
+	card.addEventListener('change', function(event) {
+	  var displayError = document.getElementById('card-errors');
+	  if (event.error) {
+	    displayError.textContent = event.error.message;
+	  } else {
+	    displayError.textContent = '';
+	  }
+	});
+	
+	function stripeTokenHandler(token) {
+	  var wizard = document.getElementById('wizard');
+	  var hiddenInput = document.createElement('input');
+	  hiddenInput.setAttribute('type', 'hidden');
+	  hiddenInput.setAttribute('name', 'stripeToken');
+	  hiddenInput.setAttribute('value', token.id);
+	  wizard.appendChild(hiddenInput);
+	}
+
 	form = $("#wizard").show();
+
 	form.steps({
 	    headerTag: "h2",
 	    bodyTag: "section",
@@ -100,19 +141,27 @@ $(function(){
 							let class_day = dance_class["day"];
 							let class_start = dance_class["start_time"];
 							let student_options = `<option value="${dance_id}">${class_level} ${class_type} on ${class_day} @ ${class_start}</option>`
+							let title = "Select a Class";
 							class_option_list.push(student_options);
 						});
-						let class_selections = class_option_list.join('\n')
+						let class_selections = class_option_list.join("\n");
+						let title = "Select a Class";
+						if (response.length == 0){
+							title = "No Classes Available";
+						}
+							
 						let student_template = `<div class="form-row">
 										<h6>${first_name}'s Classes:</h6>
 									</div>
 									<div class="form-row">
-										<select style="100%" name="student_class_${student_num}" class="selectpicker" id="student_classes_${student_num}" multiple required>
+										<select style="100%" title="${title}" name="student_class_${student_num}" class="selectpicker" id="student_classes_${student_num}" multiple required>
 											${class_selections}
 										</select>
 	    								</div>
 									<hr style="width:${hrwidth}%">
 						`
+
+
 						$('#register_students').append(`${student_template}`);
 
 						$('#student_classes_' + student_num).selectpicker('render');
@@ -122,6 +171,7 @@ $(function(){
 		}
 
 		if (currentIndex === 3) {
+			card.mount('#card-element');
 			$('#purchase_items').empty();
 			let num_students = Number($("#student_count").val());
 			let payload = {};
@@ -141,7 +191,7 @@ $(function(){
 					 <tr>
 					    <td>${fee['title']}</td>
 					    <td> ${fee['description']} </td>
-					    <td class="text-center">${fee['price']}</td>
+					    <td class="text-center">$${fee['price']}</td>
 					</tr>`
 					$('#purchase_items').append(payment_entry);
 				}
@@ -153,7 +203,7 @@ $(function(){
 					 <tr>
 					    <td>${myclass['name']}'s ${myclass['level']} ${myclass['type']} on ${myclass['day']} @ ${myclass['start_time']} - ${myclass['stop_time']}</td>
 					    <td> First month's tuition. </td>
-					    <td class="text-center">${myclass['price']}</td>
+					    <td class="text-center">$${myclass['price']}</td>
 					</tr>`
 					$('#purchase_items').append(payment_entry);
 				}
@@ -163,9 +213,11 @@ $(function(){
 					    <td>   </td>
 					    <td class="text-right"><h4><strong>Total: </strong></h4></td>
 					    <td class="text-center text-success"><h4><strong>$${response['total']['price']}</strong></h4></td>
+					    <input type="hidden" value=${response['total']['price']} name="total">
 					</tr>`
 
 				$('#purchase_items').append(total_entry);
+
 
 			})
 
@@ -182,12 +234,26 @@ $(function(){
 	    },
 	    onFinishing: function (event, currentIndex)
 	    {
+		
 	        form.validate().settings.ignore = ":disabled";
-	        return form.valid();
+		return form.valid();
 	    },
 	    onFinished: function (event, currentIndex)
 	    {
-	        alert("Submitted!");
+		stripe.createToken(card).then(function(result) {
+			if (result.error) {
+			    	var errorElement = document.getElementById('card-errors');
+				errorElement.textContent = result.error.message;
+			}
+			else {
+			        console.log("Successfully creating token...");
+				stripeTokenHandler(result.token);
+				confirmation = confirm("Confirm transaction by pressing OK.");
+				if (confirmation == true) {
+					document.getElementById("wizard").submit();
+				}
+			}
+		})
 	    }
 	}).validate({
     		errorPlacement: function errorPlacement(error, element) { element.before(error); }
@@ -204,6 +270,9 @@ $(function(){
     })
     $('.backward').click(function(){
         $("#wizard").steps('previous');
+    })
+    $('.finish').click(function(){
+	$("#wizard").steps('finish');
     })
     // Select Dropdown
     $('html').click(function() {
@@ -227,5 +296,12 @@ $(function(){
 	var rounded_down = Math.floor(student_count);
         $('#student_count').val(rounded_down);	
     });
+	$(".main-menu").slicknav({
+        appendTo: '.header-section',
+		allowParentLinks: true,
+		closedSymbol: '<i class="fa fa-angle-right"></i>',
+		openedSymbol: '<i class="fa fa-angle-down"></i>'
+	});
+
 });
 
