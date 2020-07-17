@@ -95,7 +95,7 @@ $(document).ready(function(){
 					</div>
 					<div class="form-row">
 						<div class="form-holder">
-							<input id="student_dob_${student_num}" name="dob_${student_num}" type="date" placeholder="Date of Birth" value="" onChange="this.setAttribute('value', this.value)" class="form-control" required>
+							<input id="student_dob_${student_num}" name="dob_${student_num}" type="text" pattern="\d{4}-/\d{1,2}-/\d{1,2}" placeholder="Date of Birth (yyyy-mm-dd)" value="" onChange="this.setAttribute('value', this.value)" class="form-control" required>
 						</div>
 						<div class="form-holder">
 							<input id="student_notes_${student_num}" name="notes_${student_num}" type="textarea" placeholder="Other Notes (optional)" class="form-control">
