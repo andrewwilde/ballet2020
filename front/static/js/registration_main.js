@@ -9,8 +9,8 @@ var total_entry = `
 
 `
 $(document).ready(function(){
-	var stripe = Stripe('pk_test_OEiMPBtf9FhQ7ZM6rsjjFwKa');
-	//var stripe = Stripe('pk_live_H3TAzRTFkl3SkgTY8EZqwgXw');
+	//var stripe = Stripe('pk_test_OEiMPBtf9FhQ7ZM6rsjjFwKa');
+	var stripe = Stripe('pk_live_H3TAzRTFkl3SkgTY8EZqwgXw');
 	var elements = stripe.elements();
 	
 	var style = {
