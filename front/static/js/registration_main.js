@@ -68,7 +68,6 @@ $(document).ready(function(){
 	        // Allways allow previous action even if the current form is not valid!
 	        if (currentIndex > newIndex)
 	        {
-   		    $('.forward').prop('disabled', false);
 	            return true;
 	        }
 	        // Forbid next action on "Warning" step if the user is to young
@@ -112,6 +111,7 @@ $(document).ready(function(){
 		}
 
 		if (currentIndex === 1){
+   		        $('.class_forward').prop('disabled', true);
 			$('#register_students').empty();
 			let num_students = $('#student_count').val();
 			let student_options = [];
@@ -171,11 +171,11 @@ $(document).ready(function(){
 							$('#register_students').append(`${student_template}`);
 
 							$('#student_classes_' + student_num).selectpicker('render');
+   		        				$('.class_forward').prop('disabled', false);
 						})
 						.fail(function(jqXHR, textStatus, errorThrown) {
 							console.log("Failed to get the classes!");
 							$('.selectHeader').html("There was an error with the date submitted. Please go back and check that it's in the right format.");
-							$('.forward').prop('disabled', true);
 						});
 					
 				}
