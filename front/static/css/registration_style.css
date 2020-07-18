@@ -689,3 +689,14 @@ only screen and (min-width: 576px) and (max-width: 767px),
 	}
 }
 
+.dob_validate:valid {
+  color: black;
+  border: 5px solid #dadadada; // dadada .glowing-border: http://stackoverflow.com/questions/5670879/css-html-create-a-glowing-border-around-an-input-field
+  border-radius: 7px;
+}
+.dob_validate:invalid {
+  color: navy;
+  outline: none; // .glowing-border:focus
+  border-color: #ff1050;
+  box-shadow: 0 0 10px #ff0000;//#9ecaed
+}
