@@ -68,6 +68,7 @@ $(document).ready(function(){
 	        // Allways allow previous action even if the current form is not valid!
 	        if (currentIndex > newIndex)
 	        {
+   		    $('.forward').prop('disabled', false);
 	            return true;
 	        }
 	        // Forbid next action on "Warning" step if the user is to young
@@ -95,7 +96,8 @@ $(document).ready(function(){
 					</div>
 					<div class="form-row">
 						<div class="form-holder">
-							<input id="student_dob_${student_num}" name="dob_${student_num}" type="text" pattern="\d{4}-/\d{1,2}-/\d{1,2}" placeholder="Date of Birth (yyyy-mm-dd)" value="" onChange="this.setAttribute('value', this.value)" class="form-control" required>
+						 	<label for="dob_${student_num}">Date of Birth (yyyy-mm-dd)</label>	
+							<input id="student_dob_${student_num}" class="dob_validate" title="Invalid Date" name="dob_${student_num}" type="text" pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))" class="form-control" required>
 						</div>
 						<div class="form-holder">
 							<input id="student_notes_${student_num}" name="notes_${student_num}" type="textarea" placeholder="Other Notes (optional)" class="form-control">
@@ -132,41 +134,50 @@ $(document).ready(function(){
 					hrwidth = "0";
 				}
 				if (dob != "") {
-					$.get(url, function(response){
-						var class_option_list = [];
+					$.get(url)
+						.done( function(response){
+							console.log("Success getting the classes!");
+							$('.selectHeader').html('Select Your Classes');
+							var class_option_list = [];
 
-						$.each(response, function(idx, dance_class) {
-							let dance_id = dance_class["id"];
-							let class_level = dance_class["level"];
-							let class_type = dance_class["dance_type"];
-							let class_day = dance_class["day"];
-							let class_start = dance_class["start_time"];
-							let student_options = `<option value="${dance_id}">${class_level} ${class_type} on ${class_day} @ ${class_start}</option>`
+							$.each(response, function(idx, dance_class) {
+								let dance_id = dance_class["id"];
+								let class_level = dance_class["level"];
+								let class_type = dance_class["dance_type"];
+								let class_day = dance_class["day"];
+								let class_start = dance_class["start_time"];
+								let student_options = `<option value="${dance_id}">${class_level} ${class_type} on ${class_day} @ ${class_start}</option>`
+								let title = "Select a Class";
+								class_option_list.push(student_options);
+							});
+							let class_selections = class_option_list.join("\n");
 							let title = "Select a Class";
-							class_option_list.push(student_options);
+							if (response.length == 0){
+								title = "No Classes Available";
+							}
+								
+							let student_template = `<div class="form-row">
+											<h6>${first_name}'s Classes:</h6>
+										</div>
+										<div class="form-row">
+											<select style="100%" title="${title}" name="student_class_${student_num}" class="selectpicker" id="student_classes_${student_num}" multiple required>
+												${class_selections}
+											</select>
+	    									</div>
+										<hr style="width:${hrwidth}%">
+							`
+
+
+							$('#register_students').append(`${student_template}`);
+
+							$('#student_classes_' + student_num).selectpicker('render');
+						})
+						.fail(function(jqXHR, textStatus, errorThrown) {
+							console.log("Failed to get the classes!");
+							$('.selectHeader').html("There was an error with the date submitted. Please go back and check that it's in the right format.");
+							$('.forward').prop('disabled', true);
 						});
-						let class_selections = class_option_list.join("\n");
-						let title = "Select a Class";
-						if (response.length == 0){
-							title = "No Classes Available";
-						}
-							
-						let student_template = `<div class="form-row">
-										<h6>${first_name}'s Classes:</h6>
-									</div>
-									<div class="form-row">
-										<select style="100%" title="${title}" name="student_class_${student_num}" class="selectpicker" id="student_classes_${student_num}" multiple required>
-											${class_selections}
-										</select>
-	    								</div>
-									<hr style="width:${hrwidth}%">
-						`
-
-
-						$('#register_students').append(`${student_template}`);
-
-						$('#student_classes_' + student_num).selectpicker('render');
-					});
+					
 				}
 			}
 		}
