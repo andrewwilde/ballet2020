@@ -95,8 +95,8 @@ $(document).ready(function(){
 					</div>
 					<div class="form-row">
 						<div class="form-holder">
-						 	<label for="dob_${student_num}">Date of Birth (yyyy-mm-dd)</label>	
-							<input id="student_dob_${student_num}" class="dob_validate" title="Invalid Date" name="dob_${student_num}" type="text" pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))" class="form-control" required>
+							<label for="student_dob_${student_num}">Date of Birth</label>
+							<input id="student_dob_${student_num}" readOnly="readOnly" style="background: white;" placeholder="yyyy-mm-dd" class="form-control" name="dob_${student_num}" type="text" required>
 						</div>
 						<div class="form-holder">
 							<input id="student_notes_${student_num}" name="notes_${student_num}" type="textarea" placeholder="Other Notes (optional)" class="form-control">
@@ -107,6 +107,17 @@ $(document).ready(function(){
 			    }
 
         		    $('#students').html(student_list.join("\n"));    
+
+			    for (i=0; i < student_count; i++) {
+				var student_num = i + 1;
+			        $("#student_dob_" + student_num).datepicker({
+					changeMonth: true,
+					changeYear: true,
+					dateFormat: "yy-mm-dd",
+					yearRange: "-100:-2",
+					defaultDate: '2015-01-01'
+				});
+			    }
 			}
 		}
 
