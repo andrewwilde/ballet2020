@@ -4,7 +4,6 @@
 __pycache__
 secret.py
 stagingsecret.py
-migrations
 *.sh
 scripts/
 *.swp

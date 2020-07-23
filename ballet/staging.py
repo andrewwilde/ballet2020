@@ -57,7 +57,7 @@ ROOT_URLCONF = 'ballet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/andrew/projects/ballet2020/ballet2020/templates/ahana'],
+        'DIRS': ['/home/andrew/projects/ballet2020/staging/templates/ahana'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,7 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/andrew/projects/ballet2020/staging_static'
+STATIC_ROOT = '/home/andrew/projects/ballet2020/staging/static'
 
 # Authentication Settings
 LOGIN_URL= '/login/'

@@ -32,13 +32,15 @@ class StudentAdmin(admin.ModelAdmin):
 
 @admin.register(DanceClass)
 class ClassAdmin(admin.ModelAdmin):
-    list_display = ('level',
+    list_display = ('id',
+                    'level',
                     'dance_type',
                     'day',
                     'start_time',
                     'stop_time',
                     'teacher',
-                    'status',) 
+                    'status',
+                    'curriculum',) 
 
 @admin.register(StudentEnrollment)
 class StudentEnrollmentAdmin(admin.ModelAdmin):

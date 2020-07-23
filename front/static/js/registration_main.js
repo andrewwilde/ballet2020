@@ -273,6 +273,8 @@ $(document).ready(function(){
 				stripeTokenHandler(result.token);
 				confirmation = confirm("Confirm transaction by pressing OK.");
 				if (confirmation == true) {
+					$(".finish").attr("disabled", true);	
+					$(".finish").html("Processing...");
 					document.getElementById("wizard").submit();
 				}
 			}
