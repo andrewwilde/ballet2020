@@ -4,6 +4,7 @@ import logging
 import json
 
 from django.conf import settings
+from django.core.mail import EmailMultiAlternatives 
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -192,4 +193,58 @@ def confirm_registration(request):
         logger.error("Credit card transaction failed(101): e=%s" % str(e))
         return render(request, 'failed_registration.html', context)
     else:
+        try:
+            send_confirm_email(parent)
+        except Exception as e:
+            logger.error("Problem sending confirmation email. e=%s" % str(e))
         return render(request, 'confirmed.html')
+
+
+def send_confirm_email(parent):
+    from payment.templates.email import (get_confirm_text_template,
+                                         get_confirm_html_template)
+
+
+    students = Student.objects.filter(parent=parent)
+    for student in students:
+        enrollments = StudentEnrollment.objects.filter(student=student)
+        first_times = []
+        append_files = ['/home/andrew/projects/ballet2020/staging/front/static/docs/covid.pdf',
+                        '/home/andrew/projects/ballet2020/staging/front/static/docs/payment.pdf',
+                        '/home/andrew/projects/ballet2020/staging/front/static/docs/dress.pdf']
+        for enrollment in enrollments:
+            dance_class = enrollment.dance_class
+            first_times.append("%s @ %s (%s %s)" % (dance_class.get_day_display(),
+                                                    dance_class.start_time.strftime('%I:%M %p'),
+                                                    dance_class.level,
+                                                    dance_class.dance_type))
+            append_files.append(dance_class.curriculum)
+
+        text_body = get_confirm_text_template().format(student_first=student.first_name,
+                                             parent_first=parent.first_name,
+                                             first_days="\n".join(first_times))
+
+        html_body = get_confirm_html_template().format(student_first=student.first_name,
+                                             parent_first=parent.first_name,
+                                             first_days="\n".join(first_times))
+
+        try:
+            logger.info("Sending confirmation email...")
+            email = EmailMultiAlternatives("Petit Ballet Academy: Registration Confirmation",
+                                 html_body,
+                                 settings.EMAIL_HOST_USER,
+                                 [parent.email])
+
+            email.attach_alternative(text_body, 'text/plain')
+
+            for item in append_files:
+                if item is not None:
+                    email.attach_file(item)
+
+            email.send(fail_silently=False)    
+                
+        except Exception as err:
+            logger.error("Problem sending confirmation email. e=%s" % err)
+
+
+    

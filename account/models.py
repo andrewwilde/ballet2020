@@ -1,6 +1,8 @@
 import uuid
+import os
 
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 
 class Account(User):
@@ -80,6 +82,13 @@ class DanceClass(models.Model):
         ('Studio 2', 'Studio 2'),
     ]
 
+    PAYMENT_FREQUENCY = [
+        ('each month', 'each month'),
+        ('one-time payment', 'one-time payment'),
+    ]
+
+    docs_path = os.path.join(settings.BASE_DIR, 'front/static/docs')
+
     image = models.CharField(max_length=50)
     max_students = models.IntegerField()
     start_time = models.TimeField()
@@ -93,9 +102,12 @@ class DanceClass(models.Model):
     min_age = models.IntegerField()
     max_age = models.IntegerField()
     price = models.IntegerField()
+    curriculum = models.FilePathField(path=docs_path, null=True, blank=True)
+    payment_frequency = models.CharField(max_length=20, choices=PAYMENT_FREQUENCY, default='each month')
 
     def __str__(self):
         return "%s %s on %s @ %s with %s" % (self.level, self.dance_type, self.get_day_display(), str(self.start_time), self.teacher.first_name)
+
 class Student(models.Model):
     STUDENT_TYPES = [
         ('Standard', 'Standard'),
