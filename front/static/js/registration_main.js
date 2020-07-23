@@ -147,7 +147,6 @@ $(document).ready(function(){
 				if (dob != "") {
 					$.get(url)
 						.done( function(response){
-							console.log("Success getting the classes!");
 							$('.selectHeader').html('Select Your Classes');
 							var class_option_list = [];
 
@@ -185,7 +184,6 @@ $(document).ready(function(){
    		        				$('.class_forward').prop('disabled', false);
 						})
 						.fail(function(jqXHR, textStatus, errorThrown) {
-							console.log("Failed to get the classes!");
 							$('.selectHeader').html("There was an error with the date submitted. Please go back and check that it's in the right format.");
 						});
 					
@@ -222,10 +220,17 @@ $(document).ready(function(){
 				let classes = response["classes"];
 				for (i=0; i < classes.length; i++){
 					let myclass = classes[i];
+					var description = "";
+					if (myclass['payment_frequency'] == 'each month'){
+						description = "First month's tuition.";
+					} else {
+						description = "One-time payment.";
+					}
+
 					let payment_entry = `
 					 <tr>
 					    <td>${myclass['name']}'s ${myclass['level']} ${myclass['type']} on ${myclass['day']} @ ${myclass['start_time']} - ${myclass['stop_time']}</td>
-					    <td> First month's tuition. </td>
+					    <td> ${description} </td>
 					    <td class="text-center">$${myclass['price']}</td>
 					</tr>`
 					$('#purchase_items').append(payment_entry);
@@ -269,7 +274,6 @@ $(document).ready(function(){
 				errorElement.textContent = result.error.message;
 			}
 			else {
-			        console.log("Successfully creating token...");
 				stripeTokenHandler(result.token);
 				confirmation = confirm("Confirm transaction by pressing OK.");
 				if (confirmation == true) {

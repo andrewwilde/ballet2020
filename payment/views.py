@@ -68,6 +68,7 @@ def register_payments(request):
                                                 "stop_time": my_class.stop_time.strftime('%I:%M %p'),
                                                 "price": my_class.price,
                                                 "status": my_class.status,
+                                                "payment_frequency": my_class.payment_frequency,
                                                 "id": my_class.id})
 
     total = 0

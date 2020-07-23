@@ -50,6 +50,7 @@ def send_email(request):
 @api_view(['GET'])
 def available_classes(request):
     dob = request.GET['dob']
+    logger.info("Pulling available classes for dob=%s" % dob)
     age = get_age_by_first_day(dob)
     available_classes = get_classes_by_age(age)
 
