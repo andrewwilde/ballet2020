@@ -159,18 +159,30 @@ def confirm_registration(request):
                                              parent=parent)
             logger.info("Created a student: %s %s (%i)" % (student.first_name, student.last_name, student.id))
             #Create Enrollments
+            enrollments = []
             for id in student_classes:
                 dance_class = DanceClass.objects.get(id=int(id))
                 enrollment = StudentEnrollment.objects.create(dance_class=dance_class,
                                                               student=student,
                                                               status='Active')
+                enrollments.append(enrollment)
                 logger.info("%s %s (%i) is now enrolled in %s %s (%i)" % (student.first_name,
                                                                           student.last_name,
                                                                           student.id,
                                                                           dance_class.level,
                                                                           dance_class.dance_type,
                                                                           dance_class.id))
+                
                 total = total + dance_class.price
+
+            #Check whether it's time to close a class
+            for enrollment in enrollments:
+                dance_class = enrollment.dance_class
+                enrollment_count = StudentEnrollment.objects.filter(dance_class=dance_class).count()
+                if enrollment_count >= dance_class.max_students:
+                    dance_class.status = 'Inactive'
+                    dance_class.save()
+                    logger.info("%s has reached capacity." % str(dance_class))
 
     except Exception as e:
         context['message'] = "We were unable to enroll your student to the class. This should never happen, please contact us!"
@@ -178,7 +190,7 @@ def confirm_registration(request):
         return render(request, 'failed_registration.html', context)
 
     if total != int(data.get('total')):
-        context['message'] = "Their were some inconsistencies with the form. This should never happen, please contact us!"
+        context['message'] = "There were some inconsistencies with the form. This should never happen, please contact us!"
         logger.error("The POSTed price does not match what we'd expect. POST price=%s, Calculated=%i" % (data.get('total'), total))
         return render(request, 'failed_registration.html', context)
 
