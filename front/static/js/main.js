@@ -287,3 +287,17 @@ $(window).on('load', function() {
 
 })(jQuery);
 
+var now;
+
+$( document ).ready(function() {
+	now = Date.now();
+});
+
+function checkBot() {
+	var submit_time = Date.now();
+	if ( (submit_time - now) < 5000){
+		console.log("Detected bot. Discarding email.");
+		return false;
+	}
+	return true;
+}
