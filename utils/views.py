@@ -35,6 +35,10 @@ def send_email(request):
 
     logger.info("Website Contact Form submitted: %s." % body)
 
+    if "http" in message or "www" in message:
+        logger.info("There was a link contained in this email. Disgarding.")
+        return render(request, 'failed_email.html')
+
     try:
         send_mail("Website Contact Form",
                   body,
