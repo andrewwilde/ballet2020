@@ -104,6 +104,13 @@ function populate_classes(response){
 			level_classes.push(class_template);
 		});
 
+		var curriculum_loc = "#";
+
+		if (classes[0]['curriculum'] != null) {
+			var curriculum_list = classes[0]['curriculum'].split("/");
+			curriculum_loc = "/static/docs/" + curriculum_list[curriculum_list.length - 1];
+		}
+
 		let template_vars = {
 			image: classes[0]['image'],
 			ages: classes[0]['age_range'],
@@ -111,9 +118,10 @@ function populate_classes(response){
 			age_min: classes[0]['min_age'],
 			age_max: classes[0]['max_age'],
 			price: classes[0]['price'],
-			payment_frequency: classes[0]['payment_frequency']
+			payment_frequency: classes[0]['payment_frequency'],
+			curriculum: curriculum_loc 
 		}
-		let {image, ages, times, age_min, age_max, price, payment_frequency} = template_vars;
+		let {image, ages, times, age_min, age_max, price, payment_frequency, curriculum} = template_vars;
 
 		var class_template = `
 <div class="classes-item">
@@ -129,6 +137,7 @@ function populate_classes(response){
 		<div class="ci-author">
 			<div class="author-text">
 				<h6>Ages ${age_min} - ${age_max}</h6>
+				<h6><a target="_blank" href="${curriculum}">Curriculum</a></h6>
 			</div>
 		</div>
 		<a href="/register" class="site-btn sb-gradient">register</a>
