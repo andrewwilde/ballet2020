@@ -44,47 +44,7 @@
 
 	<!-- Header Section -->
 	<header class="header-section">
-		<!--<div class="header-top">
-			<div class="row m-0">
-				<div class="col-md-12 d-none d-md-block p-0">
-					<div class="header-info">
-						<i class="material-icons">map</i>
-						<p>478 South 2000 West, Springville, UT 84663</p>
-					</div>
-					<div class="header-info">
-						<i class="material-icons">phone</i>
-						<p>(385) 404-8687</p>
-					</div>
-				</div>
-				<div class="col-md-6 text-left text-md-right p-0">
-					<div class="header-info d-none d-md-inline-flex">
-						<i class="material-icons">alarm_on</i>
-						<p>Mon - Fri:  6:30am - 07:45pm</p>
-					</div>
-					<div class="header-info">
-						<i class="material-icons">language</i>
-						<select id="language" class="language-select">
-							<option data-display="Language">EN</option>
-							<option data-display="Language" value="1">ES</option>
-							<option data-display="Language" value="2">JA</option>
-							<option data-display="Language" value="2">AR</option>
-						</select>
-                    			</div>
-                		</div>
-			</div>
-		</div>-->
 		<div class="header-bottom">
-			<!--<a href="index.html" class="site-logo">
-				<img src="{% static "img/Petit_black.png" alt="" %}" style="height: 90px; width: 198px">
-            </a>-->
-			<!--<div class="hb-right">
-				<div class="hb-switch" id="search-switch">
-					<img src="{% static "img/icons/search.png" alt="" %}">
-				</div>
-				<div class="hb-switch" id="infor-switch">
-					<img src="{% static "img/icons/bars.png" alt="" %}">
-				</div>
-			</div>-->
 			<div class="container">
 				<ul class="main-menu">
 					<li><a href="/" class="active">Home</a></li>
@@ -117,7 +77,10 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="about-img">
-						<img src="{% static "img/ballet_imgs/Petit_email Header_1.jpg" alt="" %}">
+						<picture>
+							<source srcset="{% static "img/webp/ballet_imgs/Petit_email_Header_1.webp" type="image/webp" %}" />
+							<img src="{% static "img/jpg/ballet_imgs/Petit_email_Header_1.jpg" alt="Welcome to Petit Ballet Academy!"%}" />
+						</picture>
 					</div>
 				</div>
 			</div>
@@ -135,13 +98,19 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="about-img">
-						<img src="{% static "img/welcome.jpg" alt="" %}">
+						<picture>
+							<source srcset="{% static "img/webp/welcome.webp" type="image/webp" %}" />
+							<img src="{% static "img/jpg/welcome.jpg" alt="What kind of dance studio are we?" %}" />
+						</picture>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="about-item">
 						<div class="ai-icon">
-							<img src="{% static "img/icons/ballet-icon-1.png" alt="" %}">
+							<picture>
+								<source srcset="{% static "img/webp/icons/ballet-icon-1.webp" type="image/webp" %}" />
+								<img src="{% static "img/jpg/icons/ballet-icon-1.png" alt="We have caring dance teachers!" %}" />
+							</picture>
 						</div>
 						<div class="ai-text">
 							<h4>Caring Teachers</h4>
@@ -150,7 +119,10 @@
 					</div>
 					<div class="about-item">
 						<div class="ai-icon">
-							<img src="{% static "img/icons/ballet-icon-2.png" alt="" %}">
+							<picture>
+								<source srcset="{% static "img/webp/icons/ballet-icon-2.webp" type="image/webp" %}">
+								<img src="{% static "img/jpg/icons/ballet-icon-2.png" alt="We foster a comfortable environment!" %}">
+							</picture>
 						</div>
 						<div class="ai-text">
 							<h4>Comfortable Environment</h4>
@@ -159,7 +131,10 @@
 					</div>
 					<div class="about-item">
 						<div class="ai-icon">
-							<img src="{% static "img/icons/ballet-icon-3.png" alt="" %}">
+							<picture>
+								<source srcset="{% static "img/webp/icons/ballet-icon-3.webp" type="image/webp" %}">
+								<img src="{% static "img/jpg/icons/ballet-icon-3.png" alt="Outstanding Value!" %}">
+							</picture>
 						</div>
 						<div class="ai-text">
 							<h4>Outstanding Value</h4>
@@ -204,7 +179,10 @@
 					<a href="#" data-toggle="tooltip" title="Marybeth has danced for 20 years. She began her career at The Academy of Ballet where she was trained under the direction of Mark Lanham, Stephanie Parker, Carrie Write, Ann Royal and Phyllis Whitaker. In high school, she performed the lead role of the Dove from Hansel and Gretel, Princess Florine in the Bluebird Pas de Deux from Sleeping Beauty, The Autumn Fairy from Cinderella, the Scarecrow in The Wizard of Oz, and Clara from the Nutcracker. She then went on to BYU-Idaho to receive her degree as a Registered Nurse. During nursing school she was a member of the Upper Valley Civic Ballet Company in Rexburg, Idaho where she performed in the ballet, Carmen. She has taught and assisted ballet for all ages for 9 years. Along with ballet, Marybeth has been trained in jazz, modern, tap, irish, folk, and contemporary dance. Marybeth is married to Andy Wilde and they have two adorable daughters. She currently works at Utah Valley Hospital and she and her family live in Payson, Utah.">
 						<div class="trainer-item">
 							<div class="ti-img">
-								<img src="{% static "img/trainer/marybeth2.jpg" alt="" %}">
+								<picture>
+									<source srcset="{% static "img/webp/teacher/marybeth2.webp" type="image/webp" %}">
+									<img src="{% static "img/jpg/teacher/marybeth2.jpg" alt="Marybeth Wilde, Dance Director" %}">
+								</picture>
 							</div>
 							<div class="ti-text">
 								<h4>Marybeth Wilde</h4>
@@ -224,7 +202,10 @@
 					<a href="#" data-toggle="tooltip" title="Ann started her career at the age of eight at The Academy of Ballet and has been dancing for a total of 16 years. She was taught under the direction of Carrie Write, Ann Royal and Phyllis Whitaker. She performed as the White Dove from Swan Lake and Princess Florine in the Bluebird Pas de Deux from Sleeping Beauty. Ann has taken many forms of dance including jazz, modern, irish, contemporary, and ballroom. She has assisted teaching for 4 years and is looking forward to soon taking on her own students. Ann graduated from Utah Valley University in Deaf Studies as an American Sign Language Interpreter, where she was also a member of the UVU’s Bronze Ballroom Team. Ann is married to Zack Kotyk and has an adorable little girl who occasionally makes her way to ballet class with her mom.">
 						<div class="trainer-item">
 							<div class="ti-img">
-								<img src="{% static "img/trainer/annie.png" alt="" %}">
+								<picture>
+									<source srcset="{% static "img/webp/teacher/annie.webp" type="image/webp" %}">
+									<img src="{% static "img/jpg/teacher/annie.jpg" alt="Ann Kotyk, Ballet Teacher" %}">
+								</picture>
 							</div>
 							<div class="ti-text">
 								<h4>Ann Kotyk</h4>
@@ -244,7 +225,10 @@
 					<a href="#" data-toggle="tooltip" title="Jessica grew up in the Seattle area and has been dancing for a total of 15 years. She started at the age of seven competing in jazz, lyrical, hip hop and tap. At the age of eleven, she centered her training on ballet under the instruction of Michiko Black at MK ballet and then a few years later under Kevin Kaiser at Evergreen City Ballet. Some of her favorite roles include Cupid from Don Quixote, Dew Drop from the Nutcracker and the Crystal Fountain Fairy and Silver Jewel from Sleeping Beauty. She has performed with BYU’s Theatre Ballet Company for two seasons now and toured California and the Pacific Northwest with them. In addition, she enjoys choreographing her own work, creating her first piece as a senior in high school and continuing throughout college. Jessica is currently pursuing an accounting degree at BYU with a Ballet minor. She served a mission for the Church of Jesus Christ of Latter-day Saints to Kyiv, Ukraine and was just recently married to McKay Sanders. She has assisted and substituted ballet classes for two years now and is excited for the opportunity to have her own students.">
 						<div class="trainer-item">
 							<div class="ti-img">
-								<img src="{% static "img/trainer/jessica2.jpg" alt="" %}">
+								<picture>
+									<source srcset="{% static "img/webp/teacher/jessica2.webp" type="image/webp" %}">
+									<img src="{% static "img/jpg/teacher/jessica2.jpg" alt="Jessica Sanders, Ballet Teacher" %}">
+								</picture>
 							</div>
 							<div class="ti-text">
 								<h4>Jessica Sanders</h4>
@@ -264,7 +248,10 @@
 					<a href="#" data-toggle="tooltip" title="Kaitlyn Hellyer began dancing at a Utah-based studio when she was just three years old.  In 2005, her family moved to St. Louis where she joined two dance studios, one of which was her mother's studio (Yes, dancing is in her blood). During this time, Kaitlyn was introduced to multiple dance disciplines including tap, jazz, hip hop, and the basics of ballet. After eight years of continuous dance, Kaitlyn moved to Texas where she continued to perfect her own dance style and began choreographing and teaching her own classes.  Kaitlyn's love for dance blossomed!  She auditioned for and was accepted to the elite Fusion Dance Team where she excelled in lyrical and was a member of the Forte Dance Team, which was a competitive ballroom team.  When Kaitlyn wasn’t competing or choreographing for Fusion and Forte she was dancing in one of the three dance studios of which she was a part. In these studios, Kaitlyn excelled at ballroom, tap, clogging, modern, contemporary, jazz, ballet, and hip hop.  Because of her immense involvement in dance, Kaitlyn travelled to various competitions and was chosen as the representative to attend the Texas Dance Educators’ Association. Just before moving back to Utah, Kaitlyn  was awarded with both “Choreographer of the Year” and “Dancer of the Year” for two consecutive years. Today, Kaitlyn continues her dance education at Utah Valley University.">
 						<div class="trainer-item">
 							<div class="ti-img">
-								<img src="{% static "img/trainer/kaitlyn.png" alt="" %}">
+								<picture>
+									<source srcset="{% static "img/webp/teacher/kaitlyn.webp" type="image/webp" %}">
+									<img src="{% static "img/jpg/teacher/kaitlyn.png" alt="Kaitlyn Hellyer, Ballet & Tap & Jazz Teacher" %}">
+								</picture>
 							</div>
 							<div class="ti-text">
 								<h4>Kaitlyn Hellyer</h4>
@@ -284,7 +271,10 @@
 					<a href="#" data-toggle="tooltip" title="Audrey started her ballet study under Ceyhun Ozsoy in Duncanville, Texas. He led her to attend summer intensives in Louisiana and in New York City at Joffrey Ballet School. While at intensives she was introduced to other dance forms. At the age of 16 her family moved to Austin, where she studied at the Ballet Austin Academy where many of her teachers were members of the professional company. While there, she was able to perform twice in Ballet Austin's production of The Nutcracker. She majored in and received a B.A. in Dance from Brigham Young University. Her emphasis was in ballet, with a secondary emphasis in contemporary.  At BYU she performed on Ballet Showcase for two seasons, and was invited to perform as a guest on Theatre Ballet twice. While at school she studied anatomy, kinesiology, music, and methods of teaching, which she feels enhance her teaching skills. Since graduating in 2016 she has been teaching creative dance.">
 						<div class="trainer-item">
 							<div class="ti-img" style="bottom:42px">
-								<img src="{% static "img/trainer/audrey.jpg" alt="" %}">
+								<picture>
+									<source srcset="{% static "img/webp/teacher/audrey.webp" type="image/webp" %}">
+									<img src="{% static "img/jpg/teacher/audrey.jpg" alt="Audrey Higley, Ballet Teacher" %}">
+								</picture>
 							</div>
 							<div class="ti-text">
 								<h4>Audrey Higley</h4>
@@ -314,7 +304,10 @@
 					<div class="review-slider owl-carousel">
 						<div class="review-item">
 							<div class="ri-img">
-								<img src="{% static "img/icons/profile.jpg" alt="" %}">
+								<picture>
+									<source srcset="{% static "img/webp/icons/profile.webp" type="image/webp" %}">
+									<img src="{% static "img/jpg/icons/profile.jpg" %}">
+								</picture>
 							</div>
 							<div class="ri-text text-white">
 								<p>Wonderful teachers and great personalized learning! I am so grateful I found this studio.</p>
@@ -323,7 +316,10 @@
 						</div>
 						<div class="review-item">
 							<div class="ri-img">
-								<img src="{% static "img/icons/profile.jpg" alt="" %}">
+								<picture>
+									<source srcset="{% static "img/webp/icons/profile.webp" type="image/webp" %}">
+									<img src="{% static "img/jpg/icons/profile.jpg" %}">
+								</picture>
 							</div>
 							<div class="ri-text text-white">
 								<p>Loving and knowledgeable teachers, cozy studio, everyone is so helpful and they make dance fun. Great communication and always willing to help.</p>
@@ -332,7 +328,10 @@
 						</div>
 						<div class="review-item">
 							<div class="ri-img">
-								<img src="{% static "img/icons/profile.jpg" alt="" %}">
+								<picture>
+									<source srcset="{% static "img/webp/icons/profile.webp" type="image/webp" %}">
+									<img src="{% static "img/jpg/icons/profile.jpg" %}">
+								</picture>
 							</div>
 							<div class="ri-text text-white">
 								<p>Great teachers. My daughter learned a lot her first year. They make it easy to have my daughter in dance. The costume wasn’t super expensive and it was actually modest.</p>
@@ -341,7 +340,10 @@
 						</div>
 						<div class="review-item">
 							<div class="ri-img">
-								<img src="{% static "img/icons/profile.jpg" alt="" %}">
+								<picture>
+									<source srcset="{% static "img/webp/icons/profile.webp" type="image/webp" %}">
+									<img src="{% static "img/jpg/icons/profile.jpg" %}">
+								</picture>
 							</div>
 							<div class="ri-text text-white">
 								<p>My 4-yr-old daughter just had her first class and we both loved it!</p>
@@ -350,7 +352,10 @@
 						</div>
 						<div class="review-item">
 							<div class="ri-img">
-								<img src="{% static "img/icons/profile.jpg" alt="" %}">
+								<picture>
+									<source srcset="{% static "img/webp/icons/profile.webp" type="image/webp" %}">
+									<img src="{% static "img/jpg/icons/profile.jpg" %}">
+								</picture>
 							</div>
 							<div class="ri-text text-white">
 								<p>Marybeth and her team of teachers have created a fun learning environment for kids of all ages. They teach their students ballet with patience and love. This is a great studio! Would highly recommend!!!</p>
@@ -359,7 +364,10 @@
 						</div>
 						<div class="review-item">
 							<div class="ri-img">
-								<img src="{% static "img/icons/profile.jpg" alt="" %}">
+								<picture>
+									<source srcset="{% static "img/webp/icons/profile.webp" type="image/webp" %}">
+									<img src="{% static "img/jpg/icons/profile.jpg" %}">
+								</picture>
 							</div>
 							<div class="ri-text text-white">
 								<p>The teachers were kind. My daughter learned a lot and had fun while doing it. It was a very good dance studio and didn’t break the bank to have my daughter learn.</p>
@@ -383,13 +391,19 @@
 			<div class="row">
 				<div class="col-xl-6">
 					<div class="event-video">
-						<img src="{% static "img/ballet_imgs/events.png" alt="" %}">
+						<picture>
+							<source srcset="{% static "img/webp/ballet_imgs/events.webp" type="image/webp" %}">
+							<img src="{% static "img/jpg/ballet_imgs/events.png" alt="Upcoming Events" %}">
+						</picture>
 					</div>
 				</div>
 				<div class="col-xl-6">
 					<div class="event-item">
 						<div class="ei-img">
-							<img src="{% static "img/ballet_imgs/event1.jpg" alt="" %}">
+							<picture>
+								<source srcset="{% static "img/webp/ballet_imgs/event1.webp" type="image/webp" %}">
+								<img src="{% static "img/jpg/ballet_imgs/event1.jpg" %}">
+							</picture>
 						</div>
 						<div class="ei-text">
 							<h4><a href="#">Registration Opens</a></h4>
@@ -401,7 +415,10 @@
 					</div>
 					<div class="event-item">
 						<div class="ei-img">
-							<img src="{% static "img/ballet_imgs/event3.jpg" alt="" %}">
+							<picture>
+								<source srcset="{% static "img/webp/ballet_imgs/event3.webp" type="image/webp" %}">
+								<img src="{% static "img/jpg/ballet_imgs/event3.jpg" %}">
+							</picture>
 						</div>
 						<div class="ei-text">
 							<h4>Free Ballet Classes</h4>
@@ -414,7 +431,10 @@
 					</div>
 					<div class="event-item">
 						<div class="ei-img">
-							<img src="{% static "img/ballet_imgs/event2.jpg" alt="" %}">
+							<picture>
+								<source srcset="{% static "img/webp/ballet_imgs/event2.webp" type="image/webp" %}">
+								<img src="{% static "img/jpg/ballet_imgs/event2.jpg" %}">
+							</picture>
 						</div>
 						<div class="ei-text">
 							<h4>First Day of 2020-2021 Season</h4>
@@ -478,42 +498,60 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:Eig0NzggUyAyMDAwIFcsI
 	<div class="gallery-section">
 		<div class="gallery-slider owl-carousel">
 			<div class="gs-item">
-				<img src="{% static "img/gallery/gallery1.jpg" alt="" %}">
+				<picture>
+					<source srcset="{% static "img/webp/gallery/gallery1.webp" type="image/webp" %}">
+					<img src="{% static "img/jpg/gallery/gallery1.jpg" %}">
+				</picture>
 				<div class="gs-hover">
 					<i class="fa fa-instagram"></i>
 					<p>Caring Teachers</p>
 				</div>
 			</div>
 			<div class="gs-item">
-				<img src="{% static "img/gallery/gallery2.png" alt="" %}">
+				<picture>
+					<source srcset="{% static "img/webp/gallery/gallery2.webp" type="image/webp" %}">
+					<img src="{% static "img/jpg/gallery/gallery2.jpg" %}">
+				</picture>
 				<div class="gs-hover">
 					<i class="fa fa-instagram"></i>
 					<p>Fun Environment</p>
 				</div>
 			</div>
 			<div class="gs-item">
-				<img src="{% static "img/gallery/gallery3_2.jpg" alt="" %}">
+				<picture>
+					<source srcset="{% static "img/webp/gallery/gallery3_2.webp" type="image/webp" %}">
+					<img src="{% static "img/jpg/gallery/gallery3_2.jpg" %}">
+				</picture>
 				<div class="gs-hover">
 					<i class="fa fa-instagram"></i>
 					<p>Sweet Comraderie</p>
 				</div>
 			</div>
 			<div class="gs-item">
-				<img src="{% static "img/gallery/gallery4.jpg" alt="" %}">
+				<picture>
+					<source srcset="{% static "img/webp/gallery/gallery4.webp" type="image/webp" %}">
+					<img src="{% static "img/jpg/gallery/gallery4.jpg" %}">
+				</picture>
 				<div class="gs-hover">
 					<i class="fa fa-instagram"></i>
 					<p>Experienced</p>
 				</div>
 			</div>
 			<div class="gs-item">
-				<img src="{% static "img/gallery/gallery5.jpg" alt="" %}">
+				<picture>
+					<source srcset="{% static "img/webp/gallery/gallery5.webp" type="image/webp" %}">
+					<img src="{% static "img/jpg/gallery/gallery5.jpg" %}">
+				</picture>
 				<div class="gs-hover">
 					<i class="fa fa-instagram"></i>
 					<p>New Friends</p>
 				</div>
 			</div>
 			<div class="gs-item">
-				<img src="{% static "img/gallery/gallery6.jpg" alt="" %}">
+				<picture>
+					<source srcset="{% static "img/webp/gallery/gallery6.webp" type="image/webp" %}">
+					<img src="{% static "img/jpg/gallery/gallery6.jpg" %}">
+				</picture>
 				<div class="gs-hover">
 					<i class="fa fa-instagram"></i>
 					<p>Happy Students</p>
@@ -579,7 +617,12 @@ src="https://www.google.com/maps/embed/v1/place?q=place_id:Eig0NzggUyAyMDAwIFcsI
 	</footer>
 	<!-- Footer Section end -->
 
-	<div class="back-to-top"><img src="{% static "img/icons/up-arrow.png" alt="" %}"></div>
+	<div class="back-to-top">
+		<picture>
+			<source srcset="{% static "img/webp/icons/up-arrow.webp" type="image/webp" %}">
+			<img src="{% static "img/jpg/icons/up-arrow.png" %}">
+		</picture>
+	</div>
 
 	<!-- Search model end -->
 	<div class="modal fade right" id="mission" tabindex="-1" role="dialog" aria-labelledby="missionmodal" aria-hidden="true">

@@ -66,7 +66,10 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="about-img">
-						<img src="{% static "img/ballet_imgs/Petit_email Header_1.jpg" alt="" %}">
+						<picture>
+							<source srcset="{% static "img/webp/ballet_imgs/Petit_email_Header_1.webp" type="image/webp" %}" />
+							<img src="{% static "img/jpg/ballet_imgs/Petit_email_Header_1.jpg" alt="See you in class!"%}" />
+						</picture>
 					</div>
 				</div>
 			</div>
