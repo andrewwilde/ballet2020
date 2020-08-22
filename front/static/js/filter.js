@@ -113,6 +113,7 @@ function populate_classes(response){
 
 		let template_vars = {
 			image: classes[0]['image'],
+			secondary: classes[0]['secondary_image'],
 			ages: classes[0]['age_range'],
 			times: level_classes.join('\n'),
 			age_min: classes[0]['min_age'],
@@ -121,12 +122,15 @@ function populate_classes(response){
 			payment_frequency: classes[0]['payment_frequency'],
 			curriculum: curriculum_loc 
 		}
-		let {image, ages, times, age_min, age_max, price, payment_frequency, curriculum} = template_vars;
+		let {image, secondary, ages, times, age_min, age_max, price, payment_frequency, curriculum} = template_vars;
 
 		var class_template = `
 <div class="classes-item">
 	<div class="ci-img">
-		<img src="${image}" alt="">
+		<picture>
+			<source srcset="${image}" type="image/webp">
+			<img src="${secondary}" alt="">
+		</picture>
 	</div>
 	<div class="ci-text">
 		<h4>${title}</h4>
