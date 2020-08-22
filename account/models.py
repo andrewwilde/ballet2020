@@ -90,6 +90,7 @@ class DanceClass(models.Model):
     docs_path = os.path.join(settings.BASE_DIR, 'front/static/docs')
 
     image = models.CharField(max_length=50)
+    secondary_image = models.CharField(max_length=50)
     max_students = models.IntegerField()
     start_time = models.TimeField()
     stop_time = models.TimeField()
