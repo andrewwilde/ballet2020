@@ -1,11 +1,3 @@
-/* ===================================
---------------------------------------
-	Ahana | Yoga HTML Template
-	Version: 1.0
---------------------------------------
-======================================*/
-
-
 'use strict';
 
 function csrfSafeMethod(method) {
@@ -27,7 +19,7 @@ $(window).on('load', function() {
 		Preloder
 	--------------------*/
 	$(".loader").fadeOut();
-	$("#preloder").delay(400).fadeOut("slow");
+	$("#preloder").delay(100).fadeOut("slow");
 
 });
 
@@ -42,33 +34,6 @@ $(window).on('load', function() {
 		openedSymbol: '<i class="fa fa-angle-down"></i>'
 	});
 	
-	/*----------------
-		Search model
-	------------------*/
-	$('#search-switch').on('click', function() {
-		$('.search-model').fadeIn(400);
-	});
-
-	$('.search-close-switch').on('click', function() {
-		$('.search-model').fadeOut(400,function(){
-			$('#search-input').val('');
-		});
-	});
-
-	/*---------------
-		Infor model
-	----------------*/
-	$('#infor-switch').on('click', function() {
-		$('.infor-model-warp').fadeIn(400);
-		$('.infor-model-warp').addClass('active');	
-	});
-
-	$('.infor-close').on('click', function() {
-		$('.infor-model-warp').removeClass('active');
-		$('.infor-model-warp').fadeOut(400);
-	});
-
-
 	/*------------------
 		Background Set
 	--------------------*/
@@ -149,48 +114,6 @@ $(window).on('load', function() {
 		},
 	});
 
-	/*------------------------
-		Slasses Other Slider
-	------------------------*/
-	$('.classes-other-slider').owlCarousel({
-		loop: true,
-		nav: true,
-		dots: false,
-		margin: 0,
-		navText:['<i class="material-icons">keyboard_arrow_left</i>','<i class="material-icons">keyboard_arrow_right</i>'],
-		autoplay: true,
-		autoplayHoverPause: true,
-		responsive : {
-			0 : {
-				items: 1
-			},
-			768 : {
-				items: 2
-			},
-		},
-	});
-
-	/*------------------------
-		Events Other Slider
-	-------------------------*/
-	$('.event-other-slider').owlCarousel({
-		loop: true,
-		nav: true,
-		dots: false,
-		margin: 0,
-		navText:['<i class="material-icons">keyboard_arrow_left</i>','<i class="material-icons">keyboard_arrow_right</i>'],
-		autoplay: true,
-		autoplayHoverPause: true,
-		responsive : {
-			0 : {
-				items: 1
-			},
-			768 : {
-				items: 2
-			},
-		},
-	});
-
 	/*------------------
 		Trainer Slider
 	--------------------*/
@@ -239,65 +162,4 @@ $(window).on('load', function() {
 			}
 		},
 	});
-
-	/*------------------
-		Popular Slider
-	--------------------*/
-	$('.popular-classes-widget').owlCarousel({
-		loop: true,
-		nav: false,
-		dots: true,
-		items: 1,
-		autoplayHoverPause: true,
-	});
-
-	/*------------------
-		Progress Bar
-	--------------------*/
-	$('.progress-bar-style').each(function() {
-		var progress = $(this).data("progress");
-		var bgcolor = $(this).data("bgcolor");
-		var prog_width = progress + '%';
-		if (progress <= 100) {
-			$(this).append('<div class="bar-inner" style="width:' + prog_width + '; background: '+ bgcolor +';"><span>' + prog_width + '</span></div>');
-		}
-		else {
-			$(this).append('<div class="bar-inner" style="width:100%; background: '+ bgcolor +';"><span>100%</span></div>');
-		}
-	});
-
-	/*------------------
-        Magnific Popup
-    --------------------*/
-    $('.video-popup').magnificPopup({
-        type: 'iframe'
-    });
-
-	/*--------------
-       Nice Select
-    ----------------*/
-	$('#language').niceSelect();
-	$('.circle-select').niceSelect();
-
-	/*------------------
-		Datepicker
-	--------------------*/
-	$( ".event-date" ).datepicker();
-	
-
 })(jQuery);
-
-var now;
-
-$( document ).ready(function() {
-	now = Date.now();
-});
-
-function checkBot() {
-	var submit_time = Date.now();
-	if ( (submit_time - now) < 5000){
-		console.log("Detected bot. Discarding email.");
-		return false;
-	}
-	return true;
-}
