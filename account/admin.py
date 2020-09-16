@@ -10,11 +10,12 @@ from .models import *
 @admin.register(ParentAccount)
 class ParentAdmin(admin.ModelAdmin):
 
-    list_display = ('username',
+    list_display = ('get_full_name',
                     'phone_number',
                     'email',
                     'account_type',
                     'date_joined',)
+
 
 @admin.register(TeacherAccount)
 class TeacherAdmin(admin.ModelAdmin):
@@ -27,8 +28,11 @@ class TeacherAdmin(admin.ModelAdmin):
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'birth_date', 'student_type', 'parent', 'notes',)
-    list_display_links = ('parent',)
+    list_display = ('first_name', 'last_name', 'birth_date', 'student_type', 'get_parent', 'notes',)
+    list_display_links = ('get_parent',)
+
+    def get_parent(self, obj):
+        return obj.parent.get_full_name()
 
 @admin.register(DanceClass)
 class ClassAdmin(admin.ModelAdmin):
@@ -40,11 +44,20 @@ class ClassAdmin(admin.ModelAdmin):
                     'stop_time',
                     'teacher',
                     'status',
-                    'curriculum',) 
+                    'curriculum',
+                    'price_id',) 
 
 @admin.register(StudentEnrollment)
 class StudentEnrollmentAdmin(admin.ModelAdmin):
     list_display = ('dance_class',
                     'student',
                     'status',
-                    'id')
+                    'get_parent',
+                    'get_price',
+                    'id',)
+
+    def get_parent(self, obj):
+        return obj.student.parent.get_full_name()
+
+    def get_price(self, obj):
+        return obj.dance_class.price
