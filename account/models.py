@@ -30,7 +30,7 @@ class ParentAccount(Account):
         verbose_name_plural = 'Parents'
 
     account_type = models.CharField(max_length=20, default="Parent")
-    stripe_id = models.CharField(max_length=50, default="")
+    stripe_id = models.CharField(max_length=50, default="", null=True, blank=True)
 
 class DanceClass(models.Model):
     class Meta:
@@ -87,10 +87,21 @@ class DanceClass(models.Model):
         ('one-time payment', 'one-time payment'),
     ]
 
+    PRICE_ID = [
+        ('price_1HRWnQIQ4hPK7zxOAOwjHQvv', 'Pre Creative Dance'),
+        ('price_1HRWn3IQ4hPK7zxOb64qqBCG', 'Kinder Tap'),
+        ('price_1HRWmmIQ4hPK7zxOQ8GKSplt', 'Intermediate Jazz'),
+        ('price_1HRWmYIQ4hPK7zxOEcN1irzM', 'Beginning 1 Jazz'),
+        ('price_1HRWm7IQ4hPK7zxOh8w1Ksqy', 'Beginning 2 Ballet'),
+        ('price_1HRWlgIQ4hPK7zxO3I0rUBCQ', 'Beginning 1 Ballet'),
+        ('price_1HRWjxIQ4hPK7zxOxZKgZTg1', 'Pre Ballet'),
+        ('price_1HRWHPIQ4hPK7zxOW0DfgEpX', 'Kinder Ballet'),
+    ]
+
     docs_path = os.path.join(settings.BASE_DIR, 'front/static/docs')
 
     image = models.CharField(max_length=50)
-    secondary_image = models.CharField(max_length=50)
+    secondary_image = models.CharField(max_length=50, null=True, blank=True)
     max_students = models.IntegerField()
     start_time = models.TimeField()
     stop_time = models.TimeField()
@@ -105,6 +116,7 @@ class DanceClass(models.Model):
     price = models.IntegerField()
     curriculum = models.FilePathField(path=docs_path, null=True, blank=True)
     payment_frequency = models.CharField(max_length=20, choices=PAYMENT_FREQUENCY, default='each month')
+    price_id = models.CharField(max_length=50, choices=PRICE_ID, default="")
 
     def __str__(self):
         return "%s %s on %s @ %s with %s" % (self.level, self.dance_type, self.get_day_display(), str(self.start_time), self.teacher.first_name)
