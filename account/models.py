@@ -31,6 +31,7 @@ class ParentAccount(Account):
 
     account_type = models.CharField(max_length=20, default="Parent")
     stripe_id = models.CharField(max_length=50, default="", null=True, blank=True)
+    is_late = models.BooleanField(default=False)
 
 class DanceClass(models.Model):
     class Meta:
