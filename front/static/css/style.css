@@ -8,6 +8,11 @@ body {
 	font-smoothing: antialiased;
 }
 
+@font-face {
+  font-family: "Clicker-Script";
+  src: url("../fonts/ClickerScript-Regular.ttf"); }
+
+
 h1,
 h2,
 h3,
@@ -24,14 +29,14 @@ h1 {
 }
 
 h2 {
-	font-family: "Arial", serif;
+	font-family: "Clicker-Script", "Arial", serif;
 	font-weight: 400;
 	font-size: 36px;
 }
 
 h3 {
 	font-size: 30px;
-	font-family: "Arial", serif;
+	font-family: "Clicker-Script", "Arial", serif;
 	font-weight: 400;
 }
 
@@ -119,9 +124,8 @@ ol {
 
 .section-title h2 {
 	font-weight: 400;
-	font-size: 38px;
-	font-family: "Arial", serif;
-	text-transform: uppercase;
+	font-size: 66px;
+	font-family: "Clicker-Script", "Arial", serif;
 }
 
 .section-title p {
@@ -1061,7 +1065,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 	text-transform: uppercase;
 	font-size: 50px;
 	color: #fff;
-	font-family: "Arial", serif;
+	font-family: "Clicker-Script", "Arial", serif;
 	line-height: 1.3;
 	margin-bottom: 20px;
 }
@@ -1433,8 +1437,9 @@ only screen and (min-width: 576px) and (max-width: 767px),
 
 .about-item .ai-text h4 {
 	font-weight: 400;
-	font-family: "Arial", serif;
+	font-family: "Clicker-Script", "Arial", serif;
 	margin-bottom: 15px;
+	font-size: 33px;
 }
 
 .about-item .ai-text p {
@@ -1617,9 +1622,10 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .classes-item h4 {
-	font-family: "Arial", serif;
+	font-family: "Clicker-Script", "Arial", serif;
 	font-weight: 400;
 	margin-bottom: 15px;
+	font-size: 33px;
 }
 
 .classes-item h4 a {
@@ -1679,8 +1685,9 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .classes-item .ci-author h6 {
-	font-family: "Arial", serif;
+	font-family: "Clicker-Script", "Arial", serif;
 	font-weight: 400;
+	font-size: 20px;
 }
 
 .classes-item .ci-author p {
@@ -1883,7 +1890,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 .pc-item .pc-text h4 {
 	font-size: 20px;
 	font-weight: 400;
-	font-family: "Arial", serif;
+	font-family: "Clicker-Script", "Arial", serif;
 	margin-bottom: 15px;
 }
 
@@ -2706,10 +2713,9 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .footer-widget .fw-title {
-	font-size: 20px;
+	font-size: 33px;
 	margin-bottom: 30px;
 	padding-top: 10px;
-	text-transform: uppercase;
 }
 
 .footer-widget ul {

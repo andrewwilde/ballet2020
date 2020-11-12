@@ -41,6 +41,7 @@ class DanceClass(models.Model):
     STATUS = [
         ('Active', 'Active'),
         ('Inactive', 'Inactive'),
+        ('Full', 'Class is Full'),
     ]
 
     DAYS_OF_WEEK = [
@@ -92,6 +93,7 @@ class DanceClass(models.Model):
         ('price_1HRWnQIQ4hPK7zxOAOwjHQvv', 'Pre Creative Dance'),
         ('price_1HRWn3IQ4hPK7zxOb64qqBCG', 'Kinder Tap'),
         ('price_1HRWmmIQ4hPK7zxOQ8GKSplt', 'Intermediate Jazz'),
+        ('price_1HmWiPIQ4hPK7zxOxdtqzmtJ', 'Kinder Jazz'),
         ('price_1HRWmYIQ4hPK7zxOEcN1irzM', 'Beginning 1 Jazz'),
         ('price_1HRWm7IQ4hPK7zxOh8w1Ksqy', 'Beginning 2 Ballet'),
         ('price_1HRWlgIQ4hPK7zxO3I0rUBCQ', 'Beginning 1 Ballet'),

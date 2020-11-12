@@ -21,21 +21,6 @@ logger = logging.getLogger('ballet')
 stripe.api_key = settings.STRIPE_KEY
 
 def stripe_charge(parent, stripe_token, total, description):
-    #name = "%s %s" % (parent.first_name, parent.last_name)
-    #if parent.stripe_id == "":
-    #    customer = stripe.Customer.create(
-    #        email=parent.email,
-    #        name=name,
-    #        phone=parent.phone_number)
-
-    #    parent.stripe_id = customer.id
-    #    parent.save()
-    #    logger.info("New stripe customer created. %s=%s" % (parent.email, parent.stripe_id))
-
-    #else:
-    #    customer = stripe.Customer.retrieve(parent.stripe_id)
-
-
     logger.info("Attempting to charge credit card. Email=%s, Total=%i" % (parent.email, total))
     stripe.Charge.create(
         amount=total*100,
@@ -180,7 +165,7 @@ def confirm_registration(request):
                 dance_class = enrollment.dance_class
                 enrollment_count = StudentEnrollment.objects.filter(dance_class=dance_class).count()
                 if enrollment_count >= dance_class.max_students:
-                    dance_class.status = 'Inactive'
+                    dance_class.status = 'Full'
                     dance_class.save()
                     logger.info("%s has reached capacity." % str(dance_class))
 
