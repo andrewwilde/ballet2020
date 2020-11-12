@@ -94,13 +94,19 @@ function populate_classes(response){
 	$.each(response, function(title, classes) {
 		var level_classes = [];
 		$.each(classes, function(idx, dance_class) {
+			var class_state = "";
+			if (dance_class['status'] == 'Full'){
+				class_state = "(Class is Full)";
+			}
+
 			let template_vars = {
 				start_time: dance_class['start_time'],
 				stop_time: dance_class['stop_time'],
-				day: dance_class['day']
+				day: dance_class['day'],
+				class_status: class_state 
 			};
-			let {day, start_time, stop_time, age_min, age_max} = template_vars;
-			var class_template = `<div class="ci-metas"><div class="ci-meta"><h6>${day} @ ${start_time} - ${stop_time}</h6></div></div>`
+			let {day, start_time, stop_time, age_min, age_max, class_status} = template_vars;
+			var class_template = `<div class="ci-metas"><div class="ci-meta"><h6>${day} @ ${start_time} - ${stop_time} ${class_status}</h6></div></div>`
 			level_classes.push(class_template);
 		});
 
