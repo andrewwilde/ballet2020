@@ -5,6 +5,8 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 
+DEFAULT_SEMESTER='Fall'
+
 class Account(User):
     phone_number = models.CharField(max_length=20)
     account_id = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -149,6 +151,12 @@ class TeacherAssignment(ClassAssignment):
     teacher = models.ForeignKey(TeacherAccount, on_delete=models.CASCADE)
 
 class StudentEnrollment(ClassAssignment):
+    SEMESTER_PERIOD = [
+        ('Fall', 'Fall'),
+        ('Winter', 'Winter'),
+        ('Spring', 'Spring'),
+        ('Summer', 'Summer')
+    ]
     ENROLLMENT_STATES = [
         ('Active', 'Active'),
         ('Inactive', 'Inactive'),
@@ -157,5 +165,8 @@ class StudentEnrollment(ClassAssignment):
     status = models.CharField(max_length=15,
                               choices=ENROLLMENT_STATES,
                               default= 'Inactive')
+    semester = models.CharField(max_length=10,
+                               choices=SEMESTER_PERIOD,
+                               default=DEFAULT_SEMESTER)
 
 
