@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i|Playfair+Display:400,400i,700,700i&display=swap");
+/*@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i|Playfair+Display:400,400i,700,700i&display=swap");*/
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 html,
 body {
@@ -10,7 +10,9 @@ body {
 
 @font-face {
   font-family: "Clicker-Script";
-  src: url("../fonts/ClickerScript-Regular.ttf"); }
+  src: url("../fonts/ClickerScript-Regular.ttf");
+  font-display: swap;
+ }
 
 
 h1,
