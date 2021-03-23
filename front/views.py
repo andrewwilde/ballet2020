@@ -51,7 +51,7 @@ def filter_classes(request):
 @api_view(["GET"])
 def get_classes_by_category(request):
     classes_by_category = {}
-    dance_classes = DanceClass.objects.exclude(status="Inactive").order_by("dance_type", "level", "day", "start_time")
+    dance_classes = DanceClass.objects.exclude(status="Inactive").order_by("start_day", "dance_type", "level", "day", "start_time")
     for cls in dance_classes:
         dict_cls = model_to_dict(cls)
         dict_cls['day'] = cls.get_day_display()
