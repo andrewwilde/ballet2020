@@ -47,6 +47,7 @@ class DanceClass(models.Model):
     ]
 
     DAYS_OF_WEEK = [
+        (-1, 'Monday - Friday'),
         (0, 'Monday'),
         (1, 'Tuesday'),
         (2, 'Wednesday'),
@@ -65,6 +66,7 @@ class DanceClass(models.Model):
         ('Ballroom', 'Ballroom'),
         ('Hip Hop', 'Hip Hop'),
         ('Creative Dance', 'Creative Dance'),
+        ('Dance Camp', 'Dance Camp'),
     ]
 
     LEVELS = [
@@ -122,9 +124,24 @@ class DanceClass(models.Model):
     curriculum = models.FilePathField(path=docs_path, null=True, blank=True)
     payment_frequency = models.CharField(max_length=20, choices=PAYMENT_FREQUENCY, default='each month')
     price_id = models.CharField(max_length=50, choices=PRICE_ID, default="")
+    start_day = models.DateField(blank=True, null=True)
+    end_day = models.DateField(blank=True, null=True)
+    description = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
-        return "%s %s on %s @ %s with %s" % (self.level, self.dance_type, self.get_day_display(), str(self.start_time), self.teacher.first_name)
+        if "Camp" in self.dance_type:
+            return "%s %s: %s - %s from %s - %s" % (self.level,
+                                                    self.dance_type,
+                                                    self.start_day.strftime('%B %-d'),
+                                                    self.end_day.strftime('%B %-d'), 
+                                                    self.start_time.strftime('%I:%M %p'),
+                                                    self.stop_time.strftime('%I:%M %p'))
+        else:
+            return "%s %s on %s @ %s with %s" % (self.level,
+                                                 self.dance_type,
+                                                 self.get_day_display(),
+                                                 str(self.start_time),
+                                                 self.teacher.first_name)
 
 class Student(models.Model):
     STUDENT_TYPES = [

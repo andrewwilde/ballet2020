@@ -21,7 +21,7 @@
 		<!--<link rel="stylesheet" href="{% static "fonts/material-design-iconic-font/css/material-design-iconic-font.css" %}">-->
 		<link rel="stylesheet" href="{% static "css/registration_style.css" %}">
     		<link rel="stylesheet" href="{% static "css/slicknav.min.css" %}"/>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+		<link rel="stylesheet" href="{% static "css/bootstrap-select.css" %}">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
@@ -54,7 +54,7 @@
 	                <form action="/confirm_registration" method="POST" id="wizard">
 				{% csrf_token %}
 				<h2></h2>
-                		<section> 
+                		<section style="margin-top: 1px"> 
 				    <div class="inner">
 				    	<div class="image-holder">
 						<picture>
@@ -128,7 +128,8 @@
 	    						</div>
 	    						<p class="selectHeader" style="color: #c687b0">Students may register for multiple classes!</p>
 							<div id="register_students"></div>
-							<p style="font-size:10px; color: black;">* If you would like to discuss an age exception for a class, please call 385-404-8687.<br>** Classes will begin the week of January 4th, 2021.</p>
+							<p style="font-size:10px; color: black;">* If you would like to discuss an age exception for a class, please chat with us or call 385-404-8687.</p>
+							<p style="font-size:10px; color: black;">** If a class does not have at least four students, the camp will be cancelled and you will be contacted about other available options. Refunds will also be given if no other camps are viable options.</p>
 							<div class="form-row">
 								<div class="form-holder">
 									<button type="button" class="backward reg-button">&larr;&nbsp;Backward</button>
@@ -230,10 +231,10 @@
 							</div>
 							<div class="form-row">
 								<div class="form-holder">
-									<a href="{% static "docs/payment.pdf" %}" target="_blank">Attendance & Payment Policies</a><br/>
+									<a href="{% static "docs/summer_payment.pdf" %}" target="_blank">Camp Attendance & Payment Policies</a><br/>
 								</div>
 								<div class="form-holder">
-									<a href="{% static "docs/dress.pdf" %}" target="_blank">Dress & Conduct Code</a><br/>
+									<a href="{% static "docs/payment.pdf" %}" target="_blank">Class Attendance & Payment Policies</a><br/>
 								</div>
 							</div>
 							<div class="form-row">
@@ -244,6 +245,12 @@
 									<a href="{% static "docs/covid.pdf" %}" target="_blank">COVID Policies</a>
 								</div>
 							</div>
+							<div class="form-row">
+								<div class="form-holder">
+									<a href="{% static "docs/dress.pdf" %}" target="_blank">Dress & Conduct Code</a></br>
+								</div>
+							</div>
+
 							<div class="form-row" style="width: 100%;">
 								<div class="form-holder" style="display: inherit; margin-left: 10px;">
 									<input id="acceptTerms-2" name="acceptTerms" type="checkbox" class="required"><label for="acceptTerms" style="padding-left: 10px;"> I agree to follow these policies.</label>
@@ -280,6 +287,19 @@
 	<script src="{% static "js/registration_main.js" %}"></script>
 	<script src= "{% static "js/jquery.slicknav.min.js" %}"></script>
 	<script src= "{% static "js/jquery.ui.datepicker.validation.min.js" %}"></script>
+
+	<!--Start of Tawk.to Script-->
+	<script type="text/javascript">
+	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+	(function(){
+	var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+	s1.async=true;
+	s1.src='https://embed.tawk.to/604317871c1c2a130d658b80/1f0317qf9';
+	s1.charset='UTF-8';
+	s1.setAttribute('crossorigin','*');
+	s0.parentNode.insertBefore(s1,s0);
+	})();
+	</script>
 
 </body>
 </html>
