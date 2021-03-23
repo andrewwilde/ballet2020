@@ -190,5 +190,6 @@ LOGGING = {
 }
 
 TIME_INPUT_FORMATS = ('%I:%M %p',)
+CLASS_DAY_FORMAT = ('%B %-d',)
 
 REGISTRATION_FEE = 20

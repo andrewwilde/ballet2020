@@ -156,7 +156,16 @@ $(document).ready(function(){
 								let class_type = dance_class["dance_type"];
 								let class_day = dance_class["day"];
 								let class_start = dance_class["start_time"];
-								let student_options = `<option value="${dance_id}">${class_level} ${class_type} on ${class_day} @ ${class_start}</option>`
+								let class_end = dance_class["stop_time"];
+								let day_start = dance_class["start_day"];
+								let day_end = dance_class["end_day"];
+								let student_options = "";
+								if (dance_class["camp"] == true) {
+									student_options = `<option value="${dance_id}">${class_level} ${class_type}: ${day_start} - ${day_end} from  ${class_start} - ${class_end}</option>`;
+								} else {
+									student_options = `<option value="${dance_id}">${class_level} ${class_type} on ${class_day} @ ${class_start}</option>`;
+								}
+
 								let title = "Select a Class";
 								class_option_list.push(student_options);
 							});
@@ -170,7 +179,7 @@ $(document).ready(function(){
 											<h6>${first_name}'s Classes:</h6>
 										</div>
 										<div class="form-row">
-											<select style="100%" title="${title}" name="student_class_${student_num}" class="selectpicker" id="student_classes_${student_num}" multiple required>
+											<select data-width="95%" title="${title}" name="student_class_${student_num}" class="selectpicker" id="student_classes_${student_num}" multiple data-selected-text-format="static" required>
 												${class_selections}
 											</select>
 	    									</div>
@@ -227,9 +236,17 @@ $(document).ready(function(){
 						description = "One-time payment.";
 					}
 
+					let class_title = "";
+					if (myclass['type'].includes("Camp")){
+						class_title = `${myclass['name']}'s ${myclass['level']} ${myclass['type']}: ${myclass['start_day']} - ${myclass['end_day']} @ ${myclass['start_time']} - ${myclass['stop_time']}`;
+					} else {
+						class_title = `${myclass['name']}'s ${myclass['level']} ${myclass['type']} on ${myclass['day']} @ ${myclass['start_time']} - ${myclass['stop_time']}`;
+
+					}
+
 					let payment_entry = `
 					 <tr>
-					    <td>${myclass['name']}'s ${myclass['level']} ${myclass['type']} on ${myclass['day']} @ ${myclass['start_time']} - ${myclass['stop_time']}</td>
+					    <td> ${class_title} </td>
 					    <td> ${description} </td>
 					    <td class="text-center">$${myclass['price']}</td>
 					</tr>`

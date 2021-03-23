@@ -55,6 +55,12 @@ def get_classes_by_category(request):
     for cls in dance_classes:
         dict_cls = model_to_dict(cls)
         dict_cls['day'] = cls.get_day_display()
+
+        if cls.start_day:
+            dict_cls['start_day'] = cls.start_day.strftime('%b %-d')
+        if cls.end_day:
+            dict_cls['end_day'] = cls.end_day.strftime('%b %-d')
+
         dict_cls['start_time'] = cls.start_time.strftime('%I:%M %p')
         dict_cls['stop_time'] = cls.stop_time.strftime('%I:%M %p')
         dance_category = "%s %s" % (cls.level, cls.dance_type)

@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 import json
+import os
 
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives 
@@ -34,12 +35,8 @@ def stripe_charge(parent, stripe_token, total, description):
 @api_view(['GET'])
 def register_payments(request):
     payment_schedule = { "fees": [], "classes": [] } 
-    payment_schedule["fees"].append( {
-        "title": "Registration Fee",
-        "description": "One time non-refundable fee. Reserves spot in class.",
-        "price": 20
-    })
-
+    
+    add_registration = False
     payload = request.GET['payload']
     payload = json.loads(payload)
     for name, class_list in payload.items():
@@ -51,10 +48,22 @@ def register_payments(request):
                                                 "day": my_class.get_day_display(),
                                                 "start_time": my_class.start_time.strftime('%I:%M %p'),
                                                 "stop_time": my_class.stop_time.strftime('%I:%M %p'),
+                                                "start_day": my_class.start_day.strftime('%B %-d'),
+                                                "end_day": my_class.end_day.strftime('%B %-d'),
                                                 "price": my_class.price,
                                                 "status": my_class.status,
                                                 "payment_frequency": my_class.payment_frequency,
                                                 "id": my_class.id})
+
+            if my_class.payment_frequency == "each month":
+                add_registration = True
+
+    if add_registration:
+        payment_schedule["fees"].append( {
+            "title": "Registration Fee",
+            "description": "One time non-refundable fee. Reserves spot in class.",
+            "price": 20
+        })
 
     total = 0
     for item in payment_schedule["fees"]:
@@ -121,10 +130,11 @@ def confirm_registration(request):
         return render(request, 'failed_registration.html', context)
 
     #Create Students
-    total = settings.REGISTRATION_FEE
+    total = 0
     student_count = int(data.get('student_count'))
     try:
         for student_num in range(1, student_count + 1):
+            add_registration_fee = False
             student_first_id = "first_name_%i" % student_num
             student_last_id = "last_name_%i" % student_num
             student_dob_id = "dob_%i" % student_num
@@ -147,6 +157,10 @@ def confirm_registration(request):
             enrollments = []
             for id in student_classes:
                 dance_class = DanceClass.objects.get(id=int(id))
+
+                if dance_class.payment_frequency == 'each month':
+                    add_registration_fee = True
+
                 enrollment = StudentEnrollment.objects.create(dance_class=dance_class,
                                                               student=student,
                                                               status='Active')
@@ -173,6 +187,9 @@ def confirm_registration(request):
         context['message'] = "We were unable to enroll your student to the class. This should never happen, please contact us!"
         logger.error("There was an unknown exception during the student/enrollment creation process. e=%s" % str(e))
         return render(request, 'failed_registration.html', context)
+
+    if add_registration_fee:
+        total = total + settings.REGISTRATION_FEE
 
     if total != int(data.get('total')):
         context['message'] = "There were some inconsistencies with the form. This should never happen, please contact us!"
@@ -206,25 +223,26 @@ def send_confirm_email(parent):
     students = Student.objects.filter(parent=parent)
     for student in students:
         enrollments = StudentEnrollment.objects.filter(student=student)
-        first_times = []
+        class_info = []
         append_files = ['/home/andrew/projects/ballet2020/staging/front/static/docs/covid.pdf',
-                        '/home/andrew/projects/ballet2020/staging/front/static/docs/payment.pdf',
-                        '/home/andrew/projects/ballet2020/staging/front/static/docs/dress.pdf']
+                        '/home/andrew/projects/ballet2020/staging/front/static/docs/summer_payment.pdf',
+                        '/home/andrew/projects/ballet2020/staging/front/static/docs/dress.pdf',
+                        '/home/andrew/projects/ballet2020/staging/front/static/docs/liability.pdf']
         for enrollment in enrollments:
             dance_class = enrollment.dance_class
-            first_times.append("%s @ %s (%s %s)" % (dance_class.get_day_display(),
-                                                    dance_class.start_time.strftime('%I:%M %p'),
-                                                    dance_class.level,
-                                                    dance_class.dance_type))
-            append_files.append(dance_class.curriculum)
+            class_info.append(str(dance_class))
+            if os.path.isfile(dance_class.curriculum):
+                append_files.append(dance_class.curriculum)
 
+        combined_class_info = "\n".join(class_info)
+        logger.info(combined_class_info)
         text_body = get_confirm_text_template().format(student_first=student.first_name,
                                              parent_first=parent.first_name,
-                                             first_days="\n".join(first_times))
+                                             first_days=combined_class_info)
 
         html_body = get_confirm_html_template().format(student_first=student.first_name,
                                              parent_first=parent.first_name,
-                                             first_days="\n".join(first_times))
+                                             first_days=combined_class_info)
 
         try:
             logger.info("Sending confirmation email...")
