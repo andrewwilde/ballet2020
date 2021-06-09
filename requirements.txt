@@ -3,7 +3,7 @@ chardet==3.0.4
 concurrent-log-handler==0.9.16
 ConcurrentLogHandler==0.9.1
 configparser==4.0.2
-Django==2.2.9
+Django==2.2.22
 django-filter==2.2.0
 djangorestframework==3.11.0
 gunicorn==19.9.0
