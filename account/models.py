@@ -75,6 +75,7 @@ class DanceClass(models.Model):
     ]
 
     LEVELS = [
+        ('Mom & Tots', 'Mom & Tots'),
         ('Pre', 'Pre'),
         ('Kinder', 'Kinder'),
         ('Beginning 1', 'Beginning 1'),
@@ -108,6 +109,11 @@ class DanceClass(models.Model):
         ('price_1HRWlgIQ4hPK7zxO3I0rUBCQ', 'Beginning 1 Ballet'),
         ('price_1HRWjxIQ4hPK7zxOxZKgZTg1', 'Pre Ballet'),
         ('price_1HRWHPIQ4hPK7zxOW0DfgEpX', 'Kinder Ballet'),
+        ('price_1J6kdfIQ4hPK7zxOh2FE3CTf', 'Kinder Creative'),
+        ('price_1J6kbVIQ4hPK7zxOznHaUB64', 'Beginning 1 Tap'),
+        ('price_1J6kc3IQ4hPK7zxObM24WnNy', 'Beginning 1 Jazz'),
+        ('price_1J6kcTIQ4hPK7zxOFBmLXE6J', 'Intermediate 1 Ballet'),
+        ('price_1J6kcjIQ4hPK7zxOR8j6s6b4', 'Beginning 2 Jazz'),
     ]
 
     docs_path = os.path.join(settings.BASE_DIR, 'front/static/docs')
