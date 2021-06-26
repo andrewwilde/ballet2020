@@ -69,6 +69,11 @@ class DanceClass(models.Model):
         ('Dance Camp', 'Dance Camp'),
     ]
 
+    CLASS_TYPES = [
+            ('Fall Classes', 'Fall Classes'),
+            ('Summer Camp', 'Summer Camp'),
+    ]
+
     LEVELS = [
         ('Pre', 'Pre'),
         ('Kinder', 'Kinder'),
@@ -116,6 +121,7 @@ class DanceClass(models.Model):
     studio = models.CharField(max_length=20, choices=STUDIO_TYPES)
     level = models.CharField(max_length=20, choices=LEVELS)
     dance_type = models.CharField(max_length=20, choices=DANCE_TYPES)
+    class_type = models.CharField(max_length=40, choices=CLASS_TYPES)
     status = models.CharField(max_length=20, choices=STATUS, default="Inactive")
     teacher = models.ForeignKey(TeacherAccount, on_delete=models.DO_NOTHING) 
     min_age = models.IntegerField()

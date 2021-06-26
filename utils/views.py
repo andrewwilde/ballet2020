@@ -13,7 +13,7 @@ from account.models import DanceClass
 
 logger = logging.getLogger('ballet')
 
-START_DATE = datetime.date(2021, 6, 14)
+START_DATE = datetime.date(2021, 8, 14)
 
 @api_view(['POST'])
 def send_email(request):
@@ -63,13 +63,17 @@ def available_classes(request):
         dict_cls = model_to_dict(cls)
         dict_cls['start_time'] = cls.start_time.strftime('%I:%M %p')
         dict_cls['stop_time'] = cls.stop_time.strftime('%I:%M %p')
-        dict_cls['start_day'] = cls.start_day.strftime('%B %-d')
-        dict_cls['end_day'] = cls.end_day.strftime('%B %-d')
+        if cls.start_day:
+            dict_cls['start_day'] = cls.start_day.strftime('%B %-d')
+        if cls.end_day:
+            dict_cls['end_day'] = cls.end_day.strftime('%B %-d')
         dict_cls['day'] = cls.get_day_display()
         dict_cls['camp'] = False 
 
         if 'Camp' in cls.dance_type:
             dict_cls['camp'] = True
+
+        dict_cls['class_type'] = cls.get_class_type_display()
 
         filtered_classes.append(dict_cls)
 
