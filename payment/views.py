@@ -223,10 +223,13 @@ def send_confirm_email(parent):
 
     students = Student.objects.filter(parent=parent)
     for student in students:
-        enrollments = StudentEnrollment.objects.filter(student=student)
+        enrollments = StudentEnrollment.objects.filter(student=student, status="Active")
+
+        if not enrollments:
+            continue
+
         class_info = []
-        append_files = ['/home/andrew/projects/ballet2020/staging/front/static/docs/covid.pdf',
-                        '/home/andrew/projects/ballet2020/staging/front/static/docs/summer_payment.pdf',
+        append_files = ['/home/andrew/projects/ballet2020/staging/front/static/docs/summer_payment.pdf',
                         '/home/andrew/projects/ballet2020/staging/front/static/docs/dress.pdf',
                         '/home/andrew/projects/ballet2020/staging/front/static/docs/liability.pdf']
         for enrollment in enrollments:
