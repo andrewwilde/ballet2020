@@ -114,6 +114,7 @@ class DanceClass(models.Model):
         ('price_1J6kc3IQ4hPK7zxObM24WnNy', 'Beginning 1 Jazz'),
         ('price_1J6kcTIQ4hPK7zxOFBmLXE6J', 'Intermediate 1 Ballet'),
         ('price_1J6kcjIQ4hPK7zxOR8j6s6b4', 'Beginning 2 Jazz'),
+        ('price_1JDgu9IQ4hPK7zxO2H2lXUfV', 'Mom & Tots Creative Dance'),
     ]
 
     docs_path = os.path.join(settings.BASE_DIR, 'front/static/docs')
