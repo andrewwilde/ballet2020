@@ -80,7 +80,7 @@ def available_classes(request):
     return JsonResponse(filtered_classes, safe=False)
 
 def get_classes_by_age(age):
-    return DanceClass.objects.filter(max_age__gte=age, min_age__lte=age, status="Active").order_by("start_day")
+    return DanceClass.objects.filter(max_age__gte=age, min_age__lte=age, status="Active").order_by("dance_type", "start_day", "day", "start_time")
 
 def get_age_by_first_day(dob):
     year, month, day = dob.split("-")
