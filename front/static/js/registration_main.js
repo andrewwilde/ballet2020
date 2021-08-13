@@ -160,10 +160,13 @@ $(document).ready(function(){
 								let class_end = dance_class["stop_time"];
 								let day_start = dance_class["start_day"];
 								let day_end = dance_class["end_day"];
+								let description = dance_class["description"];
 								let student_options = "";
+								console.log(dance_class["class_type"]);
 
-								if (dance_class["camp"] == true) {
-									student_options = `<option value="${dance_id}">${class_level} ${class_type}: ${day_start} - ${day_end} from  ${class_start} - ${class_end}</option>`;
+								if (dance_class["dance_type"] == "Dance") {
+									student_options = `<option value="${dance_id}">${class_level} ${class_type} (${description}) ${day_start} - ${day_end} on ${class_day
+									} from ${class_start} - ${class_end}</option>`;
 								} else {
 									student_options = `<option value="${dance_id}">${class_level} ${dance_type} ${class_type} on ${class_day} @ ${class_start}</option>`;
 								}
@@ -239,8 +242,8 @@ $(document).ready(function(){
 					}
 
 					let class_title = "";
-					if (myclass['type'].includes("Camp")){
-						class_title = `${myclass['name']}'s ${myclass['level']} ${myclass['type']}: ${myclass['start_day']} - ${myclass['end_day']} @ ${myclass['start_time']} - ${myclass['stop_time']}`;
+					if (myclass['type'] == "Dance"){
+						class_title = `${myclass['name']}'s ${myclass['level']} ${myclass['type']} (${myclass['description']}): ${myclass['start_day']} - ${myclass['end_day']} on ${myclass['day']} @ ${myclass['start_time']} - ${myclass['stop_time']}`;
 					} else {
 						class_title = `${myclass['name']}'s ${myclass['level']} ${myclass['type']} ${myclass['class_type']} on ${myclass['day']} @ ${myclass['start_time']} - ${myclass['stop_time']}`;
 
