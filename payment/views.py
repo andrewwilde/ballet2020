@@ -45,6 +45,7 @@ def register_payments(request):
             payment_schedule["classes"].append({"level": my_class.level,
                                                 "name": name,
                                                 "type": my_class.dance_type,
+                                                "description": my_class.description,
                                                 "day": my_class.get_day_display(),
                                                 "class_type": my_class.get_class_type_display(),
                                                 "start_time": my_class.start_time.strftime('%I:%M %p'),

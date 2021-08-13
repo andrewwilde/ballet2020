@@ -67,6 +67,7 @@ class DanceClass(models.Model):
         ('Hip Hop', 'Hip Hop'),
         ('Creative Dance', 'Creative Dance'),
         ('Dance Camp', 'Dance Camp'),
+        ('Dance', 'Dance'),
     ]
 
     CLASS_TYPES = [
