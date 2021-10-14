@@ -48,10 +48,11 @@ def filter_classes(request):
 
     return JsonResponse(list(dance_classes.values()), safe=False)
 
+
 @api_view(["GET"])
 def get_classes_by_category(request):
     classes_by_category = {}
-    dance_classes = DanceClass.objects.exclude(status="Inactive").order_by("start_day", "dance_type", "level", "day", "start_time")
+    dance_classes = DanceClass.objects.exclude(status="Inactive").order_by("min_age", "start_day", "dance_type", "level", "day", "start_time")
     for cls in dance_classes:
         dict_cls = model_to_dict(cls)
         dict_cls['day'] = cls.get_day_display()
@@ -63,13 +64,15 @@ def get_classes_by_category(request):
 
         dict_cls['start_time'] = cls.start_time.strftime('%I:%M %p')
         dict_cls['stop_time'] = cls.stop_time.strftime('%I:%M %p')
-        dance_category = "%s %s" % (cls.level, cls.dance_type)
+        dance_category = dict_cls['dance_category'] = "%s %s" % (cls.level, cls.dance_type)
         if dance_category not in classes_by_category:
             classes_by_category[dance_category] = [dict_cls]
         else:
             classes_by_category[dance_category].append(dict_cls)
 
-    return JsonResponse(classes_by_category, safe=False)
+    sorted_list = sorted(classes_by_category.values(), key = lambda v: (v[0]['min_age'], v[0]['level']))
+
+    return JsonResponse(sorted_list, safe=False)
 
 
 def profile(request):
