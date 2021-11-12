@@ -68,6 +68,7 @@ class DanceClass(models.Model):
         ('Creative Dance', 'Creative Dance'),
         ('Dance Camp', 'Dance Camp'),
         ('Dance', 'Dance'),
+        ('Contemporary', 'Contemporary'),
     ]
 
     CLASS_TYPES = [
@@ -115,7 +116,7 @@ class DanceClass(models.Model):
         ('price_1J6kc3IQ4hPK7zxObM24WnNy', 'Beginning 1 Jazz'),
         ('price_1J6kcTIQ4hPK7zxOFBmLXE6J', 'Intermediate 1 Ballet'),
         ('price_1J6kcjIQ4hPK7zxOR8j6s6b4', 'Beginning 2 Jazz'),
-        ('price_1JDgu9IQ4hPK7zxO2H2lXUfV', 'Mom & Tots Creative Dance'),
+        ('price_1JaLOjIQ4hPK7zxO2R6aEQLQ', 'Mom & Tots Creative Dance'),
         ('price_1JDiELIQ4hPK7zxOlBF0gU8E', 'Beginning 1 Creative Dance'),
     ]
 
