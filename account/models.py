@@ -74,6 +74,7 @@ class DanceClass(models.Model):
     CLASS_TYPES = [
             ('Fall Classes', 'Fall Classes'),
             ('Summer Camp', 'Summer Camp'),
+            ('Winter Classes', 'Winter Classes'),
     ]
 
     LEVELS = [
