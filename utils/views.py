@@ -13,7 +13,7 @@ from account.models import DanceClass
 
 logger = logging.getLogger('ballet')
 
-START_DATE = datetime.date(2021, 8, 14)
+START_DATE = datetime.date(2022, 1, 1)
 
 @api_view(['POST'])
 def send_email(request):
