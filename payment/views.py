@@ -179,7 +179,7 @@ def confirm_registration(request):
             #Check whether it's time to close a class
             for enrollment in enrollments:
                 dance_class = enrollment.dance_class
-                enrollment_count = StudentEnrollment.objects.filter(dance_class=dance_class).count()
+                enrollment_count = StudentEnrollment.objects.filter(dance_class=dance_class, status='Active').count()
                 if enrollment_count >= dance_class.max_students:
                     dance_class.status = 'Full'
                     dance_class.save()
