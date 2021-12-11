@@ -114,7 +114,7 @@ $(document).ready(function(){
 					changeMonth: true,
 					changeYear: true,
 					dateFormat: "yy-mm-dd",
-					yearRange: "-100:-1",
+					yearRange: "-100:0",
 					defaultDate: '2015-01-01'
 				});
 			    }
