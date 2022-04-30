@@ -7,3 +7,4 @@ stagingsecret.py
 *.sh
 scripts/
 *.swp
+db_files/

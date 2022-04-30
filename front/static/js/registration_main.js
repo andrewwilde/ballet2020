@@ -164,7 +164,7 @@ $(document).ready(function(){
 								let student_options = "";
 								console.log(dance_class["class_type"]);
 
-								if (dance_class["dance_type"] == "Dance") {
+								if (dance_class["dance_type"] == "Dance Camp") {
 									student_options = `<option value="${dance_id}">${class_level} ${class_type} (${description}) ${day_start} - ${day_end} on ${class_day
 									} from ${class_start} - ${class_end}</option>`;
 								} else {
@@ -242,7 +242,7 @@ $(document).ready(function(){
 					}
 
 					let class_title = "";
-					if (myclass['type'] == "Dance"){
+					if (myclass['type'] == "Dance Camp"){
 						class_title = `${myclass['name']}'s ${myclass['level']} ${myclass['type']} (${myclass['description']}): ${myclass['start_day']} - ${myclass['end_day']} on ${myclass['day']} @ ${myclass['start_time']} - ${myclass['stop_time']}`;
 					} else {
 						class_title = `${myclass['name']}'s ${myclass['level']} ${myclass['type']} ${myclass['class_type']} on ${myclass['day']} @ ${myclass['start_time']} - ${myclass['stop_time']}`;
