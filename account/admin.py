@@ -10,7 +10,8 @@ from .models import *
 @admin.register(ParentAccount)
 class ParentAdmin(admin.ModelAdmin):
 
-    list_display = ('get_full_name',
+    list_display = ('id',
+                    'get_full_name',
                     'phone_number',
                     'email',
                     'account_type',
@@ -45,7 +46,8 @@ class ClassAdmin(admin.ModelAdmin):
                     'teacher',
                     'status',
                     'curriculum',
-                    'price_id',) 
+                    'price_id',
+                    'class_type',) 
 
 @admin.register(StudentEnrollment)
 class StudentEnrollmentAdmin(admin.ModelAdmin):

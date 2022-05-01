@@ -18,7 +18,7 @@ from facebook.api import (
 
 logger = logging.getLogger('ballet')
 
-START_DATE = datetime.date(2022, 1, 1)
+START_DATE = datetime.date(2022, 6, 13)
 
 @api_view(['POST'])
 def send_email(request):

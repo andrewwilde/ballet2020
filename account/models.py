@@ -47,14 +47,16 @@ class DanceClass(models.Model):
     ]
 
     DAYS_OF_WEEK = [
-        (-1, 'Monday - Friday'),
         (0, 'Monday'),
-        (1, 'Tuesday'),
-        (2, 'Wednesday'),
-        (3, 'Thursday'),
-        (4, 'Friday'),
-        (5, 'Saturday'),
-        (6, 'Sunday'),
+        (1, 'Monday, Wednesday, Friday'),
+        (2, 'Monday - Friday'),
+        (3, 'Tuesday'),
+        (4, 'Tuesday, Thursday'),
+        (5, 'Wednesday'),
+        (6, 'Thursday'),
+        (7, 'Friday'),
+        (8, 'Saturday'),
+        (9, 'Sunday'),
     ]
 
     DANCE_TYPES = [
@@ -103,6 +105,7 @@ class DanceClass(models.Model):
     ]
 
     PRICE_ID = [
+        ('None', 'None'),
         ('price_1HRWnQIQ4hPK7zxOAOwjHQvv', 'Pre Creative Dance'),
         ('price_1HRWn3IQ4hPK7zxOb64qqBCG', 'Kinder Tap'),
         ('price_1HRWmmIQ4hPK7zxOQ8GKSplt', 'Intermediate Jazz'),
@@ -147,12 +150,13 @@ class DanceClass(models.Model):
 
     def __str__(self):
         if "Camp" in self.dance_type:
-            return "%s %s: %s - %s from %s - %s" % (self.level,
+            return "%s %s: %s - %s from %s - %s on %s" % (self.level,
                                                     self.dance_type,
                                                     self.start_day.strftime('%B %-d'),
                                                     self.end_day.strftime('%B %-d'), 
                                                     self.start_time.strftime('%I:%M %p'),
-                                                    self.stop_time.strftime('%I:%M %p'))
+                                                    self.stop_time.strftime('%I:%M %p'),
+                                                    self.get_day_display())
         else:
             return "%s %s on %s @ %s with %s" % (self.level,
                                                  self.dance_type,
