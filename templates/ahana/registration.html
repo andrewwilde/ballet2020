@@ -22,8 +22,25 @@
 		<link rel="stylesheet" href="{% static "css/registration_style.css" %}">
     		<link rel="stylesheet" href="{% static "css/slicknav.min.css" %}"/>
 		<link rel="stylesheet" href="{% static "css/bootstrap-select.css" %}">
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
 
+		<!-- Meta Pixel Code -->
+		<script>
+		!function(f,b,e,v,n,t,s)
+		{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+		n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+		if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+		n.queue=[];t=b.createElement(e);t.async=!0;
+		t.src=v;s=b.getElementsByTagName(e)[0];
+		s.parentNode.insertBefore(t,s)}(window, document,'script',
+		'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '937305990279146');
+		fbq('track', 'PageView');
+		</script>
+		<noscript><img height="1" width="1" style="display:none"
+		src="https://www.facebook.com/tr?id=937305990279146&ev=PageView&noscript=1"
+		/></noscript>
+		<!-- End Meta Pixel Code -->
 
 	</head>
 	<body>
@@ -232,7 +249,7 @@
 							</div>
 							<div class="form-row">
 								<div class="form-holder">
-									<a href="{% static "docs/payment.pdf" %}" target="_blank">Class Attendance & Payment Policies</a><br/>
+									<a href="{% static "docs/summer_payment.pdf" %}" target="_blank">Class Attendance & Payment Policies</a><br/>
 								</div>
 								<div class="form-holder">
 									<a href="{% static "docs/dress.pdf" %}" target="_blank">Dress & Conduct Code</a></br>
@@ -266,7 +283,7 @@
 
 	<!-- JQUERY -->
 	<script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
