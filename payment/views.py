@@ -17,6 +17,7 @@ from account.models import (DanceClass,
                             ParentAccount,
                             Student,
                             StudentEnrollment)
+from facebook.api import create_facebook_event
 
 logger = logging.getLogger('ballet')
 stripe.api_key = settings.STRIPE_KEY
@@ -134,6 +135,7 @@ def confirm_registration(request):
     #Create Students
     total = 0
     student_count = int(data.get('student_count'))
+    all_enrollments = []
     try:
         for student_num in range(1, student_count + 1):
             add_registration_fee = False
@@ -166,6 +168,7 @@ def confirm_registration(request):
                 enrollment = StudentEnrollment.objects.create(dance_class=dance_class,
                                                               student=student,
                                                               status='Active')
+                all_enrollments.append(enrollment)
                 enrollments.append(enrollment)
                 logger.info("%s %s (%i) is now enrolled in %s %s (%i)" % (student.first_name,
                                                                           student.last_name,
@@ -210,6 +213,11 @@ def confirm_registration(request):
         logger.error("Credit card transaction failed(101): e=%s" % str(e))
         return render(request, 'failed_registration.html', context)
     else:
+        try:
+            facebook_data = {"name": "purchase", "parent": parent, "total": total, "enrollments": all_enrollments}
+            create_facebook_event(request, facebook_data)
+        except Exception as e:
+            logger.error("Problem sending facebook event. e=%s", str(e))
         try:
             send_confirm_email(parent)
         except Exception as e:
