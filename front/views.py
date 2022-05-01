@@ -7,12 +7,14 @@ from django.shortcuts import render
 from django.db.models import Q
 from django.forms.models import model_to_dict
 from django.http import JsonResponse
+
 from account.models import Account
+from facebook.api import create_facebook_data_free_event
 
 logger = logging.getLogger('ballet')
 
 def index(request):
-    logger.info("We have a visitor!")
+    create_facebook_data_free_event(request, {"name": "visited home"})
     return render(request, 'index.html')
 
 def classes(request):
@@ -24,7 +26,7 @@ def classes(request):
     return render(request, 'classes.html', context=context)
 
 def registration(request):
-    logger.info("Someone is using the registration page!")
+    create_facebook_data_free_event(request, {"name": "clicked on register"})
     return render(request, 'registration.html')
 
 @api_view(["POST"])
