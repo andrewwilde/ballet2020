@@ -16,7 +16,6 @@ from facebook_business.api import FacebookAdsApi
 FacebookAdsApi.init(access_token=PIXEL_ID)
 
 def create_user(request, user=None):
-    print(request.COOKIES)
     if user:
         emails = [user.email]
         phones = [user.phone_number]
