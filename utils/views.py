@@ -9,7 +9,12 @@ from django.shortcuts import render
 from django.forms.models import model_to_dict
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+
 from account.models import DanceClass
+from facebook.api import (
+        create_facebook_data_free_event,
+        create_facebook_email_event
+        )
 
 logger = logging.getLogger('ballet')
 
@@ -36,6 +41,7 @@ def send_email(request):
     logger.info("Website Contact Form submitted: %s." % body)
 
     if "http" in message or "www" in message:
+        create_facebook_data_free_event(request, {"name": "discarded email"})
         logger.info("There was a link contained in this email. Disgarding.")
         return render(request, 'failed_email.html')
 
@@ -45,6 +51,7 @@ def send_email(request):
                   email_from,
                   [settings.EMAIL_HOST_USER],
                   fail_silently=False)
+        create_facebook_email_event(request, {"name": "sent email", "first_name": first_name, "last_name": last_name, "phone": phone, 'email': email_from})
     except Exception as e:
         logger.error("Problem sending an email. e=%s" % str(e))
         return render(request, 'failed_email.html')
@@ -54,7 +61,6 @@ def send_email(request):
 @api_view(['GET'])
 def available_classes(request):
     dob = request.GET['dob']
-    logger.info("Pulling available classes for dob=%s" % dob)
     age = get_age_by_first_day(dob)
     available_classes = get_classes_by_age(age)
 
@@ -77,6 +83,7 @@ def available_classes(request):
 
         filtered_classes.append(dict_cls)
 
+    create_facebook_data_free_event(request, {"name": "pulled available classes"})
     return JsonResponse(filtered_classes, safe=False)
 
 def get_classes_by_age(age):
