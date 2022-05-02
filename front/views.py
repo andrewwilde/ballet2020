@@ -14,7 +14,7 @@ from facebook.api import create_facebook_data_free_event
 logger = logging.getLogger('ballet')
 
 def index(request):
-    create_facebook_data_free_event(request, {"name": "visited home"})
+    #create_facebook_data_free_event(request, {"name": "visited home"})
     return render(request, 'index.html')
 
 def classes(request):
@@ -26,7 +26,7 @@ def classes(request):
     return render(request, 'classes.html', context=context)
 
 def registration(request):
-    create_facebook_data_free_event(request, {"name": "clicked on register"})
+    #create_facebook_data_free_event(request, {"name": "clicked on register"})
     return render(request, 'registration.html')
 
 @api_view(["POST"])
