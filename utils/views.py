@@ -41,7 +41,7 @@ def send_email(request):
     logger.info("Website Contact Form submitted: %s." % body)
 
     if "http" in message or "www" in message:
-        create_facebook_data_free_event(request, {"name": "discarded email"})
+        #create_facebook_data_free_event(request, {"name": "discarded email"})
         logger.info("There was a link contained in this email. Disgarding.")
         return render(request, 'failed_email.html')
 
@@ -83,7 +83,7 @@ def available_classes(request):
 
         filtered_classes.append(dict_cls)
 
-    create_facebook_data_free_event(request, {"name": "pulled available classes"})
+    #create_facebook_data_free_event(request, {"name": "pulled available classes"})
     return JsonResponse(filtered_classes, safe=False)
 
 def get_classes_by_age(age):
