@@ -118,7 +118,7 @@ class DanceClass(models.Model):
         ('price_1Kwg94IQ4hPK7zxOFOEInfyP', 'Kinder Creative'),
         ('price_1Kwg6vIQ4hPK7zxOKy6JSVp1', 'Beginning 1 Tap'),
         ('price_1Kwg5fIQ4hPK7zxOjkeTDxb4', 'Intermediate 1 Ballet'),
-        ('price_1Kwg8OIQ4hPK7zxOQXjBKzBC', 'Mom & Tots Creative Dance'),
+        ('price_1Kwg8OIQ4hPK7zxOQXjBKzBC', 'Parent & Tots Creative Dance'),
         ('price_1Kwg9XIQ4hPK7zxOrLgcCiHa', 'Beginning 1 Creative Dance'),
     ]
 
