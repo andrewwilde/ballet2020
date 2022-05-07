@@ -80,7 +80,7 @@ class DanceClass(models.Model):
     ]
 
     LEVELS = [
-        ('Mom & Tots', 'Mom & Tots'),
+        ('Parent & Tots', 'Parent & Tots'),
         ('Pre', 'Pre'),
         ('Kinder', 'Kinder'),
         ('Beginning 1', 'Beginning 1'),
