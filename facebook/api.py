@@ -3,7 +3,7 @@ import time
 import logging
 logger = logging.getLogger('ballet')
 
-from ballet.stagingsecret import PIXEL_ID, CONVERSION_API_KEY
+from ballet.secret import PIXEL_ID, CONVERSION_API_KEY
 from facebook_business.adobjects.serverside.action_source import ActionSource
 from facebook_business.adobjects.serverside.content import Content
 from facebook_business.adobjects.serverside.custom_data import CustomData
@@ -13,7 +13,7 @@ from facebook_business.adobjects.serverside.event_request import EventRequest
 from facebook_business.adobjects.serverside.user_data import UserData
 from facebook_business.api import FacebookAdsApi
 
-FacebookAdsApi.init(access_token=PIXEL_ID)
+FacebookAdsApi.init(access_token=CONVERSION_API_KEY)
 
 def create_user(request, user=None):
     if user:
