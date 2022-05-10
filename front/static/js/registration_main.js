@@ -184,7 +184,7 @@ $(document).ready(function(){
 											<h6>${first_name}'s Classes:</h6>
 										</div>
 										<div class="form-row">
-											<select data-width="95%" title="${title}" name="student_class_${student_num}" class="selectpicker" id="student_classes_${student_num}" multiple data-selected-text-format="static" data-size=false required>
+											<select data-width="95%" title="${title}" name="student_class_${student_num}" class="selectpicker" id="student_classes_${student_num}" multiple data-selected-text-format="count > 0" data-size=false required>
 												${class_selections}
 											</select>
 	    									</div>
