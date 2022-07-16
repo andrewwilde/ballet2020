@@ -231,16 +231,35 @@ def send_confirm_email(parent):
 
 
     students = Student.objects.filter(parent=parent)
+    append_files = ['/home/andrew/projects/ballet2020/static/docs/dress.pdf',
+                    '/home/andrew/projects/ballet2020/static/docs/liability.pdf']
+    student_info = []
+
     for student in students:
+        class_info = []
         enrollments = StudentEnrollment.objects.filter(student=student, dance_class__dance_type='Dance Camp', status="Active")
 
         if not enrollments:
             continue
 
+        append_files.append('/home/andrew/projects/ballet2020/static/docs/summer_payment.pdf')
+        for enrollment in enrollments:
+            dance_class = enrollment.dance_class
+            class_info.append(str(dance_class))
+            if os.path.isfile(dance_class.curriculum):
+                append_files.append(dance_class.curriculum)
+
+        combined_class_info = "\n\t".join(class_info)
+        student_info.append('{} is enrolled in the following summer camps:\n{}\n'.format(student.first_name, combined_class_info))
+
+    for student in students:
         class_info = []
-        append_files = ['/home/andrew/projects/ballet2020/static/docs/summer_payment.pdf',
-                        '/home/andrew/projects/ballet2020/static/docs/dress.pdf',
-                        '/home/andrew/projects/ballet2020/static/docs/liability.pdf']
+        enrollments = StudentEnrollment.objects.filter(student=student, status="Active").exclude(dance_class__dance_type='Dance Camp')
+
+        if not enrollments:
+            continue
+
+        append_files.append('/home/andrew/projects/ballet2020/static/docs/payment.pdf')
         for enrollment in enrollments:
             dance_class = enrollment.dance_class
             class_info.append(str(dance_class))
@@ -248,32 +267,30 @@ def send_confirm_email(parent):
                 append_files.append(dance_class.curriculum)
 
         combined_class_info = "\n".join(class_info)
-        logger.info(combined_class_info)
-        text_body = get_confirm_text_template().format(student_first=student.first_name,
-                                             parent_first=parent.first_name,
-                                             first_days=combined_class_info)
+        student_info.append('{} is enrolled in the following fall semester classes:\n{}\n'.format(student.first_name, combined_class_info))
 
-        html_body = get_confirm_html_template().format(student_first=student.first_name,
-                                             parent_first=parent.first_name,
-                                             first_days=combined_class_info)
+    combined_class_info = "\n".join(student_info)
+    text_body = get_confirm_text_template().format(parent_first=parent.first_name, first_days=combined_class_info)
 
-        try:
-            logger.info("Sending confirmation email...")
-            email = EmailMultiAlternatives("Petit Ballet Academy: Registration Confirmation",
-                                 html_body,
-                                 settings.EMAIL_HOST_USER,
-                                 [parent.email])
+    html_body = get_confirm_html_template().format(parent_first=parent.first_name, first_days=combined_class_info)
 
-            email.attach_alternative(text_body, 'text/plain')
+    try:
+        logger.info("Sending confirmation email...")
+        email = EmailMultiAlternatives("Petit Ballet Academy: Registration Confirmation",
+                             html_body,
+                             settings.EMAIL_HOST_USER,
+                             [parent.email])
 
-            for item in append_files:
-                if item is not None:
-                    email.attach_file(item)
+        email.attach_alternative(text_body, 'text/plain')
 
-            email.send(fail_silently=False)    
-                
-        except Exception as err:
-            logger.error("Problem sending confirmation email. e=%s" % err)
+        for item in append_files:
+            if item is not None:
+                email.attach_file(item)
+
+        email.send(fail_silently=False)    
+            
+    except Exception as err:
+        logger.error("Problem sending confirmation email. e=%s" % err)
 
 
     
