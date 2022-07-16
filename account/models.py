@@ -71,6 +71,7 @@ class DanceClass(models.Model):
         ('Dance Camp', 'Dance Camp'),
         ('Dance', 'Dance'),
         ('Contemporary', 'Contemporary'),
+        ('Boys Creative & Hip Hop', 'Boys Creative & Hip Hop'),
     ]
 
     CLASS_TYPES = [
@@ -132,7 +133,7 @@ class DanceClass(models.Model):
     day = models.IntegerField(choices=DAYS_OF_WEEK)
     studio = models.CharField(max_length=20, choices=STUDIO_TYPES)
     level = models.CharField(max_length=20, choices=LEVELS)
-    dance_type = models.CharField(max_length=20, choices=DANCE_TYPES)
+    dance_type = models.CharField(max_length=30, choices=DANCE_TYPES)
     class_type = models.CharField(max_length=40, choices=CLASS_TYPES)
     status = models.CharField(max_length=20, choices=STATUS, default="Inactive")
     teacher = models.ForeignKey(TeacherAccount, on_delete=models.DO_NOTHING) 
@@ -156,11 +157,10 @@ class DanceClass(models.Model):
                                                     self.stop_time.strftime('%I:%M %p'),
                                                     self.get_day_display())
         else:
-            return "%s %s on %s @ %s with %s" % (self.level,
+            return "%s %s on %s @ %s" % (self.level,
                                                  self.dance_type,
                                                  self.get_day_display(),
-                                                 str(self.start_time),
-                                                 self.teacher.first_name)
+                                                 str(self.start_time))
 
 class Student(models.Model):
     STUDENT_TYPES = [

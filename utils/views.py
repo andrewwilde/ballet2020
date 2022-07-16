@@ -38,12 +38,12 @@ def send_email(request):
                       phone,
                       message)
 
-    logger.info("Website Contact Form submitted: %s." % body)
-
     if not message or "http" in message or "www" in message:
         #create_facebook_data_free_event(request, {"name": "discarded email"})
         logger.info("There was a link contained in this email or the message was empty. Disgarding.")
         return render(request, 'failed_email.html')
+
+    logger.info("Website Contact Form submitted: %s." % body)
 
     try:
         send_mail("Website Contact Form",
