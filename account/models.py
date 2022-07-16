@@ -205,4 +205,26 @@ class StudentEnrollment(ClassAssignment):
                                choices=SEMESTER_PERIOD,
                                default=DEFAULT_SEMESTER)
 
+class FreeClass(models.Model):
+    CLASS_STATUSES = [
+            ('Active', 'Active'),
+            ('Inactive', 'Inactive'),
+    ]
+    title = models.CharField(max_length=255)
+    capacity = models.IntegerField()
+    status = models.CharField(
+            max_length=15,
+            choices=CLASS_STATUSES,
+            default='Active'
+            )
+
+    def __str__(self):
+        return self.title
+
+
+class FreeClassRegistration(models.Model):
+    free_class = models.ForeignKey(FreeClass, on_delete=models.CASCADE)
+    parent_email = models.CharField(max_length=100)
+    num_students = models.IntegerField()
+
 

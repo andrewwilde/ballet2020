@@ -2,7 +2,9 @@ import logging
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from account.models import DanceClass
+from account.models import DanceClass, FreeClass, FreeClassRegistration
+from django.conf import settings
+from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render
 from django.db.models import Q
 from django.forms.models import model_to_dict
@@ -28,6 +30,61 @@ def classes(request):
 def registration(request):
     #create_facebook_data_free_event(request, {"name": "clicked on register"})
     return render(request, 'registration.html')
+
+def send_free_class_email(registration):
+    from front.templates.email import free_html_template
+    from front.templates.email import free_text_template
+    append_file = []
+    try:
+            html_body = free_html_template().format(day=str(registration.free_class))
+            text_body = free_text_template().format(day=str(registration.free_class))
+
+            email = EmailMultiAlternatives(
+                    "Petit Ballet Academy: Free Class Confirmation",
+                    html_body,
+                    settings.EMAIL_HOST_USER,
+                    [registration.parent_email]
+            )
+            email.attach_alternative(text_body, 'text/plain')
+            email.attach_file('/home/andrew/projects/ballet2020/static/docs/liability.pdf')
+            email.send(fail_silently=False)
+    except Exception as err:
+        print("Error sending free class confirmation. e=%s" % str(err))
+
+
+@api_view(["POST"])
+def freeclass(request):
+    email = request.data.get('parent-email')
+    num_students = request.data.get("students-num")
+    id = request.data.get('freeclassoption')
+
+    try:
+        free_class = FreeClass.objects.get(id=id)
+    except:
+        print("Free class does not exist.")
+        return render(request, 'index.html')
+
+    if email and num_students and id:
+        registration = FreeClassRegistration.objects.create(free_class=free_class, num_students=num_students, parent_email=email)
+        send_free_class_email(registration)
+        return render(request, "freeclass.html")
+
+    return render(request, 'index.html')
+
+@api_view(["GET"])
+def get_free_classes(request):
+    free_classes = []
+    for cls in FreeClass.objects.filter(status='Active'):
+        registrations = FreeClassRegistration.objects.filter(free_class=cls)
+        total_registered = 0
+        for reg in registrations:
+            total_registered = total_registered + reg.num_students
+
+        if total_registered < cls.capacity:
+            free_classes.append({'title': cls.title, 'id': cls.id})
+
+    return JsonResponse(free_classes, safe=False)
+
 
 @api_view(["POST"])
 def filter_classes(request):

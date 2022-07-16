@@ -63,3 +63,17 @@ class StudentEnrollmentAdmin(admin.ModelAdmin):
 
     def get_price(self, obj):
         return obj.dance_class.price
+
+@admin.register(FreeClass)
+class FreeClassAdmin(admin.ModelAdmin):
+    list_display = ('id',
+                    'title',
+                    'capacity',
+                    'status',)
+
+@admin.register(FreeClassRegistration)
+class FreeClassRegistrationAdmin(admin.ModelAdmin):
+    list_display = ('parent_email',
+                    'num_students',
+                    'free_class',)
+

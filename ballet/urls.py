@@ -39,5 +39,7 @@ urlpatterns = [
     path('register_payments/', payment.register_payments),
     path('register/', front.registration),
     path('email/', utils.send_email),
-    path('confirm_registration', payment.confirm_registration)
+    path('confirm_registration', payment.confirm_registration),
+    path('freeclass/', front.freeclass),
+    path('get_free_classes/', front.get_free_classes)
 ]

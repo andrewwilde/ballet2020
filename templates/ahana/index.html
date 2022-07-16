@@ -60,6 +60,7 @@
 					<li><a href="register/">Register</a></li>
 					<li><a href="#about-menu" class="page-scroll">About</a></li>
 					<li><a href="#classes-section" class="page-scroll">Classes</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#freeclass">Free Class</a></li>
 					<li><a href="#trainer-section" class="page-scroll">Instructors</a></li>
 					<li><a href="#event-section">Events</a></li>
 					<li><a href="#signup-section">Contact</a></li>
@@ -81,7 +82,7 @@
 		<div class="container">
 			<div class="section-title text-center" style="padding-top: 50px;">
 				<h2>Welcome to Petit Ballet Academy!</h2>
-				<p>Thank you for your interest in our dance studio! <b>Registration for Summer Camps  and Fall Semester is now open.</b> The first set of Summer Camps begin the week of June 13th and Fall Semester classes begin the week of August 22nd. If you're interested in being added to our email list, please email us <a href="#signup-section">here</a>. If you have any questions, please either <b>chat with us</b> or <a href="#signup-section">send us an email!</a></p>
+				<p>Thank you for your interest in our dance studio! <b>Registration for Summer Camps  and Fall Semester is now open.</b> The first set of Summer Camps begin the week of June 13th and Fall Semester classes begin the week of August 22nd. If you're interested in being added to our email list, please email us <a href="#signup-section">here</a>. If you have any questions, please either <b>chat with us</b> or <a href="#signup-section">send us an email!</a></p><p style="font-size: 22px;"><b>Interested in a free class? Claim your spot <a href="#" data-toggle="modal" data-target="#freeclass">here!</a></b></p>
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
@@ -448,8 +449,9 @@
 						<div class="ei-text">
 							<h4>Free Ballet Class</h4>
 							<ul>
-								<li><i class="material-icons">watch</i>Contact us if you would like to try a free class!</li>
-								<li><i class="material-icons">book</i><a href="#signup-section">Email us here!</a></li>
+								<!--<li><i class="material-icons">watch</i>Contact us if you would like to try a free class!</li>
+								<li><i class="material-icons">book</i><a href="#signup-section">Email us here!</a></li>-->
+								<li><i class="material-icons">book</i><a href="#signup-section" data-toggle="modal" data-target="#freeclass" >Click here!</a></li>
 							</ul>
 						</div>
 					</div>
@@ -664,6 +666,53 @@
 	      </div>
 	    </div>
 
+	<!-- Search model end -->
+	<div class="modal fade right" id="freeclass" tabindex="-1" role="dialog" aria-labelledby="freeclass" aria-hidden="true">
+	      <div class="modal-dialog modal-side modal-top-right" role="document">
+	        <!--Content-->
+	        <div class="modal-content">
+	          <!--Header-->
+	          <div class="modal-header">
+	            <h4 class="modal-title w-100" id="myModalLabel">Free Class Registration</h4>
+	            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	              <span aria-hidden="true">×</span>
+	            </button>
+	          </div>
+	          <!--Body-->
+	          <div class="modal-body">
+			  <form method="POST" action="freeclass/">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="freeclass" class="col-form-label">Free Class:</label>
+					<select class="form-control" id="freeclassoption" name="freeclassoption">
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="parent-email" class="col-form-label">Parent's Email:</label>						
+					<input type="text" class="form-control" ids="parent-email" name="parent-email">
+				</div>
+				<div class="form-group">
+					<label for="students-num" class="col-form-label">Number of Students:</label>
+					<select class="form-control" id="students-num" name="students-num">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Register">
+				</div>
+			  </form>
+	          </div>
+	          <!--Footer-->
+	          <div class="modal-footer">
+	            <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">Close</button>
+	          </div>
+	        </div>
+	        <!--/.Content-->
+	      </div>
+	    </div>
+
 
 	<link rel="stylesheet" href="{% static "css/post-styles.min.css" %}"/>
 <!--====== Javascripts & Jquery ======-->
@@ -686,6 +735,7 @@
 		}
 
 		get_classes_by_category();
+		get_free_classes();
 	</script>
 	<!--Start of Tawk.to Script-->
 	<script type="text/javascript">
