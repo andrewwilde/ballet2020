@@ -8,7 +8,7 @@
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
 		  gtag('js', new Date());
-		
+
 		  gtag('config', 'UA-128368484-1');
 		</script>
 
@@ -72,7 +72,7 @@
 	                <form action="/confirm_registration" method="POST" id="wizard">
 				{% csrf_token %}
 				<h2></h2>
-                		<section style="margin-top: 1px"> 
+                		<section style="margin-top: 1px">
 				    <div class="inner">
 				    	<div class="image-holder">
 						<picture>
@@ -101,8 +101,8 @@
 				    	</div>
 				    </div>
 				</section>
-		
-	    
+
+
 	    			<h2></h2>
 	            		<section>
 	            		    <div class="inner">
@@ -129,8 +129,8 @@
 								</div>
 	    						</div>
 	            		</section>
-	    
-	    
+
+
 	            		<h2></h2>
 	                	    <section>
 	                	        <div class="inner">
@@ -148,7 +148,7 @@
 							<div id="register_students"></div>
 							<p style="font-size:10px; color: black;">* If you would like to discuss an age exception for a class, please chat with us or call 385-404-8687.</p>
 							<p style="font-size:10px; color: black;">** If a class does not have at least four students, the class will be cancelled and you will be contacted about other available options. Refunds will also be given if there are no viable options.</p>
-							<p style="font-size:10px; color: black;">*** Fall Semester begins the week of <b>August 22nd, 2022</b>.</p>
+							<p style="font-size:10px; color: black;">*** Fall Semester began the week of <b>August 22nd, 2022</b> and registration will remain open to mid January.</p>
 							<div class="form-row">
 								<div class="form-holder">
 									<button type="button" class="backward reg-button">&larr;&nbsp;Backward</button>
@@ -160,8 +160,8 @@
 						</div>
 	    				</div>
 	                	    </section>
-	    
-	    
+
+
 	                	    <!-- SECTION 3 -->
 	                	    <h2></h2>
 	                	    <section>
@@ -237,7 +237,7 @@
 							    </div>
 						        </div>
 						</div>
-						<div class="form-content" style="width:100%; padding-left:0px; padding-top: 0px; ">		
+						<div class="form-content" style="width:100%; padding-left:0px; padding-top: 0px; ">
 							<div style="padding-bottom:30px; border: 1px solid; border-color:#f0deec; border-radius:10px; padding:15px; margin-bottom:15px;">
 								<label for="card-element">
 									<b>Credit or Debit Card</b>
@@ -249,19 +249,19 @@
 							    <h4>Policies for 2022-2023</h4>
 							</div>
 							<div class="form-row">
-								<div class="form-holder">
+								<!--<div class="form-holder">
 									<a href="{% static "docs/summer_payment.pdf" %}" target="_blank">Summer Camp  Attendance & Payment Policies</a><br/>
-								</div>
+								</div>-->
 								<div class="form-holder">
 									<a href="{% static "docs/payment.pdf" %}" target="_blank">Fall Class Attendance & Payment Policies</a><br/>
+								</div>
+								<div class="form-holder">
+									<a href="{% static "docs/liability.pdf" %}" target="_blank">Media Release & Waiver and Liability</a></br>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-holder">
 									<a href="{% static "docs/dress.pdf" %}" target="_blank">Dress & Conduct Code</a></br>
-								</div>
-								<div class="form-holder">
-									<a href="{% static "docs/liability.pdf" %}" target="_blank">Media Release & Waiver and Liability</a></br>
 								</div>
 							</div>
 
