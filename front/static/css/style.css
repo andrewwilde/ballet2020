@@ -4450,18 +4450,9 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .original-price {
-  position: relative;	
+  text-decoration: line-through;
   color: #333333; /* Sets the color to light gray */
   font-size: 0.8em; /* Makes the font size smaller than the surrounding text */
 }
 
-.original-price::after {
-  content: ''; /* Necessary for a pseudo-element */
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(135deg, transparent 46%, #707070 46%, #707070 54%, transparent 54%); /* Diagonal line */
-  z-index: 1;
-}
+
