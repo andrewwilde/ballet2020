@@ -4455,4 +4455,24 @@ only screen and (min-width: 576px) and (max-width: 767px),
   font-size: 0.7em; /* Makes the font size smaller than the surrounding text */
 }
 
+.image-overlay-container {
+    position: relative;
+    /* Ensure the container has the height and width you desire, or it's determined by its content */
+}
+
+.overlay-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 23vw; /* Larger on mobile */
+    height: auto;
+    object-fit: cover; /* Adjust as needed */
+}
+
+/* Media query for tablets and desktops */
+@media (min-width: 768px) {
+    .overlay-image {
+        width: 10vw; /* Smaller on desktops */
+    }
+}
 
