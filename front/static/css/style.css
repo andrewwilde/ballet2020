@@ -4451,8 +4451,8 @@ only screen and (min-width: 576px) and (max-width: 767px),
 
 .original-price {
   text-decoration: line-through;
-  color: #333333; /* Sets the color to light gray */
-  font-size: 0.8em; /* Makes the font size smaller than the surrounding text */
+  color: #8a8a8a; /* Sets the color to light gray */
+  font-size: 0.7em; /* Makes the font size smaller than the surrounding text */
 }
 
 

@@ -253,7 +253,7 @@ $(document).ready(function(){
 					 <tr>
 					    <td> ${class_title} </td>
 					    <td> ${description} </td>
-					    <td class="text-center">$${myclass['price']}</td>
+					    <td class="text-center">$${myclass['price'].toFixed(2)}</td>
 					</tr>`
 					$('#purchase_items').append(payment_entry);
 				}
@@ -262,7 +262,7 @@ $(document).ready(function(){
 					<tr>
 					    <td>   </td>
 					    <td class="text-right"><h4><strong>Total: </strong></h4></td>
-					    <td class="text-center text-success"><h4><strong>$${response['total']['price']}</strong></h4></td>
+					    <td class="text-center text-success"><h4><strong>$${response['total']['price'].toFixed(2)}</strong></h4></td>
 					    <input type="hidden" value=${response['total']['price']} name="total">
 					</tr>`
 
