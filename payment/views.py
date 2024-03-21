@@ -26,7 +26,7 @@ stripe.api_key = settings.STRIPE_KEY
 def stripe_charge(parent, stripe_token, total, description):
     logger.info("Attempting to charge credit card. Email=%s, Total=%i" % (parent.email, total))
     charge = stripe.Charge.create(
-        amount=total*100,
+        amount=int(total*100),
         currency="USD",
         description=parent.email,
         card=stripe_token,
@@ -55,7 +55,7 @@ def register_payments(request):
                                                 "stop_time": my_class.stop_time.strftime('%I:%M %p'),
                                                 "start_day": my_class.start_day.strftime('%B %-d') if my_class.start_day else "",
                                                 "end_day": my_class.end_day.strftime('%B %-d') if my_class.end_day else "",
-                                                "price": my_class.price,
+                                                "price": my_class.sale_price if my_class.sale_price and my_class.sale_price != 0 else my_class.price,
                                                 "status": my_class.status,
                                                 "payment_frequency": my_class.payment_frequency,
                                                 "id": my_class.id})
@@ -135,7 +135,7 @@ def confirm_registration(request):
         return render(request, 'failed_registration.html', context)
 
     #Create Students
-    total = 0
+    total = 0.0
     student_count = int(data.get('student_count'))
     all_enrollments = []
     try:
@@ -179,7 +179,8 @@ def confirm_registration(request):
                                                                           dance_class.dance_type,
                                                                           dance_class.id))
                 
-                total = total + dance_class.price
+                price = dance_class.sale_price if dance_class.sale_price and dance_class.sale_price != 0 else dance_class.price
+                total = total + price
 
             #Check whether it's time to close a class
             for enrollment in enrollments:
@@ -198,7 +199,7 @@ def confirm_registration(request):
     if add_registration_fee:
         total = total + settings.REGISTRATION_FEE
 
-    if total != int(data.get('total')):
+    if total != float(data.get('total')):
         context['message'] = "There were some inconsistencies with the form. This should never happen, please contact us!"
         logger.error("The POSTed price does not match what we'd expect. POST price=%s, Calculated=%i" % (data.get('total'), total))
         return render(request, 'failed_registration.html', context)
