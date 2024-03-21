@@ -18,11 +18,10 @@ from facebook.api import (
 
 logger = logging.getLogger('ballet')
 
-START_DATE = datetime.date(2022, 8, 22)
+START_DATE = datetime.date(2024, 1, 8)
 
 @api_view(['POST'])
 def send_email(request):
-    logger.info(request.data)
     message = request.data.get('message')
     email_from = request.data.get('email_from')
     first_name = request.data.get('first_name')
@@ -38,12 +37,12 @@ def send_email(request):
                       phone,
                       message)
 
-    if not message or "http" in message or "www" in message:
-        #create_facebook_data_free_event(request, {"name": "discarded email"})
-        logger.info("There was a link contained in this email or the message was empty. Disgarding.")
+    if first_name == 'woguets' and last_name == 'woguets':
         return render(request, 'failed_email.html')
 
-    logger.info("Website Contact Form submitted: %s." % body)
+    if not message or "http" in message or "www" in message:
+        #create_facebook_data_free_event(request, {"name": "discarded email"})
+        return render(request, 'failed_email.html')
 
     try:
         send_mail("Website Contact Form",

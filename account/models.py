@@ -34,6 +34,7 @@ class ParentAccount(Account):
     account_type = models.CharField(max_length=20, default="Parent")
     stripe_id = models.CharField(max_length=50, default="", null=True, blank=True)
     is_late = models.BooleanField(default=False)
+    skip_invoice = models.BooleanField(default=False)
 
 class DanceClass(models.Model):
     class Meta:
@@ -44,6 +45,7 @@ class DanceClass(models.Model):
         ('Active', 'Active'),
         ('Inactive', 'Inactive'),
         ('Full', 'Class is Full'),
+        ('Closed for Season', 'Closed for Season'),
     ]
 
     DAYS_OF_WEEK = [
@@ -72,6 +74,9 @@ class DanceClass(models.Model):
         ('Dance', 'Dance'),
         ('Contemporary', 'Contemporary'),
         ('Boys Creative & Hip Hop', 'Boys Creative & Hip Hop'),
+        ('Ballet/Tap Combo', 'Ballet/Tap Combo'),
+        ('Tumbling', 'Tumbling'),
+        ('Pre Pointe', 'Pre Pointe'),
     ]
 
     CLASS_TYPES = [
@@ -93,6 +98,8 @@ class DanceClass(models.Model):
         ('Adult All Levels', 'Adult All Levels'),
         ('Adult Beginning', 'Adult Beginning'),
         ('Adult Advanced', 'Adult Advanced'),
+        ('Homeschool', 'Homeschool'),
+        ('Special', 'Special'),
     ]
 
     STUDIO_TYPES = [
@@ -109,18 +116,23 @@ class DanceClass(models.Model):
         ('None', 'None'),
         ('price_1Kwg8qIQ4hPK7zxOi4TiHUwj', 'Pre Creative Dance'),
         ('price_1Kwg5wIQ4hPK7zxOgI3lmQal', 'Kinder Tap'),
-        ('price_1Kwg83IQ4hPK7zxO7zguIJxj', 'Intermediate Jazz'),
+        ('price_1N6f6YIQ4hPK7zxOiuw1zABv', 'Intermediate Jazz'),
         ('price_1Kwg7PIQ4hPK7zxO6aMvc50D', 'Kinder Jazz'),
-        ('price_1Kwg7dIQ4hPK7zxOFKam9nGi', 'Beginning 1 Jazz'),
-        ('price_1Kwg5LIQ4hPK7zxOHOL8CiP1', 'Beginning 2 Ballet'),
-        ('price_1Kwg54IQ4hPK7zxOVPpGKX6r', 'Beginning 1 Ballet'),
+        ('price_1N6fN1IQ4hPK7zxOjzrEfAZS', 'Beginning 1 Jazz'),
+        ('price_1N6fPcIQ4hPK7zxO4opU9DCc', 'Beginning 2 Ballet'),
+        ('price_1N6fO5IQ4hPK7zxO6negEDip', 'Beginning 1 Ballet'),
         ('price_1KwfyPIQ4hPK7zxOXBDsG5lN', 'Pre Ballet'),
         ('price_1Kwg32IQ4hPK7zxOZf3YKCph', 'Kinder Ballet'),
         ('price_1Kwg94IQ4hPK7zxOFOEInfyP', 'Kinder Creative'),
-        ('price_1Kwg6vIQ4hPK7zxOKy6JSVp1', 'Beginning 1 Tap'),
-        ('price_1Kwg5fIQ4hPK7zxOjkeTDxb4', 'Intermediate 1 Ballet'),
+        ('price_1N6fQOIQ4hPK7zxOiDkcqCUp', 'Beginning 1 Tap'),
+        ('price_1N6fQxIQ4hPK7zxOO5vui74W', 'Intermediate 1 Ballet'),
         ('price_1Kwg8OIQ4hPK7zxOQXjBKzBC', 'Parent & Tots Creative Dance'),
-        ('price_1Kwg9XIQ4hPK7zxOrLgcCiHa', 'Beginning 1 Creative Dance'),
+        ('price_1N6fRUIQ4hPK7zxOeijpPAAb', 'Beginning 1 Creative Dance'),
+        ('price_1N6ftoIQ4hPK7zxOsqlgDurj', 'Beginning 2 Creative Dance'),
+        ('price_1N6fz5IQ4hPK7zxO2rzZyjW1', 'Beginning 2 Jazz'),
+        ('price_1N6gC9IQ4hPK7zxOj9dRUYcC', 'Kinder Tap/Ballet Combo'),
+        ('price_1N6gGLIQ4hPK7zxOgg4fYN71', 'Kinder Tumbling'),
+        ('price_1N6gFjIQ4hPK7zxOQrNikYJ9', 'Pre Pointe'),
     ]
 
     docs_path = os.path.join(settings.BASE_DIR, 'front/static/docs')

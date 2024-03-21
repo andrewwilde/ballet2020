@@ -8,3 +8,6 @@ stagingsecret.py
 scripts/
 *.swp
 db_files/
+/front/static
+*.csv
+*.txt

@@ -9,6 +9,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 from django.shortcuts import render
+from google.api import send_google_conversion
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import stripe
@@ -24,7 +25,7 @@ stripe.api_key = settings.STRIPE_KEY
 
 def stripe_charge(parent, stripe_token, total, description):
     logger.info("Attempting to charge credit card. Email=%s, Total=%i" % (parent.email, total))
-    stripe.Charge.create(
+    charge = stripe.Charge.create(
         amount=total*100,
         currency="USD",
         description=parent.email,
@@ -32,6 +33,7 @@ def stripe_charge(parent, stripe_token, total, description):
         receipt_email=parent.email 
     )
     logger.info("Credit card successful.")
+    return charge
 
 @api_view(['GET'])
 def register_payments(request):
@@ -137,8 +139,8 @@ def confirm_registration(request):
     student_count = int(data.get('student_count'))
     all_enrollments = []
     try:
+        add_registration_fee = False
         for student_num in range(1, student_count + 1):
-            add_registration_fee = False
             student_first_id = "first_name_%i" % student_num
             student_last_id = "last_name_%i" % student_num
             student_dob_id = "dob_%i" % student_num
@@ -203,7 +205,7 @@ def confirm_registration(request):
 
     try:
         name = "%s %s" % (parent.first_name, parent.last_name)
-        stripe_charge(parent, stripe_token, total, "registration costs") 
+        charge = stripe_charge(parent, stripe_token, total, "registration costs") 
     except stripe.error.StripeError as e:
         context['message'] = "Credit card transaction failed: %s" % e.error.message 
         logger.error("Credit card transaction failed(100): e=%s" % str(e))
@@ -218,6 +220,12 @@ def confirm_registration(request):
             create_facebook_event(request, facebook_data)
         except Exception as e:
             logger.error("Problem sending facebook event. e=%s", str(e))
+
+        try:
+            send_google_conversion(total, charge.id, request, all_enrollments, parent.id)
+        except Exception as e:
+            logger.error("Problem sending google conversion. e=%s", str(e))
+
         try:
             send_confirm_email(parent)
         except Exception as e:
@@ -267,7 +275,7 @@ def send_confirm_email(parent):
                 append_files.append(dance_class.curriculum)
 
         combined_class_info = "\n".join(class_info)
-        student_info.append('{} is enrolled in the following fall semester classes:\n{}\n'.format(student.first_name, combined_class_info))
+        student_info.append('{} is enrolled in the following classes:\n{}\n'.format(student.first_name, combined_class_info))
 
     combined_class_info = "\n".join(student_info)
     text_body = get_confirm_text_template().format(parent_first=parent.first_name, first_days=combined_class_info)

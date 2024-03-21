@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False 
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'account',
     'facebook',
     'front',
+    'google',
     'rest_framework',
     'utils',
 ]
@@ -194,3 +195,5 @@ TIME_INPUT_FORMATS = ('%I:%M %p',)
 CLASS_DAY_FORMAT = ('%B %-d',)
 
 REGISTRATION_FEE = 20
+
+STATICFILES_CACHE_TIMEOUT = 300

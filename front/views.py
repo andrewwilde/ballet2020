@@ -9,14 +9,17 @@ from django.shortcuts import render
 from django.db.models import Q
 from django.forms.models import model_to_dict
 from django.http import JsonResponse
+from django.views.decorators.cache import cache_control
 
 from account.models import Account
 from facebook.api import create_facebook_data_free_event
 
 logger = logging.getLogger('ballet')
 
+@cache_control(max_age=300)
 def index(request):
     #create_facebook_data_free_event(request, {"name": "visited home"})
+    logger.info(str(request.COOKIES))
     return render(request, 'index.html')
 
 def classes(request):
@@ -111,7 +114,7 @@ def filter_classes(request):
 @api_view(["GET"])
 def get_classes_by_category(request):
     classes_by_category = {}
-    dance_classes = DanceClass.objects.exclude(status="Inactive").order_by("min_age", "start_day", "dance_type", "level", "day", "start_time")
+    dance_classes = DanceClass.objects.exclude(status__in=["Inactive", "Closed for Season"]).order_by("min_age", "start_day", "dance_type", "level", "day", "start_time")
     for cls in dance_classes:
         dict_cls = model_to_dict(cls)
         dict_cls['day'] = cls.get_day_display()
