@@ -7,7 +7,7 @@ def get_confirm_html_template():
 <p>{first_days}</p> 
 <p>Our studio location is 478 South, 2000 West Springville, UT 84663 Unit #111. It's West of the Cracker Barrel right across the street.</p> 
 
-<p>Winter Semester begins the week of January 8th, 2024 unless otherwise specified (Homeschool and Adult classes).</p>
+<p>The new dance season begins the week of August 19th, 2024 unless otherwise specified (Homeschool and Adult classes).</p>
 
 <p>Attached are all of our updated policies for this dance year. Please look over them and bring the Liability Waiver signed on the first day of class.</p> 
 
@@ -30,7 +30,7 @@ Thank you for registering with Petit Ballet Academy!! We are so excited to have 
 {first_days} 
 Our studio location is 478 South, 2000 West Springville, UT 84663 Unit #111. It's West of the Cracker Barrel right across the street. 
 
-Winter Semester begins the week of January 8th, 2024 unless otherwise specified (Homeschool and Adult classes).
+The new dance season begins the week of August 19th, 2024 unless otherwise specified (Homeschool and Adult classes).
 
 Attached are all of our updated policies for this dance year. Please look over them and bring the Liability Waiver signed on the first day of camp/class. 
 

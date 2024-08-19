@@ -127,6 +127,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 STATIC_ROOT = '/home/andrew/projects/ballet2020/static'
 
 # Authentication Settings
@@ -196,4 +199,5 @@ CLASS_DAY_FORMAT = ('%B %-d',)
 
 REGISTRATION_FEE = 20
 
+#STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 STATICFILES_CACHE_TIMEOUT = 300

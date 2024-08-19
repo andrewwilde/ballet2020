@@ -22,6 +22,9 @@ def index(request):
     logger.info(str(request.COOKIES))
     return render(request, 'index.html')
 
+def robot(request):
+    return render(request, 'robots.txt')
+
 def classes(request):
     context = { 'classes': [] }
     dance_classes = DanceClass.objects.all().order_by("dance_type", "level")

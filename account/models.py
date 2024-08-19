@@ -34,6 +34,7 @@ class ParentAccount(Account):
     account_type = models.CharField(max_length=20, default="Parent")
     stripe_id = models.CharField(max_length=50, default="", null=True, blank=True)
     is_late = models.BooleanField(default=False)
+    auto_pay = models.BooleanField(default=False)
     skip_invoice = models.BooleanField(default=False)
 
 class DanceClass(models.Model):
@@ -132,7 +133,8 @@ class DanceClass(models.Model):
         ('price_1N6fz5IQ4hPK7zxO2rzZyjW1', 'Beginning 2 Jazz'),
         ('price_1N6gC9IQ4hPK7zxOj9dRUYcC', 'Kinder Tap/Ballet Combo'),
         ('price_1N6gGLIQ4hPK7zxOgg4fYN71', 'Kinder Tumbling'),
-        ('price_1N6gFjIQ4hPK7zxOQrNikYJ9', 'Pre Pointe'),
+        ('price_1PE1EOIQ4hPK7zxO6VvlHYP1', 'Pre Pointe'),
+        ('price_1PE15OIQ4hPK7zxOszzgGvEy', 'Intermediate Creative'),
     ]
 
     docs_path = os.path.join(settings.BASE_DIR, 'front/static/docs')
