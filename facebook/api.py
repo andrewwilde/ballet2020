@@ -3,7 +3,13 @@ import time
 import logging
 logger = logging.getLogger('ballet')
 
-from ballet.secret import PIXEL_ID, CONVERSION_API_KEY
+from django.conf import settings
+
+if settings.DEBUG:
+    from ballet.stagingsecret import PIXEL_ID, CONVERSION_API_KEY
+else:
+    from ballet.secret import PIXEL_ID, CONVERSION_API_KEY
+
 from facebook_business.adobjects.serverside.action_source import ActionSource
 from facebook_business.adobjects.serverside.content import Content
 from facebook_business.adobjects.serverside.custom_data import CustomData

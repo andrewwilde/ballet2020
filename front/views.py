@@ -12,7 +12,7 @@ from django.http import JsonResponse
 from django.views.decorators.cache import cache_control
 
 from account.models import Account
-from facebook.api import create_facebook_data_free_event
+#from facebook.api import create_facebook_data_free_event
 
 logger = logging.getLogger('ballet')
 

@@ -18,7 +18,7 @@ from account.models import (DanceClass,
                             ParentAccount,
                             Student,
                             StudentEnrollment)
-from facebook.api import create_facebook_event
+#from facebook.api import create_facebook_event
 
 logger = logging.getLogger('ballet')
 stripe.api_key = settings.STRIPE_KEY
@@ -218,7 +218,7 @@ def confirm_registration(request):
     else:
         try:
             facebook_data = {"name": "purchase", "parent": parent, "total": total, "enrollments": all_enrollments}
-            create_facebook_event(request, facebook_data)
+            #create_facebook_event(request, facebook_data)
         except Exception as e:
             logger.error("Problem sending facebook event. e=%s", str(e))
 

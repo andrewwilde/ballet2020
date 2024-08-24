@@ -11,10 +11,10 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from account.models import DanceClass
-from facebook.api import (
-        create_facebook_data_free_event,
-        create_facebook_email_event
-        )
+#from facebook.api import (
+#        create_facebook_data_free_event,
+#        create_facebook_email_event
+#        )
 
 logger = logging.getLogger('ballet')
 
@@ -50,7 +50,7 @@ def send_email(request):
                   email_from,
                   [settings.EMAIL_HOST_USER],
                   fail_silently=False)
-        create_facebook_email_event(request, {"name": "sent email", "first_name": first_name, "last_name": last_name, "phone": phone, 'email': email_from})
+        #create_facebook_email_event(request, {"name": "sent email", "first_name": first_name, "last_name": last_name, "phone": phone, 'email': email_from})
     except Exception as e:
         logger.error("Problem sending an email. e=%s" % str(e))
         return render(request, 'failed_email.html')
